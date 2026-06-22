@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "postbuild": "cp dist/index.html dist/404.html",
     "build:pages": "VITE_BASE_PATH=/HonorHour/ npm run build",
     "lint": "eslint .",
     "preview": "vite preview",
