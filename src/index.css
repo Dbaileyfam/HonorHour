@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
+
+  --color-hh-black: #080808;
+  --color-hh-charcoal: #121212;
+  --color-hh-panel: #1a1a1a;
+  --color-hh-red: #ff2d2d;
+  --color-hh-red-dark: #c1121f;
+  --color-hh-silver: #b8b8b8;
+  --color-hh-muted: #7a7a7a;
+  --color-hh-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased text-white;
+    background: var(--color-hh-black);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-hh-red/40 text-white;
+  }
+}
+
+@layer utilities {
+  .hh-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+  }
+
+  .hh-section-heading {
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    @apply text-4xl text-white sm:text-5xl;
+  }
+
+  .hh-card {
+    @apply rounded-2xl border border-white/10 bg-hh-panel/80 shadow-xl shadow-black/30 backdrop-blur-sm;
+  }
+
+  .hh-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition;
+  }
+
+  .hh-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition bg-hh-red text-white hover:bg-hh-red-dark;
+  }
+
+  .hh-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition border border-white/20 bg-white/5 text-white hover:border-hh-red/50 hover:bg-white/10;
+  }
+
+  .hh-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  .hh-glow-red {
+    background: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      rgba(255, 45, 45, 0.18) 0%,
+      transparent 70%
+    );
+  }
+}

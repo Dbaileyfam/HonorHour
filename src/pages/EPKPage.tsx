@@ -1,0 +1,355 @@
+import { useEffect } from "react";
+import {
+  bio,
+  epkNav,
+  pressPhotos,
+  pressQuotes,
+  quickFacts,
+  shows,
+  site,
+  streamingLinks,
+} from "@/content/site";
+import { SocialLinks } from "@/components/SocialLinks";
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+export function EPKPage() {
+  useEffect(() => {
+    document.title = `${site.name} | Electronic Press Kit`;
+  }, []);
+
+  return (
+    <>
+      <section className="border-b border-white/10 px-4 py-14 sm:py-16">
+        <div className="mx-auto max-w-6xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-hh-red">
+            Electronic Press Kit
+          </p>
+          <h1 className="hh-display mt-3 text-5xl text-white sm:text-7xl">{site.name}</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-hh-silver">{site.tagline}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <button type="button" className="hh-btn-primary" onClick={() => scrollToSection("contact")}>
+              Book the band
+            </button>
+            <button type="button" className="hh-btn-ghost" onClick={() => scrollToSection("press")}>
+              Press photos
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <nav
+        className="sticky top-[73px] z-40 border-b border-white/10 bg-hh-black/95 backdrop-blur-md"
+        aria-label="EPK sections"
+      >
+        <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 py-3">
+          {epkNav.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => scrollToSection(item.id)}
+              className="shrink-0 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/70 transition hover:bg-white/10 hover:text-white"
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </nav>
+
+      <section className="border-b border-white/10 px-4 py-10" aria-label="Quick facts">
+        <div className="mx-auto max-w-6xl">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {quickFacts.map((fact) => (
+              <li key={fact.label} className="hh-card p-5 text-center">
+                <p className="text-xs font-semibold uppercase tracking-widest text-hh-red">
+                  {fact.label}
+                </p>
+                <p className="mt-2 text-lg font-semibold text-white">{fact.value}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="bio" className="scroll-mt-36 px-4 py-16">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_280px]">
+          <div>
+            <h2 className="hh-section-heading">About the band</h2>
+            <p className="mt-4 text-lg leading-relaxed text-hh-silver">{bio.short}</p>
+            {bio.long.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)} className="mt-4 leading-relaxed text-hh-muted">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          <aside className="hh-card h-fit p-6">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-hh-red">Lineup</h3>
+            <ul className="mt-4 space-y-3">
+              {bio.lineup.map((member) => (
+                <li
+                  key={member.role}
+                  className="flex items-baseline justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0"
+                >
+                  <span className="font-medium text-white">{member.name}</span>
+                  <span className="text-sm text-hh-muted">{member.role}</span>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="music" className="scroll-mt-36 border-y border-white/10 bg-hh-charcoal/60 px-4 py-16">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="hh-section-heading">Music &amp; streaming</h2>
+          <p className="mt-2 text-hh-muted">Listen and follow across platforms.</p>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="hh-card overflow-hidden">
+              {site.featuredVideoId ? (
+                <div className="aspect-video">
+                  <iframe
+                    title={`${site.name} music video`}
+                    src={`https://www.youtube.com/embed/${site.featuredVideoId}`}
+                    className="h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              ) : (
+                <div className="flex aspect-video flex-col items-center justify-center gap-3 p-8 text-center">
+                  <p className="text-hh-silver">Videos &amp; releases on YouTube</p>
+                  <a
+                    href={site.social.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hh-btn-primary"
+                  >
+                    @honorhourmusic
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <div className="hh-card p-6">
+              <h3 className="text-lg font-semibold text-white">Listen &amp; follow</h3>
+              {streamingLinks.length > 0 ? (
+                <ul className="mt-4 space-y-2">
+                  {streamingLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-hh-red transition hover:text-white"
+                      >
+                        {link.label} →
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-4 text-sm text-hh-muted">
+                  Add Spotify, Apple Music, and other links in{" "}
+                  <code className="text-hh-silver">src/content/site.ts</code>.
+                </p>
+              )}
+              <div className="mt-6 border-t border-white/10 pt-6">
+                <SocialLinks />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="press" className="scroll-mt-36 px-4 py-16">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="hh-section-heading">Press</h2>
+
+          {pressQuotes.length > 0 ? (
+            <div className="mt-8 space-y-6">
+              {pressQuotes.map((item) => (
+                <blockquote key={item.source} className="hh-card border-l-4 border-l-hh-red p-6">
+                  <p className="text-lg italic leading-relaxed text-hh-silver">&ldquo;{item.quote}&rdquo;</p>
+                  <footer className="mt-4 text-sm text-hh-muted">
+                    — {item.url ? (
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-hh-red hover:text-white">
+                        {item.source}
+                      </a>
+                    ) : (
+                      item.source
+                    )}
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="hh-card mt-8 p-6">
+            <h3 className="text-lg font-semibold text-white">Press kit assets</h3>
+            <p className="mt-2 text-sm text-hh-muted">
+              High-res photos and logos for promoters and media. Click to download.
+            </p>
+
+            {pressPhotos.length > 0 ? (
+              <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {pressPhotos.map((photo) => (
+                  <li key={photo.src}>
+                    <figure className="overflow-hidden rounded-xl border border-white/10">
+                      <a href={photo.src} download={photo.downloadName}>
+                        <img
+                          src={photo.src}
+                          alt={photo.alt}
+                          className="aspect-[4/3] w-full object-cover transition hover:scale-[1.02]"
+                          loading="lazy"
+                        />
+                      </a>
+                      <figcaption className="bg-hh-black/50 px-3 py-2 text-sm text-hh-muted">
+                        {photo.caption}
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="mt-6 rounded-xl border border-dashed border-white/15 bg-hh-black/30 p-10 text-center">
+                <p className="text-hh-silver">Press photos coming soon.</p>
+                <p className="mt-2 text-sm text-hh-muted">
+                  Drop images in <code className="text-hh-silver">public/assets/press/</code> and list them in{" "}
+                  <code className="text-hh-silver">src/content/site.ts</code>.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section id="shows" className="scroll-mt-36 border-y border-white/10 bg-hh-charcoal/60 px-4 py-16">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="hh-section-heading">Upcoming shows</h2>
+          {shows.length > 0 ? (
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+              {shows.map((show) => (
+                <li key={`${show.date}-${show.venue}`} className="hh-card flex gap-5 p-5">
+                  <time
+                    dateTime={show.date}
+                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-xl bg-hh-red/15 text-hh-red"
+                  >
+                    <span className="text-xs font-bold uppercase">{show.dateLabel.split(" ")[0]}</span>
+                    <span className="hh-display text-2xl leading-none">
+                      {show.dateLabel.split(" ")[1]?.replace(",", "")}
+                    </span>
+                  </time>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">{show.venue}</h3>
+                    <p className="text-sm text-hh-muted">{show.location}</p>
+                    {show.ticketUrl ? (
+                      <a
+                        href={show.ticketUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-block text-sm font-medium text-hh-red hover:text-white"
+                      >
+                        Tickets →
+                      </a>
+                    ) : null}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-6 text-hh-muted">
+              No dates listed yet — follow{" "}
+              <a
+                href={site.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-hh-red hover:text-white"
+              >
+                @honorhourmusic
+              </a>{" "}
+              for announcements.
+            </p>
+          )}
+        </div>
+      </section>
+
+      <section id="tech" className="scroll-mt-36 px-4 py-16">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="hh-section-heading">Stage plot &amp; input list</h2>
+          <p className="mt-2 text-hh-muted">Technical details for sound engineers and promoters.</p>
+
+          <div className="mt-8 space-y-4">
+            <details className="hh-card group p-6">
+              <summary className="cursor-pointer list-none font-semibold text-white marker:content-none">
+                <span className="flex items-center justify-between gap-4">
+                  Stage plot
+                  <span className="text-sm font-normal text-hh-muted group-open:hidden">Show details</span>
+                </span>
+              </summary>
+              <div className="mt-4 rounded-xl border border-dashed border-white/15 bg-hh-black/30 p-10 text-center text-sm text-hh-muted">
+                Add a stage plot image to <code className="text-hh-silver">public/assets/</code> and link it here.
+              </div>
+            </details>
+
+            <details className="hh-card group p-6">
+              <summary className="cursor-pointer list-none font-semibold text-white marker:content-none">
+                <span className="flex items-center justify-between gap-4">
+                  Input list
+                  <span className="text-sm font-normal text-hh-muted group-open:hidden">Show channels</span>
+                </span>
+              </summary>
+              <p className="mt-4 text-sm text-hh-muted">
+                Input list will be added when available from the band.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="scroll-mt-36 border-t border-white/10 bg-hh-charcoal/60 px-4 py-16">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="hh-section-heading">Booking &amp; press contact</h2>
+          <p className="mt-4 text-hh-silver">
+            For festivals, venues, private events, and media inquiries.
+          </p>
+          <address className="hh-card mt-8 not-italic">
+            <p className="text-lg font-semibold text-white">{site.booking.name}</p>
+            {site.booking.email ? (
+              <p className="mt-3">
+                <a href={`mailto:${site.booking.email}`} className="text-hh-red hover:text-white">
+                  {site.booking.email}
+                </a>
+              </p>
+            ) : null}
+            {site.booking.phone ? (
+              <p className="mt-2">
+                <a href={`tel:${site.booking.phone.replace(/\D/g, "")}`} className="text-hh-red hover:text-white">
+                  {site.booking.phone}
+                </a>
+              </p>
+            ) : null}
+            {!site.booking.email && !site.booking.phone ? (
+              <p className="mt-4 text-sm text-hh-muted">
+                Add booking email and phone in{" "}
+                <code className="text-hh-silver">src/content/site.ts</code>, or reach out via{" "}
+                <a
+                  href={site.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-hh-red hover:text-white"
+                >
+                  Instagram
+                </a>
+                .
+              </p>
+            ) : null}
+          </address>
+        </div>
+      </section>
+    </>
+  );
+}
