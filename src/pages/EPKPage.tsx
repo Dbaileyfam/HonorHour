@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   bio,
   epkNav,
@@ -9,6 +9,8 @@ import {
   site,
   streamingLinks,
 } from "@/content/site";
+import { routes } from "@/lib/routes";
+import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
 
 function scrollToSection(id: string) {
@@ -17,9 +19,7 @@ function scrollToSection(id: string) {
 }
 
 export function EPKPage() {
-  useEffect(() => {
-    document.title = `${site.name} | Electronic Press Kit`;
-  }, []);
+  usePageTitle("Electronic Press Kit");
 
   return (
     <>
@@ -334,8 +334,11 @@ export function EPKPage() {
             ) : null}
             {!site.booking.email && !site.booking.phone ? (
               <p className="mt-4 text-sm text-hh-muted">
-                Add booking email and phone in{" "}
-                <code className="text-hh-silver">src/content/site.ts</code>, or reach out via{" "}
+                Reach out via the{" "}
+                <Link to={routes.contact} className="text-hh-red hover:text-white">
+                  Contact page
+                </Link>{" "}
+                or{" "}
                 <a
                   href={site.social.instagram}
                   target="_blank"
@@ -347,6 +350,9 @@ export function EPKPage() {
                 .
               </p>
             ) : null}
+            <Link to={routes.contact} className="hh-btn-primary mt-6 inline-flex">
+              Contact for booking
+            </Link>
           </address>
         </div>
       </section>
