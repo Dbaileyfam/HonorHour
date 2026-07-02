@@ -58,6 +58,28 @@ function VideoPlayer({ video }: { video: Video }) {
   );
 }
 
+function SpotifyEmbed() {
+  const { setMusicPlaying } = usePatternEffects();
+
+  return (
+    <div
+      className="overflow-hidden rounded-xl"
+      onPointerDown={() => setMusicPlaying(true)}
+    >
+      <iframe
+        title={`${site.name} on Spotify`}
+        src="https://open.spotify.com/embed/artist/3DK78RnwDgR3FB717UM3nU?utm_source=generator&si=006082fea1464224"
+        className="h-[352px] w-full border-0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        allowFullScreen
+        loading="lazy"
+        onFocus={() => setMusicPlaying(true)}
+        onBlur={() => setMusicPlaying(false)}
+      />
+    </div>
+  );
+}
+
 function SingleRelease({
   video,
   cover,
@@ -197,6 +219,10 @@ export function MediaPage() {
         <div className="mx-auto max-w-6xl">
           <h2 className="hh-section-heading">Listen &amp; follow</h2>
           <p className="mt-2 text-hh-muted">Stream and follow across platforms.</p>
+
+          <div className="mx-auto mt-8 max-w-3xl">
+            <SpotifyEmbed />
+          </div>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             <div className="hh-card p-6">
