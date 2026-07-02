@@ -32,58 +32,21 @@ export const navLinks = [
   { to: routes.contact, label: "Contact" },
 ] as const;
 
-/** YouTube videos, releases, and promo photos from @honorhourmusic */
+/** Curated Honor Hour originals on YouTube — add videos here as they release */
 export const media = {
-  officialPlaylistId: "PLt-NLJfm9EBm4VLF8_8ZtkI-CJjufztat",
-  /** Featured at top of Media page — Whysound Session EP */
-  sessionVideos: [
-    { id: "ishFEGzvPAc", title: "Eventide" },
-    { id: "ShqdFcZ3ZGI", title: "A.I. for the Straight Guy" },
-    { id: "zdETzNCDe_o", title: "Dried Out" },
-  ],
-  youtubeVideos: [
-    { id: "bl2FLCFJoOA", title: "Don't Give Yourselves to Brutes" },
+  featured: { id: "bl2FLCFJoOA", title: "Don't Give Yourselves to Brutes" },
+  whysoundSession: {
+    title: "Whysound Session EP",
+    description: "Live session recordings from WhySound in Logan, Utah.",
+    videos: [
+      { id: "ishFEGzvPAc", title: "Eventide" },
+      { id: "ShqdFcZ3ZGI", title: "A.I. for the Straight Guy" },
+      { id: "zdETzNCDe_o", title: "Dried Out" },
+    ],
+  },
+  singles: [
     { id: "W8Nmv_HNCsg", title: "Six Percent" },
-    { id: "yBs641G9Wxk", title: "Kaleidoscope (Tiësto + Jónsi cover)" },
     { id: "Z0WJRONlIww", title: "72 thru 74" },
-    { id: "ShqdFcZ3ZGI", title: "A.I. for the Straight Guy" },
-    { id: "zdETzNCDe_o", title: "Dried Out" },
-    { id: "wwc1HHC1pjk", title: "Bad at Love (Halsey cover)" },
-    { id: "ishFEGzvPAc", title: "Eventide" },
-  ],
-  releases: [
-    {
-      title: "The Whysound Session EP",
-      type: "EP",
-      description: "Live session recordings from WhySound in Logan, Utah.",
-      tracks: [
-        { title: "A.I. for the Straight Guy", videoId: "ShqdFcZ3ZGI" },
-        { title: "Dried Out", videoId: "zdETzNCDe_o" },
-        { title: "Bad at Love (Halsey cover)", videoId: "wwc1HHC1pjk" },
-        { title: "Eventide", videoId: "ishFEGzvPAc" },
-      ],
-    },
-    {
-      title: "Don't Give Yourselves to Brutes",
-      type: "Single",
-      tracks: [{ title: "Don't Give Yourselves to Brutes", videoId: "bl2FLCFJoOA" }],
-    },
-    {
-      title: "Six Percent",
-      type: "Single",
-      tracks: [{ title: "Six Percent", videoId: "W8Nmv_HNCsg" }],
-    },
-    {
-      title: "Kaleidoscope",
-      type: "Single",
-      description: "Tiësto + Jónsi cover.",
-      tracks: [{ title: "Kaleidoscope", videoId: "yBs641G9Wxk" }],
-    },
-    {
-      title: "72 thru 74",
-      type: "Single",
-      tracks: [{ title: "72 thru 74", videoId: "Z0WJRONlIww" }],
-    },
   ],
   promoPhotos: [] as { src: string; alt: string }[],
 } as const;
@@ -144,10 +107,6 @@ export const streamingLinks = [
   {
     label: "YouTube Music — releases",
     href: "https://www.youtube.com/@honorhourmusic/releases",
-  },
-  {
-    label: "Official music videos (playlist)",
-    href: "https://www.youtube.com/playlist?list=PLt-NLJfm9EBm4VLF8_8ZtkI-CJjufztat",
   },
 ] as const;
 
