@@ -85,22 +85,24 @@
 
   .hh-pattern-drift {
     position: absolute;
-    inset: 0;
+    inset: calc(-2 * var(--hh-tile-size));
     background-color: var(--color-hh-black);
     background-repeat: repeat;
     background-size: var(--hh-tile-size) var(--hh-tile-size);
     background-position: 0 0;
     opacity: 0.92;
-    animation: hh-pattern-drift 64s linear infinite;
-    will-change: background-position;
+    transform: translate3d(0, 0, 0);
+    animation: hh-pattern-drift 80s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   @keyframes hh-pattern-drift {
     from {
-      background-position: 0 0;
+      transform: translate3d(0, 0, 0);
     }
     to {
-      background-position: var(--hh-tile-size) var(--hh-tile-size);
+      transform: translate3d(var(--hh-tile-size), var(--hh-tile-size), 0);
     }
   }
 
