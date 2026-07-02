@@ -3,16 +3,15 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { assetUrl } from "@/lib/assets";
 
-const patternBg = assetUrl("assets/pattern-bg.png");
+const patternTile = assetUrl("assets/pattern-tile.png");
 
 export function Layout() {
   return (
     <>
       <div className="relative min-h-screen bg-hh-black">
-        {/* Pattern — own layer so grain/overlay don't override it */}
         <div
-          className="pointer-events-none fixed inset-0 z-0 bg-hh-black bg-cover bg-center bg-no-repeat md:bg-fixed"
-          style={{ backgroundImage: `url("${patternBg}")` }}
+          className="pointer-events-none fixed inset-0 z-0 hh-pattern-tile"
+          style={{ backgroundImage: `url("${patternTile}")` }}
           aria-hidden
         />
         <div className="pointer-events-none fixed inset-0 z-0 hh-pattern-overlay" aria-hidden />
