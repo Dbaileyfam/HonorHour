@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Logo } from "@/components/Logo";
+import { usePatternEffects } from "@/context/PatternEffectsContext";
 import { navLinks, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { SocialLinks } from "./SocialLinks";
@@ -12,6 +13,7 @@ function navClass(isActive: boolean) {
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const { setNavHover } = usePatternEffects();
 
   return (
     <footer className="border-t border-white/10 bg-hh-charcoal/80 backdrop-blur-sm">
@@ -45,6 +47,10 @@ export function Footer() {
               to={link.to}
               end={link.to === routes.home}
               className={({ isActive }) => `text-sm uppercase tracking-wide ${navClass(isActive)}`}
+              onMouseEnter={() => setNavHover(true)}
+              onMouseLeave={() => setNavHover(false)}
+              onFocus={() => setNavHover(true)}
+              onBlur={() => setNavHover(false)}
             >
               {link.label}
             </NavLink>

@@ -1,11 +1,12 @@
 import { media, site, streamingLinks } from "@/content/site";
+import { usePatternEffects } from "@/context/PatternEffectsContext";
 import { assetUrl } from "@/lib/assets";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { PageHero } from "@/components/PageHero";
 import { SocialLinks } from "@/components/SocialLinks";
 
 function youtubeEmbedSrc(id: string) {
-  return `https://www.youtube.com/embed/${id}?rel=0`;
+  return `https://www.youtube.com/embed/${id}?rel=0&enablejsapi=1`;
 }
 
 function youtubeWatchUrl(id: string) {
@@ -35,8 +36,13 @@ function CoverArt({
 }
 
 function VideoPlayer({ video }: { video: Video }) {
+  const { setMusicPlaying } = usePatternEffects();
+
   return (
-    <div className="aspect-video min-h-0 w-full">
+    <div
+      className="aspect-video min-h-0 w-full"
+      onPointerDown={() => setMusicPlaying(true)}
+    >
       <iframe
         title={video.title}
         src={youtubeEmbedSrc(video.id)}
@@ -45,6 +51,8 @@ function VideoPlayer({ video }: { video: Video }) {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
         loading="lazy"
+        onFocus={() => setMusicPlaying(true)}
+        onBlur={() => setMusicPlaying(false)}
       />
     </div>
   );

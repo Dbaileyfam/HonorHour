@@ -73,73 +73,182 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   }
 
-  /* Full stamp photo — slow walk-into-the-hallway zoom */
-  .hh-hallway-scene {
+  /* Seamless stamp pattern — drift + mouse parallax */
+  .hh-pattern-scene {
     position: fixed;
     inset: 0;
     z-index: 0;
     overflow: hidden;
     background: var(--color-hh-black);
+    --hh-parallax-x: 0px;
+    --hh-parallax-y: 0px;
+    --hh-mouse-x: 50%;
+    --hh-mouse-y: 50%;
   }
 
-  .hh-hallway-photo {
+  .hh-pattern-layer {
     position: absolute;
-    inset: -12%;
+    inset: -4%;
     background-color: var(--color-hh-black);
-    background-size: cover;
-    background-position: 58% 42%;
-    background-repeat: no-repeat;
-    opacity: 0.62;
-    transform-origin: 58% 42%;
-    animation: hh-hallway-walk 18s ease-in-out infinite alternate;
-    will-change: transform;
+    background-repeat: repeat;
+    background-size: 240px 240px;
+    opacity: 0.92;
+    --hh-drift-duration: 48s;
+    transform: translate3d(var(--hh-parallax-x), var(--hh-parallax-y), 0);
+    transition:
+      transform 0.2s ease-out,
+      opacity 0.35s ease,
+      filter 0.35s ease;
+    animation: hh-pattern-drift var(--hh-drift-duration) linear infinite;
+    will-change: transform, background-position, filter;
   }
 
-  @keyframes hh-hallway-walk {
+  @keyframes hh-pattern-drift {
     from {
-      transform: scale(1) translate3d(0, 0, 0);
+      background-position: 0 0;
     }
     to {
-      transform: scale(1.2) translate3d(-2.5%, -3.5%, 0);
+      background-position: 240px 240px;
     }
   }
 
-  .hh-hallway-static {
+  @keyframes hh-beat-pulse {
+    0%,
+    100% {
+      transform: translate3d(var(--hh-parallax-x), var(--hh-parallax-y), 0) scale(1);
+      filter: brightness(1);
+    }
+    50% {
+      transform: translate3d(var(--hh-parallax-x), var(--hh-parallax-y), 0) scale(1.014);
+      filter: brightness(1.1);
+    }
+  }
+
+  .hh-pattern-scene.hh-media-active .hh-pattern-layer {
+    animation:
+      hh-pattern-drift var(--hh-drift-duration) linear infinite,
+      hh-beat-pulse 0.55s ease-in-out infinite;
+  }
+
+  .hh-pattern-scene.hh-music-playing .hh-pattern-layer {
+    opacity: 1;
+    animation:
+      hh-pattern-drift var(--hh-drift-duration) linear infinite,
+      hh-beat-pulse 0.38s ease-in-out infinite;
+  }
+
+  .hh-pattern-scene.hh-beat-tick .hh-pattern-layer {
+    filter: brightness(1.14);
+  }
+
+  .hh-pattern-scene.hh-nav-pulse .hh-pattern-layer {
+    opacity: 1;
+    filter: brightness(1.08) contrast(1.03);
+  }
+
+  .hh-pattern-spotlight {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      520px circle at var(--hh-mouse-x) var(--hh-mouse-y),
+      rgba(255, 45, 45, 0.14) 0%,
+      rgba(255, 45, 45, 0.04) 28%,
+      transparent 58%
+    );
+    opacity: 1;
+    transition:
+      opacity 0.25s ease,
+      background 0.3s ease;
+  }
+
+  .hh-pattern-scene.hh-nav-pulse .hh-pattern-spotlight {
+    background: radial-gradient(
+      620px circle at var(--hh-mouse-x) var(--hh-mouse-y),
+      rgba(255, 45, 45, 0.22) 0%,
+      rgba(255, 45, 45, 0.08) 30%,
+      transparent 60%
+    );
+  }
+
+  .hh-pattern-scene.hh-music-playing .hh-pattern-spotlight {
+    background: radial-gradient(
+      680px circle at var(--hh-mouse-x) var(--hh-mouse-y),
+      rgba(255, 45, 45, 0.26) 0%,
+      rgba(255, 45, 45, 0.1) 32%,
+      transparent 62%
+    );
+  }
+
+  .hh-click-ripple {
+    position: fixed;
+    z-index: 2;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 45, 45, 0.75);
+    box-shadow: 0 0 24px rgba(255, 45, 45, 0.35);
+    transform: translate(-50%, -50%);
+    animation: hh-ripple-expand 0.85s ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes hh-ripple-expand {
+    to {
+      width: 220px;
+      height: 220px;
+      opacity: 0;
+      border-width: 1px;
+    }
+  }
+
+  .hh-pattern-static {
     display: none;
     position: absolute;
     inset: 0;
     background-color: var(--color-hh-black);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.5;
+    background-repeat: repeat;
+    background-size: 240px 240px;
+    opacity: 0.88;
+  }
+
+  @media (min-width: 640px) {
+    .hh-pattern-layer,
+    .hh-pattern-static {
+      background-size: 280px 280px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hh-hallway-photo {
+    .hh-pattern-layer,
+    .hh-pattern-spotlight,
+    .hh-click-ripple {
       display: none;
     }
 
-    .hh-hallway-static {
+    .hh-pattern-static {
       display: block;
+    }
+
+    .hh-pattern-scene.hh-media-active .hh-pattern-layer,
+    .hh-pattern-scene.hh-music-playing .hh-pattern-layer {
+      animation: none;
     }
   }
 
   .hh-pattern-overlay {
     background:
       radial-gradient(
-        ellipse 50% 42% at 50% 42%,
+        ellipse 55% 50% at 50% 45%,
         transparent 0%,
-        rgba(8, 8, 8, 0.45) 65%,
-        rgba(8, 8, 8, 0.88) 100%
+        rgba(8, 8, 8, 0.2) 70%,
+        rgba(8, 8, 8, 0.55) 100%
       ),
       linear-gradient(
         180deg,
-        rgba(8, 8, 8, 0.4) 0%,
-        rgba(8, 8, 8, 0.55) 50%,
-        rgba(8, 8, 8, 0.65) 100%
-      ),
-      radial-gradient(ellipse 90% 70% at 50% 0%, rgba(8, 8, 8, 0.3) 0%, transparent 70%);
+        rgba(8, 8, 8, 0.15) 0%,
+        rgba(8, 8, 8, 0.28) 50%,
+        rgba(8, 8, 8, 0.38) 100%
+      );
   }
 
   .hh-glow-red {
