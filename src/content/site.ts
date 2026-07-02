@@ -15,6 +15,7 @@ export const site = {
   social: {
     instagram: "https://www.instagram.com/honorhourmusic/",
     youtube: "https://www.youtube.com/@honorhourmusic",
+    spotify: "https://open.spotify.com/artist/3DK78RnwDgR3FB717UM3nU",
     facebook: "https://www.facebook.com/search/top?q=honor%20hour",
   },
   /** Featured on home, EPK, and media hero */
