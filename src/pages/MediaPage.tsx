@@ -15,8 +15,15 @@ function youtubeWatchUrl(id: string) {
 export function MediaPage() {
   usePageTitle("Media");
 
+  const featuredId = site.featuredVideoId;
+  const featuredVideo = featuredId
+    ? media.youtubeVideos.find((v) => v.id === featuredId)
+    : undefined;
+
   const sessionIds = new Set<string>(media.sessionVideos.map((v) => v.id));
-  const otherVideos = media.youtubeVideos.filter((v) => !sessionIds.has(v.id));
+  const otherVideos = media.youtubeVideos.filter(
+    (v) => !sessionIds.has(v.id) && v.id !== featuredId,
+  );
 
   return (
     <>
@@ -25,6 +32,37 @@ export function MediaPage() {
         title="Media"
         description={`Videos, releases, and press photos for ${site.name}.`}
       />
+
+      {featuredVideo ? (
+        <section className="border-b border-white/10 px-4 py-16">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="hh-section-heading">Featured</h2>
+            <p className="mt-2 text-hh-muted">Latest from @honorhourmusic on YouTube.</p>
+            <figure className="hh-card mx-auto mt-8 max-w-4xl overflow-hidden">
+              <div className="aspect-video">
+                <iframe
+                  title={featuredVideo.title}
+                  src={youtubeEmbedSrc(featuredVideo.id)}
+                  className="h-full w-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              <figcaption className="px-4 py-3">
+                <a
+                  href={youtubeWatchUrl(featuredVideo.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-white transition hover:text-hh-red"
+                >
+                  {featuredVideo.title}
+                </a>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-b border-white/10 bg-hh-charcoal/60 px-4 py-16">
         <div className="mx-auto max-w-6xl">
