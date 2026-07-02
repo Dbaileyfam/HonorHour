@@ -1,19 +1,13 @@
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { assetUrl } from "@/lib/assets";
-
-const patternTile = assetUrl("assets/pattern-tile.png");
+import { HallwayBackground } from "./HallwayBackground";
 
 export function Layout() {
   return (
     <>
       <div className="relative min-h-screen bg-hh-black">
-        <div
-          className="pointer-events-none fixed inset-0 z-0 hh-pattern-tile"
-          style={{ backgroundImage: `url("${patternTile}")` }}
-          aria-hidden
-        />
+        <HallwayBackground />
         <div className="pointer-events-none fixed inset-0 z-0 hh-pattern-overlay" aria-hidden />
         <div className="pointer-events-none fixed inset-0 z-0 hh-glow-red" aria-hidden />
         <div

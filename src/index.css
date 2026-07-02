@@ -80,6 +80,146 @@
     background-position: center top;
   }
 
+  /* 3D stamp hallway — walking forward effect */
+  .hh-hallway-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: var(--color-hh-black);
+    --hh-tile-size: 130px;
+    perspective: 300px;
+    perspective-origin: 50% 40%;
+  }
+
+  .hh-hallway-tunnel {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+  }
+
+  .hh-hallway-static {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-hh-black);
+    background-repeat: repeat;
+    background-size: var(--hh-tile-size) var(--hh-tile-size);
+    opacity: 0.2;
+  }
+
+  .hh-hallway-surface {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-image: var(--hh-pattern);
+    background-color: var(--color-hh-black);
+    background-repeat: repeat;
+    background-size: var(--hh-tile-size) var(--hh-tile-size);
+    opacity: 0.28;
+    will-change: background-position;
+  }
+
+  .hh-hallway-floor {
+    width: 320vmax;
+    height: 320vmax;
+    margin-left: -160vmax;
+    margin-top: -8vmax;
+    transform: rotateX(80deg) translateZ(-60px);
+    transform-origin: 50% 100%;
+    animation: hh-hallwalk-floor 10s linear infinite;
+  }
+
+  .hh-hallway-ceiling {
+    width: 320vmax;
+    height: 320vmax;
+    margin-left: -160vmax;
+    margin-top: -312vmax;
+    transform: rotateX(-80deg) translateZ(-60px);
+    transform-origin: 50% 0%;
+    animation: hh-hallwalk-ceiling 10s linear infinite;
+  }
+
+  .hh-hallway-left {
+    width: 320vmax;
+    height: 220vh;
+    margin-left: -160vmax;
+    margin-top: -110vh;
+    transform: rotateY(90deg) translateZ(-42vw);
+    transform-origin: center center;
+    animation: hh-hallwalk-left 10s linear infinite;
+  }
+
+  .hh-hallway-right {
+    width: 320vmax;
+    height: 220vh;
+    margin-left: -160vmax;
+    margin-top: -110vh;
+    transform: rotateY(-90deg) translateZ(-42vw);
+    transform-origin: center center;
+    animation: hh-hallwalk-right 10s linear infinite;
+  }
+
+  @keyframes hh-hallwalk-floor {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 var(--hh-tile-size);
+    }
+  }
+
+  @keyframes hh-hallwalk-ceiling {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 calc(-1 * var(--hh-tile-size));
+    }
+  }
+
+  @keyframes hh-hallwalk-left {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: var(--hh-tile-size) 0;
+    }
+  }
+
+  @keyframes hh-hallwalk-right {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: calc(-1 * var(--hh-tile-size)) 0;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .hh-hallway-scene {
+      --hh-tile-size: 160px;
+      perspective: 340px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hh-hallway-scene {
+      --hh-tile-size: 190px;
+      perspective: 380px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hh-hallway-tunnel {
+      display: none;
+    }
+
+    .hh-hallway-static {
+      display: block;
+    }
+  }
+
   @media (min-width: 640px) {
     .hh-pattern-tile {
       background-size: 220px 220px;
@@ -100,13 +240,19 @@
 
   .hh-pattern-overlay {
     background:
+      radial-gradient(
+        ellipse 50% 42% at 50% 42%,
+        transparent 0%,
+        rgba(8, 8, 8, 0.45) 65%,
+        rgba(8, 8, 8, 0.88) 100%
+      ),
       linear-gradient(
         180deg,
-        rgba(8, 8, 8, 0.35) 0%,
-        rgba(8, 8, 8, 0.5) 50%,
-        rgba(8, 8, 8, 0.6) 100%
+        rgba(8, 8, 8, 0.4) 0%,
+        rgba(8, 8, 8, 0.55) 50%,
+        rgba(8, 8, 8, 0.65) 100%
       ),
-      radial-gradient(ellipse 90% 70% at 50% 0%, rgba(8, 8, 8, 0.25) 0%, transparent 70%);
+      radial-gradient(ellipse 90% 70% at 50% 0%, rgba(8, 8, 8, 0.3) 0%, transparent 70%);
   }
 
   .hh-glow-red {
