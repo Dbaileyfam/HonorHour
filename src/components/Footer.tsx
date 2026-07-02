@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import { Logo } from "@/components/Logo";
 import { navLinks, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { SocialLinks } from "./SocialLinks";
@@ -13,11 +14,11 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-hh-charcoal">
+    <footer className="border-t border-white/10 bg-hh-charcoal/80 backdrop-blur-sm">
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex flex-col items-center gap-8 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
           <div>
-            <p className="hh-display text-2xl text-white">{site.name}</p>
+            <Logo className="text-2xl text-white" />
             <p className="mt-1 text-sm text-hh-muted">{site.tagline}</p>
             <p className="mt-3 text-xs text-hh-muted">
               &copy; {year} {site.name}. All rights reserved.

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Logo } from "@/components/Logo";
 import {
   bio,
   epkNav,
@@ -28,7 +29,9 @@ export function EPKPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-hh-red">
             Electronic Press Kit
           </p>
-          <h1 className="hh-display mt-3 text-5xl text-white sm:text-7xl">{site.name}</h1>
+          <h1 className="mt-3">
+            <Logo className="text-5xl text-white sm:text-7xl" />
+          </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-hh-silver">{site.tagline}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <button type="button" className="hh-btn-primary" onClick={() => scrollToSection("contact")}>

@@ -4,6 +4,8 @@ import { routes } from "@/lib/routes";
 
 export const site = {
   name: "Honor Hour",
+  /** Logo / wordmark shown in header, footer, and hero */
+  wordmark: "HNR HR",
   tagline: "Loud music for loud times.",
   description:
     "Honor Hour is a Utah rock band bringing high-energy live sets to clubs, festivals, and stages across the Wasatch Front.",
@@ -32,12 +34,17 @@ export const navLinks = [
   { to: routes.contact, label: "Contact" },
 ] as const;
 
-/** Curated Honor Hour originals on YouTube — add videos here as they release */
+/** Curated Honor Hour releases on YouTube — add videos and cover art as they release */
 export const media = {
-  featured: { id: "bl2FLCFJoOA", title: "Don't Give Yourselves to Brutes" },
+  featured: {
+    id: "bl2FLCFJoOA",
+    title: "Don't Give Yourselves to Brutes",
+    cover: "assets/media/dont-give-yourselves-to-brutes.png",
+  },
   whysoundSession: {
     title: "Whysound Session EP",
     description: "Live session recordings from WhySound in Logan, Utah.",
+    cover: "assets/media/whysound-session-ep.png",
     videos: [
       { id: "ishFEGzvPAc", title: "Eventide" },
       { id: "ShqdFcZ3ZGI", title: "A.I. for the Straight Guy" },
@@ -45,8 +52,29 @@ export const media = {
     ],
   },
   singles: [
-    { id: "W8Nmv_HNCsg", title: "Six Percent" },
-    { id: "Z0WJRONlIww", title: "72 thru 74" },
+    {
+      id: "W8Nmv_HNCsg",
+      title: "Six Percent",
+      cover: "assets/media/six-percent.png",
+    },
+    {
+      id: "Z0WJRONlIww",
+      title: "72 thru 74",
+      cover: "assets/media/72-thru-74.png",
+    },
+    {
+      id: "yBs641G9Wxk",
+      title: "Kaleidoscope",
+      cover: "assets/media/kaleidoscope.png",
+      note: "Tiësto + Jónsi cover",
+    },
+  ],
+  albums: [
+    {
+      title: "Color & Spite EP",
+      cover: "assets/media/color-and-spite-ep.png",
+      description: "Honor Hour — Color & Spite EP.",
+    },
   ],
   promoPhotos: [] as { src: string; alt: string }[],
 } as const;

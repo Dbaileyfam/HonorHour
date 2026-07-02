@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Clapperboard, MapPin, Music2, Sparkles } from "lucide-react";
+import { Logo } from "@/components/Logo";
 import { bio, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
@@ -42,8 +43,8 @@ export function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-hh-red">
             Utah Rock
           </p>
-          <h1 className="hh-display mt-4 text-6xl text-white sm:text-8xl md:text-9xl">
-            {site.name}
+          <h1 className="mt-4">
+            <Logo className="text-6xl text-white sm:text-8xl md:text-9xl" />
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-hh-silver sm:text-xl">
             {site.tagline}

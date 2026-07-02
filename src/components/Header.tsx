@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Logo } from "@/components/Logo";
 import { navLinks, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 
@@ -14,12 +15,10 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-hh-black/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-hh-black/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
         <Link to={routes.home} className="group min-w-0">
-          <span className="hh-display block truncate text-2xl text-white transition group-hover:text-hh-red sm:text-3xl">
-            {site.name}
-          </span>
+          <Logo className="block truncate text-2xl text-white transition group-hover:text-hh-red sm:text-3xl" />
           <span className="hidden text-xs font-medium uppercase tracking-widest text-hh-muted sm:block">
             {site.hometown} · Rock
           </span>
