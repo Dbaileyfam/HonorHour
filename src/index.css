@@ -83,22 +83,12 @@
     --hh-tile-size: 240px;
   }
 
-  .hh-pattern-drift-stage {
+  .hh-pattern-canvas {
     position: absolute;
     inset: 0;
-    opacity: 0.92;
-    contain: layout paint style;
-  }
-
-  .hh-pattern-drift {
-    position: absolute;
-    inset: calc(-1 * var(--hh-tile-size));
-    background-color: var(--color-hh-black);
-    background-repeat: repeat;
-    background-size: var(--hh-tile-size) var(--hh-tile-size);
-    background-position: 0 0;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .hh-pattern-vibe {
@@ -111,51 +101,36 @@
       transparent 62%
     );
     opacity: 0;
-    transition: opacity 1s ease;
   }
 
   .hh-pattern-scene.hh-media-active .hh-pattern-vibe {
-    opacity: 0.12;
+    opacity: 0.1;
   }
 
   .hh-pattern-scene.hh-music-playing .hh-pattern-vibe {
-    opacity: 0.18;
+    opacity: 0.15;
   }
 
   .hh-pattern-scene.hh-nav-pulse .hh-pattern-vibe {
-    opacity: 0.14;
+    opacity: 0.12;
   }
 
   .hh-pattern-spotlight {
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      520px circle at 50% 45%,
-      rgba(255, 45, 45, 0.12) 0%,
-      rgba(255, 45, 45, 0.04) 28%,
-      transparent 58%
-    );
-    opacity: 1;
-    transition: opacity 0.5s ease;
     pointer-events: none;
-  }
-
-  .hh-pattern-scene.hh-nav-pulse .hh-pattern-spotlight {
     background: radial-gradient(
       620px circle at 50% 45%,
-      rgba(255, 45, 45, 0.18) 0%,
-      rgba(255, 45, 45, 0.06) 30%,
+      rgba(255, 45, 45, 0.14) 0%,
+      rgba(255, 45, 45, 0.05) 30%,
       transparent 60%
     );
+    opacity: 0.85;
   }
 
+  .hh-pattern-scene.hh-nav-pulse .hh-pattern-spotlight,
   .hh-pattern-scene.hh-music-playing .hh-pattern-spotlight {
-    background: radial-gradient(
-      680px circle at 50% 45%,
-      rgba(255, 45, 45, 0.22) 0%,
-      rgba(255, 45, 45, 0.08) 32%,
-      transparent 62%
-    );
+    opacity: 1;
   }
 
   .hh-click-ripple {
@@ -197,8 +172,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hh-pattern-drift-stage,
-    .hh-pattern-drift,
+    .hh-pattern-canvas,
     .hh-pattern-vibe,
     .hh-pattern-spotlight,
     .hh-click-ripple {

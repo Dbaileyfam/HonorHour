@@ -10,7 +10,6 @@ function LayoutShell() {
       <HallwayBackground />
       <div className="pointer-events-none fixed inset-0 z-0 hh-pattern-overlay" aria-hidden />
       <div className="pointer-events-none fixed inset-0 z-0 hh-glow-red" aria-hidden />
-      <div className="pointer-events-none fixed inset-0 z-0 hh-grain opacity-60" aria-hidden />
 
       <div className="relative z-10 flex min-h-screen flex-col">
         <Header />

@@ -3,19 +3,33 @@ import { assetUrl } from "@/lib/assets";
 import { usePatternEffects } from "@/context/PatternEffectsContext";
 
 const patternSeamless = assetUrl("assets/pattern-seamless.png");
+const BG = "#080808";
 
 type Ripple = { id: number; x: number; y: number };
 
-const DRIFT_CYCLE_MS = 96_000;
+const DRIFT_CYCLE_MS = 100_000;
 
 function tileSizePx() {
   return window.matchMedia("(min-width: 640px)").matches ? 280 : 240;
 }
 
+function buildTilePattern(
+  ctx: CanvasRenderingContext2D,
+  img: CanvasImageSource,
+  tile: number,
+) {
+  const tileCanvas = document.createElement("canvas");
+  tileCanvas.width = tile;
+  tileCanvas.height = tile;
+  const tileCtx = tileCanvas.getContext("2d");
+  if (!tileCtx) return null;
+  tileCtx.drawImage(img, 0, 0, tile, tile);
+  return ctx.createPattern(tileCanvas, "repeat");
+}
+
 export function HallwayBackground() {
   const { navHover, musicPlaying, mediaActive } = usePatternEffects();
-  const driftARef = useRef<HTMLDivElement>(null);
-  const driftBRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
   const sceneClass = [
@@ -32,14 +46,56 @@ export function HallwayBackground() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d", { alpha: false, desynchronized: true });
+    if (!ctx) return;
+
+    const img = new Image();
+    img.decoding = "async";
+    img.src = patternSeamless;
+
     let offset = 0;
     let lastTime = performance.now();
     let rafId = 0;
+    let running = true;
+    let pattern: CanvasPattern | null = null;
+    let viewW = 0;
+    let viewH = 0;
+    let dpr = 1;
+
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      viewW = window.innerWidth;
+      viewH = window.innerHeight;
+      canvas.width = Math.ceil(viewW * dpr);
+      canvas.height = Math.ceil(viewH * dpr);
+      canvas.style.width = `${viewW}px`;
+      canvas.style.height = `${viewH}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (img.complete && img.naturalWidth > 0) {
+        pattern = buildTilePattern(ctx, img, tileSizePx());
+      }
+    };
+
+    const draw = () => {
+      if (!pattern || !running) return;
+
+      const tile = tileSizePx();
+      ctx.fillStyle = BG;
+      ctx.fillRect(0, 0, viewW, viewH);
+      ctx.globalAlpha = 0.92;
+      ctx.fillStyle = pattern;
+      ctx.save();
+      ctx.translate(-offset, -offset);
+      ctx.fillRect(0, 0, viewW + tile, viewH + tile);
+      ctx.restore();
+      ctx.globalAlpha = 1;
+    };
 
     const tick = (now: number) => {
-      const layerA = driftARef.current;
-      const layerB = driftBRef.current;
-      if (!layerA || !layerB) return;
+      if (!running) return;
 
       const dt = Math.min(now - lastTime, 32);
       lastTime = now;
@@ -48,14 +104,26 @@ export function HallwayBackground() {
       offset += (tile / DRIFT_CYCLE_MS) * dt;
       if (offset >= tile) offset -= tile;
 
-      const trailing = offset - tile;
-      layerA.style.transform = `translate3d(${offset}px, ${offset}px, 0)`;
-      layerB.style.transform = `translate3d(${trailing}px, ${trailing}px, 0)`;
-
+      draw();
       rafId = requestAnimationFrame(tick);
     };
 
-    rafId = requestAnimationFrame(tick);
+    const onVisibility = () => {
+      running = document.visibilityState === "visible";
+      if (running) {
+        lastTime = performance.now();
+        rafId = requestAnimationFrame(tick);
+      }
+    };
+
+    img.onload = () => {
+      resize();
+      rafId = requestAnimationFrame(tick);
+    };
+
+    resize();
+    window.addEventListener("resize", resize, { passive: true });
+    document.addEventListener("visibilitychange", onVisibility);
 
     const addRipple = (x: number, y: number) => {
       const id = Date.now();
@@ -82,7 +150,10 @@ export function HallwayBackground() {
     window.addEventListener("touchend", onTouchEnd, { passive: true });
 
     return () => {
+      running = false;
       cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("click", onClick);
       window.removeEventListener("touchend", onTouchEnd);
     };
@@ -90,10 +161,7 @@ export function HallwayBackground() {
 
   return (
     <div className={sceneClass} aria-hidden>
-      <div className="hh-pattern-drift-stage">
-        <div ref={driftARef} className="hh-pattern-drift" style={patternStyle} />
-        <div ref={driftBRef} className="hh-pattern-drift" style={patternStyle} />
-      </div>
+      <canvas ref={canvasRef} className="hh-pattern-canvas" />
       <div className="hh-pattern-vibe" />
       <div className="hh-pattern-spotlight" />
       {ripples.map((ripple) => (
