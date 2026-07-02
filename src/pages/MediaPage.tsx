@@ -15,7 +15,8 @@ function youtubeWatchUrl(id: string) {
 export function MediaPage() {
   usePageTitle("Media");
 
-  const featuredId = site.featuredVideoId ?? media.youtubeVideos[0]?.id;
+  const sessionIds = new Set<string>(media.sessionVideos.map((v) => v.id));
+  const otherVideos = media.youtubeVideos.filter((v) => !sessionIds.has(v.id));
 
   return (
     <>
@@ -25,25 +26,38 @@ export function MediaPage() {
         description={`Videos, releases, and press photos for ${site.name}.`}
       />
 
-      {featuredId ? (
-        <section className="border-b border-white/10 bg-hh-charcoal/60 px-4 py-16">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="hh-section-heading">Featured</h2>
-            <p className="mt-2 text-hh-muted">Latest from @honorhourmusic on YouTube.</p>
-            <div className="hh-card mt-8 overflow-hidden">
-              <div className="aspect-video">
-                <iframe
-                  title={`${site.name} featured video`}
-                  src={youtubeEmbedSrc(featuredId)}
-                  className="h-full w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              </div>
-            </div>
+      <section className="border-b border-white/10 bg-hh-charcoal/60 px-4 py-16">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="hh-section-heading">Whysound Session EP</h2>
+          <p className="mt-2 text-hh-muted">Live session recordings from WhySound in Logan, Utah.</p>
+          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            {media.sessionVideos.map((video) => (
+              <figure key={video.id} className="hh-card overflow-hidden">
+                <div className="aspect-video">
+                  <iframe
+                    title={video.title}
+                    src={youtubeEmbedSrc(video.id)}
+                    className="h-full w-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+                <figcaption className="px-4 py-3">
+                  <a
+                    href={youtubeWatchUrl(video.id)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-white transition hover:text-hh-red"
+                  >
+                    {video.title}
+                  </a>
+                </figcaption>
+              </figure>
+            ))}
           </div>
-        </section>
-      ) : null}
+        </div>
+      </section>
 
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-6xl">
@@ -103,9 +117,9 @@ export function MediaPage() {
           <h2 className="hh-section-heading">Videos</h2>
           <p className="mt-2 text-hh-muted">Official music videos and live session clips.</p>
 
-          {media.youtubeVideos.length > 0 ? (
+          {otherVideos.length > 0 ? (
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              {media.youtubeVideos.map((video) => (
+              {otherVideos.map((video) => (
                 <figure key={video.id} className="hh-card overflow-hidden">
                   <div className="aspect-video">
                     <iframe

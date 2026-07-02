@@ -35,6 +35,12 @@ export const navLinks = [
 /** YouTube videos, releases, and promo photos from @honorhourmusic */
 export const media = {
   officialPlaylistId: "PLt-NLJfm9EBm4VLF8_8ZtkI-CJjufztat",
+  /** Featured at top of Media page — Whysound Session EP */
+  sessionVideos: [
+    { id: "ishFEGzvPAc", title: "Eventide" },
+    { id: "ShqdFcZ3ZGI", title: "A.I. for the Straight Guy" },
+    { id: "zdETzNCDe_o", title: "Dried Out" },
+  ],
   youtubeVideos: [
     { id: "bl2FLCFJoOA", title: "Don't Give Yourselves to Brutes" },
     { id: "W8Nmv_HNCsg", title: "Six Percent" },
