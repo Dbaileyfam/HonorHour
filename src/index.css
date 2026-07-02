@@ -73,7 +73,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   }
 
-  /* Seamless stamp pattern — GPU drift + smoothed parallax */
+  /* Seamless stamp pattern — steady GPU drift */
   .hh-pattern-scene {
     position: fixed;
     inset: 0;
@@ -81,28 +81,28 @@
     overflow: hidden;
     background: var(--color-hh-black);
     --hh-tile-size: 240px;
-    --hh-mouse-x: 50%;
-    --hh-mouse-y: 50%;
-  }
-
-  .hh-pattern-parallax {
-    position: absolute;
-    inset: -6%;
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-    backface-visibility: hidden;
   }
 
   .hh-pattern-drift {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: -5%;
     background-color: var(--color-hh-black);
     background-repeat: repeat;
     background-size: var(--hh-tile-size) var(--hh-tile-size);
     opacity: 0.92;
     transform: translate3d(0, 0, 0);
+    animation: hh-pattern-drift 64s linear infinite;
     will-change: transform;
     backface-visibility: hidden;
+  }
+
+  @keyframes hh-pattern-drift {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(var(--hh-tile-size), var(--hh-tile-size), 0);
+    }
   }
 
   .hh-pattern-vibe {
@@ -116,7 +116,7 @@
     );
     opacity: 0;
     mix-blend-mode: screen;
-    transition: opacity 0.45s ease;
+    transition: opacity 0.5s ease;
   }
 
   .hh-pattern-scene.hh-media-active .hh-pattern-vibe {
@@ -125,6 +125,11 @@
 
   .hh-pattern-scene.hh-music-playing .hh-pattern-vibe {
     animation: hh-beat-glow 0.62s ease-in-out infinite;
+  }
+
+  .hh-pattern-scene.hh-nav-pulse .hh-pattern-vibe {
+    opacity: 0.2;
+    animation: none;
   }
 
   @keyframes hh-beat-glow {
@@ -137,44 +142,34 @@
     }
   }
 
-  .hh-pattern-scene.hh-nav-pulse .hh-pattern-drift {
-    filter: brightness(1.06) contrast(1.02);
-    transition: filter 0.45s ease;
-  }
-
-  .hh-pattern-scene.hh-music-playing .hh-pattern-drift {
-    filter: brightness(1.04);
-    transition: filter 0.45s ease;
-  }
-
   .hh-pattern-spotlight {
     position: absolute;
     inset: 0;
     background: radial-gradient(
-      520px circle at var(--hh-mouse-x) var(--hh-mouse-y),
-      rgba(255, 45, 45, 0.14) 0%,
+      520px circle at 50% 45%,
+      rgba(255, 45, 45, 0.12) 0%,
       rgba(255, 45, 45, 0.04) 28%,
       transparent 58%
     );
     opacity: 1;
-    transition: opacity 0.45s ease;
-    will-change: background;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
   }
 
   .hh-pattern-scene.hh-nav-pulse .hh-pattern-spotlight {
     background: radial-gradient(
-      620px circle at var(--hh-mouse-x) var(--hh-mouse-y),
-      rgba(255, 45, 45, 0.2) 0%,
-      rgba(255, 45, 45, 0.07) 30%,
+      620px circle at 50% 45%,
+      rgba(255, 45, 45, 0.18) 0%,
+      rgba(255, 45, 45, 0.06) 30%,
       transparent 60%
     );
   }
 
   .hh-pattern-scene.hh-music-playing .hh-pattern-spotlight {
     background: radial-gradient(
-      680px circle at var(--hh-mouse-x) var(--hh-mouse-y),
-      rgba(255, 45, 45, 0.24) 0%,
-      rgba(255, 45, 45, 0.09) 32%,
+      680px circle at 50% 45%,
+      rgba(255, 45, 45, 0.22) 0%,
+      rgba(255, 45, 45, 0.08) 32%,
       transparent 62%
     );
   }
@@ -218,7 +213,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hh-pattern-parallax,
     .hh-pattern-drift,
     .hh-pattern-vibe,
     .hh-pattern-spotlight,
