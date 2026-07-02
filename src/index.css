@@ -83,27 +83,22 @@
     --hh-tile-size: 240px;
   }
 
+  .hh-pattern-drift-stage {
+    position: absolute;
+    inset: 0;
+    opacity: 0.92;
+    contain: layout paint style;
+  }
+
   .hh-pattern-drift {
     position: absolute;
-    inset: calc(-2 * var(--hh-tile-size));
+    inset: calc(-1 * var(--hh-tile-size));
     background-color: var(--color-hh-black);
     background-repeat: repeat;
     background-size: var(--hh-tile-size) var(--hh-tile-size);
     background-position: 0 0;
-    opacity: 0.92;
     transform: translate3d(0, 0, 0);
-    animation: hh-pattern-drift 80s linear infinite;
-    will-change: transform;
     backface-visibility: hidden;
-  }
-
-  @keyframes hh-pattern-drift {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(var(--hh-tile-size), var(--hh-tile-size), 0);
-    }
   }
 
   .hh-pattern-vibe {
@@ -112,35 +107,23 @@
     pointer-events: none;
     background: radial-gradient(
       circle at 50% 50%,
-      rgba(255, 45, 45, 0.14) 0%,
+      rgba(255, 45, 45, 0.1) 0%,
       transparent 62%
     );
     opacity: 0;
-    mix-blend-mode: screen;
-    transition: opacity 0.5s ease;
+    transition: opacity 1s ease;
   }
 
   .hh-pattern-scene.hh-media-active .hh-pattern-vibe {
-    animation: hh-beat-glow 0.9s ease-in-out infinite;
+    opacity: 0.12;
   }
 
   .hh-pattern-scene.hh-music-playing .hh-pattern-vibe {
-    animation: hh-beat-glow 0.62s ease-in-out infinite;
+    opacity: 0.18;
   }
 
   .hh-pattern-scene.hh-nav-pulse .hh-pattern-vibe {
-    opacity: 0.2;
-    animation: none;
-  }
-
-  @keyframes hh-beat-glow {
-    0%,
-    100% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.35;
-    }
+    opacity: 0.14;
   }
 
   .hh-pattern-spotlight {
@@ -214,6 +197,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .hh-pattern-drift-stage,
     .hh-pattern-drift,
     .hh-pattern-vibe,
     .hh-pattern-spotlight,
