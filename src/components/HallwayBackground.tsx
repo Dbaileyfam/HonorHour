@@ -6,14 +6,35 @@ const patternSeamless = assetUrl("assets/pattern-seamless.png");
 
 type Ripple = { id: number; x: number; y: number };
 
-const BASE_DRIFT_S = 48;
-const MIN_DRIFT_S = 10;
+const BASE_DRIFT_S = 52;
+const MIN_DRIFT_S = 30;
+const LERP = 0.08;
+
+function tileSize() {
+  return window.matchMedia("(min-width: 640px)").matches ? 280 : 240;
+}
 
 export function HallwayBackground() {
   const { navHover, musicPlaying, mediaActive } = usePatternEffects();
   const sceneRef = useRef<HTMLDivElement>(null);
-  const layerRef = useRef<HTMLDivElement>(null);
+  const parallaxRef = useRef<HTMLDivElement>(null);
+  const driftRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef({ y: 0, t: Date.now() });
+  const motionRef = useRef({
+    parallaxX: 0,
+    parallaxY: 0,
+    targetParallaxX: 0,
+    targetParallaxY: 0,
+    mouseX: typeof window !== "undefined" ? window.innerWidth / 2 : 0,
+    mouseY: typeof window !== "undefined" ? window.innerHeight / 2 : 0,
+    targetMouseX: typeof window !== "undefined" ? window.innerWidth / 2 : 0,
+    targetMouseY: typeof window !== "undefined" ? window.innerHeight / 2 : 0,
+    driftOffset: 0,
+    driftS: BASE_DRIFT_S,
+    targetDriftS: BASE_DRIFT_S,
+    lastTime: 0,
+    rafId: 0,
+  });
   const [ripples, setRipples] = useState<Ripple[]>([]);
   const reducedMotionRef = useRef(false);
 
@@ -32,24 +53,47 @@ export function HallwayBackground() {
 
   useEffect(() => {
     const scene = sceneRef.current;
-    const layer = layerRef.current;
-    if (!scene || !layer || reducedMotionRef.current) return;
+    const parallax = parallaxRef.current;
+    const drift = driftRef.current;
+    if (!scene || !parallax || !drift || reducedMotionRef.current) return;
 
-    const setDriftDuration = (seconds: number) => {
-      layer.style.setProperty("--hh-drift-duration", `${seconds}s`);
+    const motion = motionRef.current;
+    motion.lastTime = performance.now();
+
+    const tick = (now: number) => {
+      const sceneEl = sceneRef.current;
+      const parallaxEl = parallaxRef.current;
+      const driftEl = driftRef.current;
+      if (!sceneEl || !parallaxEl || !driftEl) return;
+
+      const dt = Math.min(now - motion.lastTime, 32);
+      motion.lastTime = now;
+
+      motion.parallaxX += (motion.targetParallaxX - motion.parallaxX) * LERP;
+      motion.parallaxY += (motion.targetParallaxY - motion.parallaxY) * LERP;
+      motion.mouseX += (motion.targetMouseX - motion.mouseX) * LERP;
+      motion.mouseY += (motion.targetMouseY - motion.mouseY) * LERP;
+      motion.driftS += (motion.targetDriftS - motion.driftS) * 0.035;
+
+      const tile = tileSize();
+      const pxPerMs = tile / (motion.driftS * 1000);
+      motion.driftOffset = (motion.driftOffset + pxPerMs * dt) % tile;
+
+      parallaxEl.style.transform = `translate3d(${motion.parallaxX.toFixed(2)}px, ${motion.parallaxY.toFixed(2)}px, 0)`;
+      driftEl.style.transform = `translate3d(${motion.driftOffset.toFixed(2)}px, ${motion.driftOffset.toFixed(2)}px, 0)`;
+      sceneEl.style.setProperty("--hh-mouse-x", `${motion.mouseX.toFixed(1)}px`);
+      sceneEl.style.setProperty("--hh-mouse-y", `${motion.mouseY.toFixed(1)}px`);
+
+      motion.rafId = requestAnimationFrame(tick);
     };
 
-    setDriftDuration(BASE_DRIFT_S);
+    motion.rafId = requestAnimationFrame(tick);
 
     const onMove = (e: MouseEvent) => {
-      const xRatio = e.clientX / window.innerWidth - 0.5;
-      const yRatio = e.clientY / window.innerHeight - 0.5;
-
-      layer.style.setProperty("--hh-parallax-x", `${xRatio * 28}px`);
-      layer.style.setProperty("--hh-parallax-y", `${yRatio * 28}px`);
-
-      scene.style.setProperty("--hh-mouse-x", `${e.clientX}px`);
-      scene.style.setProperty("--hh-mouse-y", `${e.clientY}px`);
+      motion.targetParallaxX = (e.clientX / window.innerWidth - 0.5) * 22;
+      motion.targetParallaxY = (e.clientY / window.innerHeight - 0.5) * 22;
+      motion.targetMouseX = e.clientX;
+      motion.targetMouseY = e.clientY;
     };
 
     const onScroll = () => {
@@ -59,14 +103,13 @@ export function HallwayBackground() {
       const velocity = Math.abs(window.scrollY - y) / dt;
       scrollRef.current = { y: window.scrollY, t: now };
 
-      const boosted = Math.max(MIN_DRIFT_S, BASE_DRIFT_S - velocity * 120);
-      setDriftDuration(boosted);
+      motion.targetDriftS = Math.max(MIN_DRIFT_S, BASE_DRIFT_S - velocity * 40);
 
       window.setTimeout(() => {
-        if (Date.now() - scrollRef.current.t > 180) {
-          setDriftDuration(BASE_DRIFT_S);
+        if (Date.now() - scrollRef.current.t > 320) {
+          motion.targetDriftS = BASE_DRIFT_S;
         }
-      }, 200);
+      }, 360);
     };
 
     const addRipple = (x: number, y: number) => {
@@ -92,10 +135,8 @@ export function HallwayBackground() {
 
     const onOrientation = (e: DeviceOrientationEvent) => {
       if (e.gamma == null || e.beta == null) return;
-      const x = (e.gamma / 45) * 22;
-      const y = ((e.beta - 45) / 45) * 16;
-      layer.style.setProperty("--hh-parallax-x", `${x}px`);
-      layer.style.setProperty("--hh-parallax-y", `${y}px`);
+      motion.targetParallaxX = (e.gamma / 45) * 18;
+      motion.targetParallaxY = ((e.beta - 45) / 45) * 14;
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
@@ -110,27 +151,20 @@ export function HallwayBackground() {
       window.removeEventListener("click", onClick);
       window.removeEventListener("touchend", onTouchEnd);
       window.removeEventListener("deviceorientation", onOrientation);
+      cancelAnimationFrame(motion.rafId);
     };
   }, []);
 
-  useEffect(() => {
-    if (!mediaActive) return;
-    const interval = window.setInterval(() => {
-      if (!musicPlaying && sceneRef.current) {
-        sceneRef.current.classList.add("hh-beat-tick");
-        window.setTimeout(() => sceneRef.current?.classList.remove("hh-beat-tick"), 200);
-      }
-    }, 550);
-    return () => window.clearInterval(interval);
-  }, [mediaActive, musicPlaying]);
-
   return (
     <div ref={sceneRef} className={sceneClass} aria-hidden>
-      <div
-        ref={layerRef}
-        className="hh-pattern-layer"
-        style={{ backgroundImage: `url("${patternSeamless}")` }}
-      />
+      <div ref={parallaxRef} className="hh-pattern-parallax">
+        <div
+          ref={driftRef}
+          className="hh-pattern-drift"
+          style={{ backgroundImage: `url("${patternSeamless}")` }}
+        />
+      </div>
+      <div className="hh-pattern-vibe" />
       <div className="hh-pattern-spotlight" />
       {ripples.map((ripple) => (
         <span
