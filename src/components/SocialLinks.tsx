@@ -12,6 +12,7 @@ type SocialKey = keyof typeof icons;
 type SocialLinksProps = {
   className?: string;
   size?: "sm" | "md" | "lg";
+  variant?: "default" | "accent";
 };
 
 const sizeClasses = {
@@ -26,7 +27,18 @@ const iconSizes = {
   lg: "h-6 w-6",
 };
 
-export function SocialLinks({ className = "", size = "md" }: SocialLinksProps) {
+const variantClasses = {
+  default:
+    "border border-white/15 bg-white/5 text-white hover:border-hh-red hover:bg-hh-red/20 hover:text-white",
+  accent:
+    "border border-hh-red/50 bg-hh-red/10 text-hh-red shadow-md shadow-hh-red/20 hover:border-hh-red hover:bg-hh-red hover:text-white hover:shadow-lg hover:shadow-hh-red/35 hover:scale-105",
+};
+
+export function SocialLinks({
+  className = "",
+  size = "md",
+  variant = "default",
+}: SocialLinksProps) {
   const entries = Object.entries(site.social) as [SocialKey, string][];
 
   return (
@@ -41,7 +53,7 @@ export function SocialLinks({ className = "", size = "md" }: SocialLinksProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Honor Hour on ${label}`}
-              className={`inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:border-hh-red hover:bg-hh-red/20 hover:text-white ${sizeClasses[size]}`}
+              className={`inline-flex items-center justify-center rounded-full transition ${variantClasses[variant]} ${sizeClasses[size]}`}
             >
               <Icon className={iconSizes[size]} aria-hidden />
             </a>

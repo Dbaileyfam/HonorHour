@@ -1,4 +1,4 @@
-import { media, site, streamingLinks } from "@/content/site";
+import { media, site } from "@/content/site";
 import { usePatternEffects } from "@/context/PatternEffectsContext";
 import { assetUrl } from "@/lib/assets";
 import { usePageTitle } from "@/lib/usePageTitle";
@@ -224,31 +224,14 @@ export function MediaPage() {
             <SpotifyEmbed />
           </div>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <div className="hh-card p-6">
-              <ul className="space-y-3">
-                {streamingLinks.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-lg font-medium text-hh-red transition hover:text-white"
-                    >
-                      {link.label} →
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="hh-card flex flex-col justify-center p-6">
+          <div className="mx-auto mt-8 max-w-md text-center">
+            <div className="hh-card flex flex-col items-center p-8">
               <h3 className="text-lg font-semibold text-white">Social</h3>
               <p className="mt-2 text-sm text-hh-muted">
                 Clips, announcements, and behind-the-scenes from the road.
               </p>
               <div className="mt-6">
-                <SocialLinks />
+                <SocialLinks variant="accent" size="lg" className="justify-center" />
               </div>
             </div>
           </div>
