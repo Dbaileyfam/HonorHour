@@ -2,7 +2,6 @@ import { site } from "@/content/site";
 
 type LogoProps = {
   className?: string;
-  /** Use for the page hero — larger by default via className */
 };
 
 /** Band wordmark — HNR HR in display type */

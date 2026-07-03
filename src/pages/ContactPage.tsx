@@ -19,7 +19,7 @@ export function ContactPage() {
       <section className="px-4 py-16">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
           <div className="hh-card p-8">
-            <h2 className="text-lg font-semibold text-white">Booking &amp; press</h2>
+            <h2 className="text-lg font-medium text-white">Booking &amp; press</h2>
             <p className="mt-2 text-sm text-hh-muted">
               For festivals, clubs, private events, and media inquiries.
             </p>

@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { assetUrl } from "@/lib/assets";
-import { usePatternEffects } from "@/context/PatternEffectsContext";
+
+/**
+ * Background 5 — archived stamp-pattern canvas drift.
+ * Kept for reference; not used by the current minimal layout.
+ */
 
 const patternSeamless = assetUrl("assets/pattern-seamless.png");
 const BG = "#080808";
@@ -27,19 +31,9 @@ function buildTilePattern(
   return ctx.createPattern(tileCanvas, "repeat");
 }
 
-export function HallwayBackground() {
-  const { navHover, musicPlaying, mediaActive } = usePatternEffects();
+export function Background5() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ripples, setRipples] = useState<Ripple[]>([]);
-
-  const sceneClass = [
-    "hh-pattern-scene",
-    navHover ? "hh-nav-pulse" : "",
-    mediaActive ? "hh-media-active" : "",
-    musicPlaying ? "hh-music-playing" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
 
   const patternStyle = { backgroundImage: `url("${patternSeamless}")` };
 
@@ -160,18 +154,16 @@ export function HallwayBackground() {
   }, []);
 
   return (
-    <div className={sceneClass} aria-hidden>
-      <canvas ref={canvasRef} className="hh-pattern-canvas" />
-      <div className="hh-pattern-vibe" />
-      <div className="hh-pattern-spotlight" />
+    <div className="hh-bg5-scene" aria-hidden>
+      <canvas ref={canvasRef} className="hh-bg5-canvas" />
       {ripples.map((ripple) => (
         <span
           key={ripple.id}
-          className="hh-click-ripple"
+          className="hh-bg5-ripple"
           style={{ left: ripple.x, top: ripple.y }}
         />
       ))}
-      <div className="hh-pattern-static" style={patternStyle} />
+      <div className="hh-bg5-static" style={patternStyle} />
     </div>
   );
 }

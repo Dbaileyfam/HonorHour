@@ -24,16 +24,14 @@ export function EPKPage() {
 
   return (
     <>
-      <section className="border-b border-white/10 px-4 py-14 sm:py-16">
-        <div className="mx-auto max-w-6xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-hh-red">
-            Electronic Press Kit
-          </p>
-          <h1 className="mt-3">
+      <section className="border-b border-white/10 px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <p className="hh-eyebrow">Electronic Press Kit</p>
+          <h1 className="mt-4">
             <Logo className="text-5xl text-white sm:text-7xl" />
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-hh-silver">{site.tagline}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <p className="mt-5 max-w-xl text-lg font-light text-hh-silver">{site.tagline}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
             <button type="button" className="hh-btn-primary" onClick={() => scrollToSection("contact")}>
               Book the band
             </button>
@@ -54,7 +52,7 @@ export function EPKPage() {
               key={item.id}
               type="button"
               onClick={() => scrollToSection(item.id)}
-              className="shrink-0 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/70 transition hover:bg-white/10 hover:text-white"
+              className="shrink-0 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted transition hover:text-white"
             >
               {item.label}
             </button>
@@ -67,10 +65,8 @@ export function EPKPage() {
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {quickFacts.map((fact) => (
               <li key={fact.label} className="hh-card p-5 text-center">
-                <p className="text-xs font-semibold uppercase tracking-widest text-hh-red">
-                  {fact.label}
-                </p>
-                <p className="mt-2 text-lg font-semibold text-white">{fact.value}</p>
+                <p className="hh-eyebrow">{fact.label}</p>
+                <p className="mt-2 text-lg font-light text-white">{fact.value}</p>
               </li>
             ))}
           </ul>
@@ -89,7 +85,7 @@ export function EPKPage() {
             ))}
           </div>
           <aside className="hh-card h-fit p-6">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-hh-red">Lineup</h3>
+            <h3 className="hh-eyebrow">Lineup</h3>
             <ul className="mt-4 space-y-3">
               {bio.lineup.map((member) => (
                 <li
@@ -105,7 +101,7 @@ export function EPKPage() {
         </div>
       </section>
 
-      <section id="music" className="scroll-mt-36 border-y border-white/10 bg-hh-charcoal/60 px-4 py-16">
+      <section id="music" className="scroll-mt-36 border-y border-white/10 px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <h2 className="hh-section-heading">Music &amp; streaming</h2>
           <p className="mt-2 text-hh-muted">Listen and follow across platforms.</p>
@@ -175,7 +171,7 @@ export function EPKPage() {
           {pressQuotes.length > 0 ? (
             <div className="mt-8 space-y-6">
               {pressQuotes.map((item) => (
-                <blockquote key={item.source} className="hh-card border-l-4 border-l-hh-red p-6">
+                <blockquote key={item.source} className="hh-card border-l border-l-white/40 p-6">
                   <p className="text-lg italic leading-relaxed text-hh-silver">&ldquo;{item.quote}&rdquo;</p>
                   <footer className="mt-4 text-sm text-hh-muted">
                     — {item.url ? (
@@ -230,7 +226,7 @@ export function EPKPage() {
         </div>
       </section>
 
-      <section id="shows" className="scroll-mt-36 border-y border-white/10 bg-hh-charcoal/60 px-4 py-16">
+      <section id="shows" className="scroll-mt-36 border-y border-white/10 px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <h2 className="hh-section-heading">Upcoming shows</h2>
           {shows.length > 0 ? (
@@ -239,7 +235,7 @@ export function EPKPage() {
                 <li key={`${show.date}-${show.venue}`} className="hh-card flex gap-5 p-5">
                   <time
                     dateTime={show.date}
-                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-xl bg-hh-red/15 text-hh-red"
+                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center border border-white/15 text-white"
                   >
                     <span className="text-xs font-bold uppercase">{show.dateLabel.split(" ")[0]}</span>
                     <span className="hh-display text-2xl leading-none">
@@ -313,7 +309,7 @@ export function EPKPage() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-36 border-t border-white/10 bg-hh-charcoal/60 px-4 py-16">
+      <section id="contact" className="scroll-mt-36 border-t border-white/10 px-4 py-16">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="hh-section-heading">Booking &amp; press contact</h2>
           <p className="mt-4 text-hh-silver">

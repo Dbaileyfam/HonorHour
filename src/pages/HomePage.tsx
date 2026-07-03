@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Clapperboard, MapPin, Music2, Sparkles } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { bio, site } from "@/content/site";
 import { routes } from "@/lib/routes";
@@ -7,30 +6,10 @@ import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
 
 const tiles = [
-  {
-    to: routes.media,
-    title: "Media",
-    body: "Videos, streaming links, and promo photos — watch, listen, browse.",
-    icon: Clapperboard,
-  },
-  {
-    to: routes.shows,
-    title: "Shows",
-    body: "Upcoming dates and where to catch Honor Hour live.",
-    icon: Calendar,
-  },
-  {
-    to: routes.epk,
-    title: "EPK",
-    body: "Condensed kit: lineup, booking, and press notes.",
-    icon: Sparkles,
-  },
-  {
-    to: routes.contact,
-    title: "Contact",
-    body: "Book clubs, festivals, private events, and media inquiries.",
-    icon: MapPin,
-  },
+  { to: routes.media, title: "Media", body: "Videos, streaming, and photos." },
+  { to: routes.shows, title: "Shows", body: "Upcoming dates and live sets." },
+  { to: routes.epk, title: "EPK", body: "Bio, lineup, and press kit." },
+  { to: routes.contact, title: "Contact", body: "Booking and media inquiries." },
 ] as const;
 
 export function HomePage() {
@@ -38,49 +17,45 @@ export function HomePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden px-4 pb-16 pt-14 sm:pb-20 sm:pt-20">
-        <div className="mx-auto max-w-6xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-hh-red">
-            Utah Rock
-          </p>
-          <h1 className="mt-4">
-            <Logo className="text-6xl text-white sm:text-8xl md:text-9xl" />
+      <section className="flex min-h-[78vh] flex-col justify-center px-4 py-20 sm:px-6 sm:py-28">
+        <div className="mx-auto w-full max-w-6xl">
+          <p className="hh-eyebrow">{site.hometown} · {site.genre}</p>
+          <h1 className="mt-6">
+            <Logo className="block text-7xl text-white sm:text-8xl md:text-[9.5rem]" />
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-hh-silver sm:text-xl">
+          <p className="mt-6 max-w-md text-lg font-light leading-relaxed text-hh-silver sm:text-xl">
             {site.tagline}
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link to={routes.shows} className="hh-btn-primary">
-              <Calendar className="h-4 w-4" aria-hidden />
-              See shows
+              Shows
             </Link>
             <Link to={routes.contact} className="hh-btn-ghost">
-              Book the band
-              <ArrowRight className="h-4 w-4" aria-hidden />
+              Book
             </Link>
           </div>
-          <div className="mt-10 flex justify-center">
-            <SocialLinks size="lg" />
+          <div className="mt-12">
+            <SocialLinks size="md" />
           </div>
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-hh-charcoal/60 px-4 py-16">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center">
+      <section className="border-y border-white/10 px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <h2 className="hh-section-heading">About the band</h2>
-            <p className="mt-4 text-lg leading-relaxed text-hh-silver">{bio.short}</p>
+            <p className="hh-eyebrow">About</p>
+            <h2 className="hh-section-heading mt-4">The band</h2>
+            <p className="mt-6 text-lg font-light leading-relaxed text-hh-silver">{bio.short}</p>
             {bio.long.slice(0, 2).map((paragraph) => (
-              <p key={paragraph.slice(0, 40)} className="mt-4 text-hh-muted leading-relaxed">
+              <p key={paragraph.slice(0, 40)} className="mt-4 text-sm leading-relaxed text-hh-muted">
                 {paragraph}
               </p>
             ))}
             <Link
               to={routes.epk}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-hh-red transition hover:text-white"
+              className="mt-8 inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
             >
-              Full bio &amp; press kit
-              <ArrowRight className="h-4 w-4" aria-hidden />
+              Full press kit →
             </Link>
           </div>
 
@@ -90,15 +65,14 @@ export function HomePage() {
                 <iframe
                   title={`${site.name} featured video`}
                   src={`https://www.youtube.com/embed/${site.featuredVideoId}`}
-                  className="h-full w-full"
+                  className="h-full w-full border-0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
               </div>
             ) : (
-              <div className="flex aspect-video flex-col items-center justify-center gap-4 bg-hh-black/50 p-8 text-center">
-                <Music2 className="h-12 w-12 text-hh-red" aria-hidden />
-                <p className="text-hh-silver">Latest videos on YouTube</p>
+              <div className="flex aspect-video flex-col items-center justify-center gap-4 bg-hh-charcoal p-8 text-center">
+                <p className="text-sm text-hh-muted">Latest videos on YouTube</p>
                 <Link to={routes.media} className="hh-btn-primary">
                   Browse media
                 </Link>
@@ -108,31 +82,25 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 pb-20 pt-12 md:pb-28 md:pt-16">
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="hh-section-heading text-center">Explore</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-hh-muted">
-            Loud music for loud times — clubs, festivals, and stages across the Wasatch Front.
-          </p>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <p className="hh-eyebrow">Navigate</p>
+          <ul className="mt-8 divide-y divide-white/10 border-y border-white/10">
             {tiles.map((tile) => (
-              <Link
-                key={tile.to}
-                to={tile.to}
-                className="group block h-full rounded-3xl border border-white/10 bg-hh-panel/80 p-6 shadow-lg transition hover:-translate-y-1 hover:border-hh-red/40"
-              >
-                <tile.icon className="h-8 w-8 text-hh-red" aria-hidden />
-                <h3 className="mt-4 font-display text-2xl text-white group-hover:text-hh-red">
-                  {tile.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-hh-muted">{tile.body}</p>
-                <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-hh-red">
-                  Explore
-                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
-                </span>
-              </Link>
+              <li key={tile.to}>
+                <Link
+                  to={tile.to}
+                  className="group flex items-baseline justify-between gap-6 py-6 transition sm:py-8"
+                >
+                  <span className="hh-display text-3xl text-white transition group-hover:text-hh-red sm:text-4xl">
+                    {tile.title}
+                  </span>
+                  <span className="hidden text-sm text-hh-muted sm:block">{tile.body}</span>
+                  <span className="text-hh-muted transition group-hover:text-white">→</span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
     </>

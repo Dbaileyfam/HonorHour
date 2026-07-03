@@ -1,12 +1,11 @@
 import { media, site } from "@/content/site";
-import { usePatternEffects } from "@/context/PatternEffectsContext";
 import { assetUrl } from "@/lib/assets";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { PageHero } from "@/components/PageHero";
 import { SocialLinks } from "@/components/SocialLinks";
 
 function youtubeEmbedSrc(id: string) {
-  return `https://www.youtube.com/embed/${id}?rel=0&enablejsapi=1`;
+  return `https://www.youtube.com/embed/${id}?rel=0`;
 }
 
 function youtubeWatchUrl(id: string) {
@@ -36,13 +35,8 @@ function CoverArt({
 }
 
 function VideoPlayer({ video }: { video: Video }) {
-  const { setMusicPlaying } = usePatternEffects();
-
   return (
-    <div
-      className="aspect-video min-h-0 w-full"
-      onPointerDown={() => setMusicPlaying(true)}
-    >
+    <div className="aspect-video min-h-0 w-full">
       <iframe
         title={video.title}
         src={youtubeEmbedSrc(video.id)}
@@ -51,21 +45,14 @@ function VideoPlayer({ video }: { video: Video }) {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
         loading="lazy"
-        onFocus={() => setMusicPlaying(true)}
-        onBlur={() => setMusicPlaying(false)}
       />
     </div>
   );
 }
 
 function SpotifyEmbed() {
-  const { setMusicPlaying } = usePatternEffects();
-
   return (
-    <div
-      className="overflow-hidden rounded-xl"
-      onPointerDown={() => setMusicPlaying(true)}
-    >
+    <div className="overflow-hidden border border-white/10">
       <iframe
         title={`${site.name} on Spotify`}
         src="https://open.spotify.com/embed/artist/3DK78RnwDgR3FB717UM3nU?utm_source=generator&si=006082fea1464224"
@@ -73,8 +60,6 @@ function SpotifyEmbed() {
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         allowFullScreen
         loading="lazy"
-        onFocus={() => setMusicPlaying(true)}
-        onBlur={() => setMusicPlaying(false)}
       />
     </div>
   );
@@ -133,7 +118,7 @@ export function MediaPage() {
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-hh-charcoal/60 px-4 py-16">
+      <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-[minmax(200px,280px)_1fr] lg:items-start">
             <figure className="hh-card mx-auto w-full max-w-xs overflow-hidden lg:max-w-none">
@@ -188,7 +173,7 @@ export function MediaPage() {
       </section>
 
       {media.albums.length > 0 ? (
-        <section className="border-b border-white/10 bg-hh-charcoal/60 px-4 py-16">
+        <section className="border-b border-white/10 px-4 py-16">
           <div className="mx-auto max-w-6xl">
             <h2 className="hh-section-heading">Albums</h2>
             <p className="mt-2 text-hh-muted">EPs and full releases.</p>
@@ -224,15 +209,13 @@ export function MediaPage() {
             <SpotifyEmbed />
           </div>
 
-          <div className="mx-auto mt-8 max-w-md text-center">
-            <div className="hh-card flex flex-col items-center p-8">
-              <h3 className="text-lg font-semibold text-white">Social</h3>
-              <p className="mt-2 text-sm text-hh-muted">
-                Clips, announcements, and behind-the-scenes from the road.
-              </p>
-              <div className="mt-6">
-                <SocialLinks variant="accent" size="lg" className="justify-center" />
-              </div>
+          <div className="mx-auto mt-10 max-w-md text-center">
+            <p className="hh-eyebrow">Social</p>
+            <p className="mt-3 text-sm text-hh-muted">
+              Clips, announcements, and behind-the-scenes.
+            </p>
+            <div className="mt-6 flex justify-center">
+              <SocialLinks variant="accent" size="lg" className="justify-center" />
             </div>
           </div>
         </div>
@@ -250,7 +233,7 @@ export function MediaPage() {
               {media.promoPhotos.map((photo) => (
                 <figure
                   key={photo.src}
-                  className="overflow-hidden rounded-2xl border border-white/10 bg-hh-panel/80"
+                  className="hh-card overflow-hidden"
                 >
                   <img
                     src={assetUrl(photo.src)}

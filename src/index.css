@@ -1,18 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
 
-  --color-hh-black: #080808;
-  --color-hh-charcoal: #121212;
-  --color-hh-panel: #1a1a1a;
-  --color-hh-red: #ff2d2d;
-  --color-hh-red-dark: #c1121f;
-  --color-hh-silver: #b8b8b8;
-  --color-hh-muted: #7a7a7a;
-  --color-hh-border: rgba(255, 255, 255, 0.1);
+  --color-hh-black: #000000;
+  --color-hh-charcoal: #0a0a0a;
+  --color-hh-panel: #0d0d0d;
+  --color-hh-red: #e10600;
+  --color-hh-red-dark: #b00500;
+  --color-hh-silver: #c8c8c8;
+  --color-hh-muted: #6b6b6b;
+  --color-hh-border: rgba(255, 255, 255, 0.12);
 }
 
 @layer base {
@@ -24,66 +24,74 @@
     @apply font-sans antialiased text-white;
     background: var(--color-hh-black);
     min-height: 100vh;
+    font-weight: 400;
+    letter-spacing: 0.01em;
   }
 
   ::selection {
-    @apply bg-hh-red/40 text-white;
+    @apply bg-white text-black;
   }
 }
 
 @layer utilities {
   .hh-display {
     font-family: var(--font-display);
-    letter-spacing: 0.04em;
-    line-height: 0.95;
+    letter-spacing: 0.06em;
+    line-height: 0.92;
   }
 
   .hh-logo {
     font-family: var(--font-display);
-    letter-spacing: 0.14em;
-    line-height: 0.95;
-    -webkit-text-stroke: 1px currentColor;
-    paint-order: stroke fill;
+    letter-spacing: 0.18em;
+    line-height: 0.92;
   }
 
   .hh-section-heading {
     font-family: var(--font-display);
-    letter-spacing: 0.04em;
-    line-height: 0.95;
+    letter-spacing: 0.08em;
+    line-height: 0.92;
     @apply text-4xl text-white sm:text-5xl;
   }
 
+  .hh-eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.35em] text-hh-muted;
+  }
+
   .hh-card {
-    @apply rounded-2xl border border-white/10 bg-hh-panel/90 shadow-xl shadow-black/40 backdrop-blur-md;
+    @apply border border-white/10 bg-hh-panel;
   }
 
   .hh-btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition;
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition;
   }
 
   .hh-btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition bg-hh-red text-white hover:bg-hh-red-dark;
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition bg-white text-black hover:bg-hh-red hover:text-white;
   }
 
   .hh-btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition border border-white/20 bg-white/5 text-white hover:border-hh-red/50 hover:bg-white/10;
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition border border-white/25 text-white hover:border-white hover:bg-white hover:text-black;
   }
 
-  .hh-grain {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  .hh-link {
+    @apply text-hh-silver transition hover:text-white;
   }
 
-  /* Seamless stamp pattern — steady GPU drift */
-  .hh-pattern-scene {
+  .hh-divider {
+    @apply border-t border-white/10;
+  }
+
+  /* Background 5 (archived) — stamp canvas drift */
+  .hh-bg5-scene {
     position: fixed;
     inset: 0;
     z-index: 0;
     overflow: hidden;
-    background: var(--color-hh-black);
+    background: #080808;
     --hh-tile-size: 240px;
   }
 
-  .hh-pattern-canvas {
+  .hh-bg5-canvas {
     position: absolute;
     inset: 0;
     display: block;
@@ -91,62 +99,19 @@
     height: 100%;
   }
 
-  .hh-pattern-vibe {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(
-      circle at 50% 50%,
-      rgba(255, 45, 45, 0.1) 0%,
-      transparent 62%
-    );
-    opacity: 0;
-  }
-
-  .hh-pattern-scene.hh-media-active .hh-pattern-vibe {
-    opacity: 0.1;
-  }
-
-  .hh-pattern-scene.hh-music-playing .hh-pattern-vibe {
-    opacity: 0.15;
-  }
-
-  .hh-pattern-scene.hh-nav-pulse .hh-pattern-vibe {
-    opacity: 0.12;
-  }
-
-  .hh-pattern-spotlight {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(
-      620px circle at 50% 45%,
-      rgba(255, 45, 45, 0.14) 0%,
-      rgba(255, 45, 45, 0.05) 30%,
-      transparent 60%
-    );
-    opacity: 0.85;
-  }
-
-  .hh-pattern-scene.hh-nav-pulse .hh-pattern-spotlight,
-  .hh-pattern-scene.hh-music-playing .hh-pattern-spotlight {
-    opacity: 1;
-  }
-
-  .hh-click-ripple {
+  .hh-bg5-ripple {
     position: fixed;
     z-index: 2;
     width: 16px;
     height: 16px;
     border-radius: 50%;
     border: 2px solid rgba(255, 45, 45, 0.75);
-    box-shadow: 0 0 24px rgba(255, 45, 45, 0.35);
     transform: translate(-50%, -50%);
-    animation: hh-ripple-expand 0.85s ease-out forwards;
+    animation: hh-bg5-ripple 0.85s ease-out forwards;
     pointer-events: none;
   }
 
-  @keyframes hh-ripple-expand {
+  @keyframes hh-bg5-ripple {
     to {
       width: 220px;
       height: 220px;
@@ -155,56 +120,30 @@
     }
   }
 
-  .hh-pattern-static {
+  .hh-bg5-static {
     display: none;
     position: absolute;
     inset: 0;
-    background-color: var(--color-hh-black);
+    background-color: #080808;
     background-repeat: repeat;
     background-size: var(--hh-tile-size, 240px) var(--hh-tile-size, 240px);
     opacity: 0.88;
   }
 
   @media (min-width: 640px) {
-    .hh-pattern-scene {
+    .hh-bg5-scene {
       --hh-tile-size: 280px;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hh-pattern-canvas,
-    .hh-pattern-vibe,
-    .hh-pattern-spotlight,
-    .hh-click-ripple {
+    .hh-bg5-canvas,
+    .hh-bg5-ripple {
       display: none;
     }
 
-    .hh-pattern-static {
+    .hh-bg5-static {
       display: block;
     }
-  }
-
-  .hh-pattern-overlay {
-    background:
-      radial-gradient(
-        ellipse 55% 50% at 50% 45%,
-        transparent 0%,
-        rgba(8, 8, 8, 0.2) 70%,
-        rgba(8, 8, 8, 0.55) 100%
-      ),
-      linear-gradient(
-        180deg,
-        rgba(8, 8, 8, 0.15) 0%,
-        rgba(8, 8, 8, 0.28) 50%,
-        rgba(8, 8, 8, 0.38) 100%
-      );
-  }
-
-  .hh-glow-red {
-    background: radial-gradient(
-      ellipse 80% 60% at 50% 0%,
-      rgba(255, 45, 45, 0.18) 0%,
-      transparent 70%
-    );
   }
 }
