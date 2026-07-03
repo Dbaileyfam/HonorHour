@@ -6,7 +6,7 @@ export const site = {
   name: "Honor Hour",
   /** Logo / wordmark shown in header, footer, and hero */
   wordmark: "HNR HR",
-  tagline: "Loud music for loud times.",
+  tagline: "loud music for loud times",
   description:
     "Honor Hour is a Utah rock band bringing high-energy live sets to clubs, festivals, and stages across the Wasatch Front.",
   hometown: "Utah",

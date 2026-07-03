@@ -6,8 +6,8 @@ import { SocialLinks } from "./SocialLinks";
 
 function navClass(isActive: boolean) {
   return isActive
-    ? "text-white"
-    : "text-hh-muted transition hover:text-white";
+    ? "text-hh-red"
+    : "text-hh-muted transition hover:text-hh-red";
 }
 
 export function Footer() {

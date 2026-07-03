@@ -66,11 +66,11 @@
   }
 
   .hh-btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition bg-white text-black hover:bg-hh-red hover:text-white;
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition bg-white text-black hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark active:text-white;
   }
 
   .hh-btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition border border-white/25 text-white hover:border-white hover:bg-white hover:text-black;
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition border border-white/25 text-white hover:border-hh-red hover:bg-hh-red hover:text-white focus-visible:border-hh-red focus-visible:bg-hh-red focus-visible:text-white active:border-hh-red-dark active:bg-hh-red-dark active:text-white;
   }
 
   .hh-link {

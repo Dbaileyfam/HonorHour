@@ -7,8 +7,8 @@ import { routes } from "@/lib/routes";
 
 function navClass(isActive: boolean) {
   return isActive
-    ? "text-white"
-    : "text-hh-muted transition hover:text-white";
+    ? "text-hh-red"
+    : "text-hh-muted transition hover:text-hh-red";
 }
 
 function NavItem({

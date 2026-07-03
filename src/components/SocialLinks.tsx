@@ -58,8 +58,8 @@ export function SocialLinks({
               aria-label={`Honor Hour on ${label}`}
               className={`inline-flex items-center justify-center border transition ${sizeClasses[size]} ${
                 accent
-                  ? "border-white/20 text-white hover:border-hh-red hover:text-hh-red"
-                  : "border-white/15 text-hh-muted hover:border-white/40 hover:text-white"
+                  ? "border-white/20 text-white hover:border-hh-red hover:bg-hh-red hover:text-white focus-visible:border-hh-red focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
+                  : "border-white/15 text-hh-muted hover:border-hh-red hover:bg-hh-red hover:text-white focus-visible:border-hh-red focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
               }`}
             >
               <Icon className={iconSizes[size]} aria-hidden />
