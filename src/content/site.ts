@@ -22,8 +22,9 @@ export const site = {
   featuredVideoId: "bl2FLCFJoOA",
   booking: {
     name: "Honor Hour",
-    email: null as string | null,
-    phone: null as string | null,
+    email: "honorhourmusic@gmail.com",
+    /** Private — shown on EPK only, not the public Contact page */
+    phone: "385-221-5562",
   },
 } as const;
 
@@ -85,6 +86,7 @@ export const eventTypes = [
   "Festivals",
   "Private events",
   "Corporate & brand activations",
+  "Opening slots for the right bills",
 ] as const;
 
 export const bio = {
@@ -106,8 +108,9 @@ export const bio = {
 export const quickFacts = [
   { label: "Genre", value: site.genre },
   { label: "Hometown", value: site.hometown },
-  { label: "Style", value: "High-energy live rock" },
-  { label: "Set length", value: "45–90 min (flexible)" },
+  { label: "Set length", value: "Up to 1 hr 15 min" },
+  { label: "Travel", value: "Continental USA" },
+  { label: "Opening", value: "Open to strong opportunities" },
 ] as const;
 
 export const shows = [] as {

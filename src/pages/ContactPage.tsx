@@ -24,31 +24,16 @@ export function ContactPage() {
               For festivals, clubs, private events, and media inquiries.
             </p>
             <address className="mt-6 not-italic">
-              <p className="text-lg font-semibold text-white">{site.booking.name}</p>
-              {site.booking.email ? (
-                <p className="mt-3">
-                  <a href={`mailto:${site.booking.email}`} className="text-hh-red hover:text-white">
-                    {site.booking.email}
-                  </a>
-                </p>
-              ) : null}
-              {site.booking.phone ? (
-                <p className="mt-2">
-                  <a
-                    href={`tel:${site.booking.phone.replace(/\D/g, "")}`}
-                    className="text-hh-red hover:text-white"
-                  >
-                    {site.booking.phone}
-                  </a>
-                </p>
-              ) : null}
-              {!site.booking.email && !site.booking.phone ? (
-                <p className="mt-4 text-sm text-hh-muted">
-                  Add booking email and phone in{" "}
-                  <code className="text-hh-silver">src/content/site.ts</code>, or reach out via
-                  social below.
-                </p>
-              ) : null}
+              <p className="text-lg font-medium text-white">{site.booking.name}</p>
+              <p className="mt-3">
+                <a
+                  href={`mailto:${site.booking.email}`}
+                  className="text-white transition hover:text-hh-red"
+                >
+                  {site.booking.email}
+                </a>
+              </p>
+              <p className="mt-2 text-sm text-hh-muted">All booking inquiries</p>
             </address>
             <div className="mt-8 border-t border-white/10 pt-6">
               <SocialLinks />

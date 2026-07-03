@@ -62,11 +62,11 @@ export function EPKPage() {
 
       <section className="border-b border-white/10 px-4 py-10" aria-label="Quick facts">
         <div className="mx-auto max-w-6xl">
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {quickFacts.map((fact) => (
               <li key={fact.label} className="hh-card p-5 text-center">
                 <p className="hh-eyebrow">{fact.label}</p>
-                <p className="mt-2 text-lg font-light text-white">{fact.value}</p>
+                <p className="mt-2 text-base font-light text-white sm:text-lg">{fact.value}</p>
               </li>
             ))}
           </ul>
@@ -313,44 +313,31 @@ export function EPKPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="hh-section-heading">Booking &amp; press contact</h2>
           <p className="mt-4 text-hh-silver">
-            For festivals, venues, private events, and media inquiries.
+            Festivals, venues, private events, and media inquiries. Sets up to 1 hr 15 min.
+            Willing to open for strong opportunities. Travel: continental USA.
           </p>
           <address className="hh-card mt-8 not-italic">
-            <p className="text-lg font-semibold text-white">{site.booking.name}</p>
-            {site.booking.email ? (
-              <p className="mt-3">
-                <a href={`mailto:${site.booking.email}`} className="text-hh-red hover:text-white">
-                  {site.booking.email}
-                </a>
-              </p>
-            ) : null}
-            {site.booking.phone ? (
-              <p className="mt-2">
-                <a href={`tel:${site.booking.phone.replace(/\D/g, "")}`} className="text-hh-red hover:text-white">
-                  {site.booking.phone}
-                </a>
-              </p>
-            ) : null}
-            {!site.booking.email && !site.booking.phone ? (
-              <p className="mt-4 text-sm text-hh-muted">
-                Reach out via the{" "}
-                <Link to={routes.contact} className="text-hh-red hover:text-white">
-                  Contact page
-                </Link>{" "}
-                or{" "}
-                <a
-                  href={site.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-hh-red hover:text-white"
-                >
-                  Instagram
-                </a>
-                .
-              </p>
-            ) : null}
+            <p className="text-lg font-medium text-white">{site.booking.name}</p>
+            <p className="mt-3">
+              <a
+                href={`mailto:${site.booking.email}`}
+                className="text-white transition hover:text-hh-red"
+              >
+                {site.booking.email}
+              </a>
+            </p>
+            <p className="mt-1 text-sm text-hh-muted">All booking inquiries</p>
+            <p className="mt-4">
+              <a
+                href={`tel:${site.booking.phone.replace(/\D/g, "")}`}
+                className="text-white transition hover:text-hh-red"
+              >
+                {site.booking.phone}
+              </a>
+            </p>
+            <p className="mt-1 text-sm text-hh-muted">EPK / direct booking line</p>
             <Link to={routes.contact} className="hh-btn-primary mt-6 inline-flex">
-              Contact for booking
+              Public contact page
             </Link>
           </address>
         </div>
