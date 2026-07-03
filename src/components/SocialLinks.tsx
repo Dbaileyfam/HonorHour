@@ -9,14 +9,31 @@ function SpotifyIcon({ className }: { className?: string }) {
   );
 }
 
-const icons: Record<keyof typeof site.social, LucideIcon | typeof SpotifyIcon> = {
+function AppleMusicIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+      <path d="M23.997 6.124c0-.738-.065-1.47-.24-2.19-.317-1.31-1.062-2.31-2.18-3.043C21.027.417 20.384.218 19.7.135 18.94.04 18.175.01 17.412.01H6.588C5.825.01 5.06.04 4.3.135 3.616.218 2.973.417 2.423.89 1.305 1.624.56 2.624.243 3.935.068 4.654.003 5.386.003 6.124v11.752c0 .738.065 1.47.24 2.19.317 1.31 1.062 2.31 2.18 3.043.55.474 1.193.672 1.877.756.76.094 1.525.124 2.288.124h10.824c.763 0 1.528-.03 2.288-.124.684-.084 1.327-.282 1.877-.756 1.118-.733 1.863-1.733 2.18-3.043.175-.72.24-1.452.24-2.19V6.124zm-4.52 8.42c-.09.52-.36.95-.79 1.24-.39.26-.83.36-1.3.3-.2-.03-.4-.08-.59-.15l-6.07-1.92v4.37c0 .95-.4 1.66-1.12 2.05-.35.19-.73.28-1.14.28-.55 0-1.05-.17-1.48-.5-.43-.33-.7-.78-.8-1.33-.03-.18-.05-.36-.05-.54V8.85c0-.42.1-.8.3-1.14.2-.34.48-.6.82-.78.2-.1.42-.17.65-.2.2-.03.4-.03.6.02l8.05 2.55c.55.17.97.5 1.22 1 .25.5.3 1.03.15 1.58l-.39 2.68z" />
+    </svg>
+  );
+}
+
+type SocialKey = keyof typeof site.social;
+
+const icons: Record<SocialKey, LucideIcon | typeof SpotifyIcon> = {
   instagram: Instagram,
   youtube: Youtube,
   spotify: SpotifyIcon,
+  appleMusic: AppleMusicIcon,
   facebook: Facebook,
 };
 
-type SocialKey = keyof typeof site.social;
+const labels: Record<SocialKey, string> = {
+  instagram: "Instagram",
+  youtube: "YouTube",
+  spotify: "Spotify",
+  appleMusic: "Apple Music",
+  facebook: "Facebook",
+};
 
 type SocialLinksProps = {
   className?: string;
@@ -48,14 +65,13 @@ export function SocialLinks({
     <ul className={`flex flex-wrap items-center gap-2 ${className}`}>
       {entries.map(([key, href]) => {
         const Icon = icons[key];
-        const label = key.charAt(0).toUpperCase() + key.slice(1);
         return (
           <li key={key}>
             <a
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Honor Hour on ${label}`}
+              aria-label={`Honor Hour on ${labels[key]}`}
               className={`inline-flex items-center justify-center border transition ${sizeClasses[size]} ${
                 accent
                   ? "border-white/20 text-white hover:border-hh-red hover:bg-hh-red hover:text-white focus-visible:border-hh-red focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
