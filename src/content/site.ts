@@ -143,11 +143,12 @@ export const eventTypes = [
 export const bio = {
   short:
     "Honor Hour is a Utah rock band built for volume, momentum, and rooms that want to move. Loud guitars, tight grooves, and sets that hit hard from the first downbeat.",
-  long: [
-    "Formed in Utah, Honor Hour channels the energy of classic and modern rock into a live show that doesn't ease in — it arrives loud and stays there.",
-    "The band has been building a following through social media and local shows, sharing new music and performance clips with fans across Instagram and YouTube.",
-    "Honor Hour is booking clubs, private events, and festival slots. For promoters and press, the full electronic press kit has bio, photos, and technical details.",
+  /** Fan-facing copy for the homepage only — EPK uses short bio alone */
+  home: [
+    "Honor Hour makes hard rock for people who still want a song to go somewhere.",
+    "Recorded loud at sessions like Whysound in Logan, with steady releases through 2025 — originals with sharp titles, unexpected covers, and zero interest in playing it safe.",
   ],
+  long: [] as string[],
   lineup: [
     { name: "TBD", role: "Vocals" },
     { name: "TBD", role: "Guitar" },
