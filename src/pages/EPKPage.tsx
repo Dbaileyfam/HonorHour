@@ -4,6 +4,7 @@ import {
   bio,
   epkNav,
   pressPhotos,
+  pressLogos,
   pressQuotes,
   quickFacts,
   shows,
@@ -193,6 +194,43 @@ export function EPKPage() {
             <p className="mt-2 text-sm text-hh-muted">
               High-res photos and logos for promoters and media. Click to download.
             </p>
+
+            {pressLogos.length > 0 ? (
+              <div className="mt-6">
+                <h4 className="text-sm font-medium uppercase tracking-[0.2em] text-hh-muted">Logo</h4>
+                <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+                  {pressLogos.map((logo) => (
+                    <li key={logo.caption}>
+                      <figure className="overflow-hidden rounded-xl border border-white/10">
+                        <div className="flex aspect-[3/1] items-center justify-center bg-hh-black p-6">
+                          <img
+                            src={assetUrl(logo.preview)}
+                            alt={logo.alt}
+                            className="max-h-full max-w-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                        <figcaption className="flex flex-wrap items-center justify-between gap-3 bg-hh-black/50 px-3 py-2 text-sm text-hh-muted">
+                          <span>{logo.caption}</span>
+                          <span className="flex gap-2">
+                            {logo.downloads.map((file) => (
+                              <a
+                                key={file.downloadName}
+                                href={assetUrl(file.src)}
+                                download={file.downloadName}
+                                className="font-medium text-white transition hover:text-hh-red"
+                              >
+                                {file.label}
+                              </a>
+                            ))}
+                          </span>
+                        </figcaption>
+                      </figure>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
 
             {pressPhotos.length > 0 ? (
               <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

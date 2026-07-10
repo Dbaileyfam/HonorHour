@@ -172,6 +172,48 @@ export const shows = [] as {
   ticketUrl?: string;
 }[];
 
+export const pressLogos = [
+  {
+    preview: "assets/press/honor-hour-wordmark-white.png",
+    alt: "Honor Hour wordmark — white on transparent",
+    caption: "Wordmark — white (transparent)",
+    downloads: [
+      {
+        src: "assets/press/honor-hour-wordmark-white.svg",
+        downloadName: "honor-hour-wordmark-white.svg",
+        label: "SVG",
+      },
+      {
+        src: "assets/press/honor-hour-wordmark-white.png",
+        downloadName: "honor-hour-wordmark-white.png",
+        label: "PNG",
+      },
+    ],
+  },
+  {
+    preview: "assets/press/honor-hour-wordmark-black-bg.png",
+    alt: "Honor Hour wordmark — white on black",
+    caption: "Wordmark — white on black",
+    downloads: [
+      {
+        src: "assets/press/honor-hour-wordmark-black-bg.svg",
+        downloadName: "honor-hour-wordmark-black-bg.svg",
+        label: "SVG",
+      },
+      {
+        src: "assets/press/honor-hour-wordmark-black-bg.png",
+        downloadName: "honor-hour-wordmark-black-bg.png",
+        label: "PNG",
+      },
+    ],
+  },
+] as {
+  preview: string;
+  alt: string;
+  caption: string;
+  downloads: { src: string; downloadName: string; label: string }[];
+}[];
+
 export const pressPhotos = [
   {
     src: "assets/media/band-rehearsal-chr.png",
