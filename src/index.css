@@ -58,7 +58,7 @@
   }
 
   .hh-card {
-    @apply border border-white/10 bg-hh-panel;
+    @apply border border-white/10 bg-hh-panel transition-colors duration-200 hover:border-hh-red/50;
   }
 
   .hh-btn {
@@ -74,7 +74,11 @@
   }
 
   .hh-link {
-    @apply text-hh-silver transition hover:text-white;
+    @apply text-hh-silver transition hover:text-hh-red;
+  }
+
+  .hh-accent-link {
+    @apply font-medium text-hh-silver transition hover:text-hh-red;
   }
 
   .hh-divider {

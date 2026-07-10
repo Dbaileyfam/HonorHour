@@ -51,7 +51,7 @@ export function ContactPage() {
             </ul>
             <p className="mt-8 text-sm text-hh-muted">
               Promoters and press can find photos, tech details, and more in the{" "}
-              <Link to={routes.epk} className="font-medium text-hh-red hover:text-white">
+              <Link to={routes.epk} className="hh-accent-link">
                 electronic press kit
               </Link>
               .

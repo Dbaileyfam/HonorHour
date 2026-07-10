@@ -188,7 +188,7 @@ export function MediaPage() {
                       href="https://www.youtube.com/@honorhourmusic/releases"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-block text-sm font-medium text-hh-red hover:text-white"
+                      className="mt-3 inline-block hh-accent-link text-sm"
                     >
                       Stream on YouTube Music →
                     </a>

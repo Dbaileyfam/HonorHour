@@ -54,7 +54,7 @@ export function EPKPage() {
               key={item.id}
               type="button"
               onClick={() => scrollToSection(item.id)}
-              className="shrink-0 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted transition hover:text-white"
+              className="shrink-0 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted transition hover:text-hh-red"
             >
               {item.label}
             </button>
@@ -145,7 +145,7 @@ export function EPKPage() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-medium text-hh-red transition hover:text-white"
+                        className="hh-accent-link"
                       >
                         {link.label} →
                       </a>
@@ -177,7 +177,7 @@ export function EPKPage() {
                   <p className="text-lg italic leading-relaxed text-hh-silver">&ldquo;{item.quote}&rdquo;</p>
                   <footer className="mt-4 text-sm text-hh-muted">
                     — {item.url ? (
-                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-hh-red hover:text-white">
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="hh-accent-link">
                         {item.source}
                       </a>
                     ) : (
@@ -289,7 +289,7 @@ export function EPKPage() {
                         href={show.ticketUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-2 inline-block text-sm font-medium text-hh-red hover:text-white"
+                        className="mt-2 inline-block hh-accent-link text-sm"
                       >
                         Tickets →
                       </a>
@@ -305,7 +305,7 @@ export function EPKPage() {
                 href={site.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-hh-red hover:text-white"
+                className="hh-accent-link"
               >
                 @honorhourmusic
               </a>{" "}

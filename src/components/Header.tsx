@@ -44,8 +44,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-hh-black/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
-        <Link to={routes.home} className="min-w-0">
-          <Logo className="block truncate text-xl text-white sm:text-2xl" />
+        <Link to={routes.home} className="group min-w-0">
+          <Logo className="block truncate text-xl text-white transition group-hover:text-hh-red sm:text-2xl" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
@@ -56,7 +56,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center border border-white/15 text-white md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center border border-white/15 text-white transition hover:border-hh-red hover:text-hh-red md:hidden"
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}

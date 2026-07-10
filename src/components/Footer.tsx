@@ -25,7 +25,7 @@ export function Footer() {
             <SocialLinks size="sm" />
             <Link
               to={routes.contact}
-              className="text-[11px] font-medium uppercase tracking-[0.28em] text-hh-muted transition hover:text-white"
+              className="text-[11px] font-medium uppercase tracking-[0.28em] text-hh-muted transition hover:text-hh-red"
             >
               Book the band
             </Link>

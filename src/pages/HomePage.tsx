@@ -90,13 +90,13 @@ export function HomePage() {
               <li key={tile.to}>
                 <Link
                   to={tile.to}
-                  className="group flex items-baseline justify-between gap-6 py-6 transition sm:py-8"
+                  className="group flex items-baseline justify-between gap-6 border-l-2 border-transparent py-6 pl-4 transition hover:border-hh-red sm:py-8"
                 >
                   <span className="hh-display text-3xl text-white transition group-hover:text-hh-red sm:text-4xl">
                     {tile.title}
                   </span>
-                  <span className="hidden text-sm text-hh-muted sm:block">{tile.body}</span>
-                  <span className="text-hh-muted transition group-hover:text-white">→</span>
+                  <span className="hidden text-sm text-hh-muted transition group-hover:text-hh-red sm:block">{tile.body}</span>
+                  <span className="text-hh-muted transition group-hover:text-hh-red">→</span>
                 </Link>
               </li>
             ))}
