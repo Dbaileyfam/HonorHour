@@ -247,16 +247,6 @@ export const pressQuotes = [] as {
   url?: string;
 }[];
 
-export const streamingLinks = [
-  { label: "Spotify", href: site.social.spotify },
-  { label: "Apple Music", href: site.social.appleMusic },
-  { label: "YouTube — @honorhourmusic", href: site.social.youtube },
-  {
-    label: "YouTube Music — releases",
-    href: "https://www.youtube.com/@honorhourmusic/releases",
-  },
-] as const;
-
 export const epkNav = [
   { id: "bio", label: "Bio" },
   { id: "music", label: "Music" },

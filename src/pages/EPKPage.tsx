@@ -9,7 +9,6 @@ import {
   quickFacts,
   shows,
   site,
-  streamingLinks,
 } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { assetUrl } from "@/lib/assets";
@@ -135,32 +134,10 @@ export function EPKPage() {
               )}
             </div>
 
-            <div className="hh-card p-6">
+            <div className="hh-card flex flex-col justify-center p-6">
               <h3 className="text-lg font-semibold text-white">Listen &amp; follow</h3>
-              {streamingLinks.length > 0 ? (
-                <ul className="mt-4 space-y-2">
-                  {streamingLinks.map((link) => (
-                    <li key={link.href}>
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hh-accent-link"
-                      >
-                        {link.label} →
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="mt-4 text-sm text-hh-muted">
-                  Add Spotify, Apple Music, and other links in{" "}
-                  <code className="text-hh-silver">src/content/site.ts</code>.
-                </p>
-              )}
-              <div className="mt-6 border-t border-white/10 pt-6">
-                <SocialLinks />
-              </div>
+              <p className="mt-2 text-sm text-hh-muted">Find Honor Hour on your platform of choice.</p>
+              <SocialLinks className="mt-6" />
             </div>
           </div>
         </div>
