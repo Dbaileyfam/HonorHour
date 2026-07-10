@@ -229,20 +229,23 @@ export function MediaPage() {
           </p>
 
           {media.promoPhotos.length > 0 ? (
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {media.promoPhotos.map((photo) => (
                 <figure
                   key={photo.src}
-                  className="hh-card overflow-hidden"
+                  className={`hh-card overflow-hidden ${
+                    "featured" in photo && photo.featured ? "sm:col-span-2 lg:col-span-3" : ""
+                  }`}
                 >
                   <img
                     src={assetUrl(photo.src)}
                     alt={photo.alt}
                     loading="lazy"
                     decoding="async"
-                    className="aspect-[4/3] w-full object-cover"
+                    className={`w-full object-cover ${
+                      "featured" in photo && photo.featured ? "aspect-[21/9]" : "aspect-video"
+                    }`}
                   />
-                  <figcaption className="px-4 py-3 text-sm text-hh-muted">{photo.alt}</figcaption>
                 </figure>
               ))}
             </div>

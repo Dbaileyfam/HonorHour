@@ -79,7 +79,57 @@ export const media = {
       description: "Honor Hour — Color & Spite EP.",
     },
   ],
-  promoPhotos: [] as { src: string; alt: string }[],
+  promoPhotos: [
+    {
+      src: "assets/media/band-rehearsal-chr.png",
+      alt: "Honor Hour live in rehearsal — full band with neon floor lighting",
+      featured: true,
+    },
+    {
+      src: "assets/media/band-performance-blue-1.png",
+      alt: "Honor Hour performing under blue stage lighting",
+    },
+    {
+      src: "assets/media/band-rehearsal-warm.png",
+      alt: "Honor Hour trio in the rehearsal room",
+    },
+    {
+      src: "assets/media/vocalist-orange-beanie.png",
+      alt: "Honor Hour vocalist mid-performance",
+    },
+    {
+      src: "assets/media/drummer-blue-motion.png",
+      alt: "Honor Hour drummer in motion",
+    },
+    {
+      src: "assets/media/bass-closeup-warm.png",
+      alt: "Close-up of bass guitar during a live set",
+    },
+    {
+      src: "assets/media/band-performance-blue-2.png",
+      alt: "Honor Hour full-band performance with blue lighting",
+    },
+    {
+      src: "assets/media/bass-blue-flares.png",
+      alt: "Bass player with lens flares and drum kit in background",
+    },
+    {
+      src: "assets/media/band-rehearsal-green-flares.png",
+      alt: "Honor Hour rehearsal with green neon and lens flares",
+    },
+    {
+      src: "assets/media/band-rehearsal-warm-2.png",
+      alt: "Honor Hour live session — bass, drums, and guitar",
+    },
+    {
+      src: "assets/media/guitar-rainbow-prism.png",
+      alt: "Guitar performance with rainbow prism light",
+    },
+    {
+      src: "assets/media/band-surreal-shr.png",
+      alt: "Stylized Honor Hour promo shot with mirrored effects",
+    },
+  ] as { src: string; alt: string; featured?: boolean }[],
 } as const;
 
 export const eventTypes = [
@@ -122,7 +172,26 @@ export const shows = [] as {
   ticketUrl?: string;
 }[];
 
-export const pressPhotos = [] as {
+export const pressPhotos = [
+  {
+    src: "assets/media/band-rehearsal-chr.png",
+    alt: "Honor Hour — full band in rehearsal",
+    downloadName: "honor-hour-band-rehearsal-chr.png",
+    caption: "Full band — rehearsal",
+  },
+  {
+    src: "assets/media/band-rehearsal-warm.png",
+    alt: "Honor Hour — trio live in the rehearsal room",
+    downloadName: "honor-hour-band-rehearsal-warm.png",
+    caption: "Full band — live session",
+  },
+  {
+    src: "assets/media/band-performance-blue-1.png",
+    alt: "Honor Hour — full band under blue stage lighting",
+    downloadName: "honor-hour-band-performance-blue.png",
+    caption: "Full band — performance",
+  },
+] as {
   src: string;
   alt: string;
   downloadName: string;

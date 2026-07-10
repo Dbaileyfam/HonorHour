@@ -11,6 +11,7 @@ import {
   streamingLinks,
 } from "@/content/site";
 import { routes } from "@/lib/routes";
+import { assetUrl } from "@/lib/assets";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
 
@@ -198,11 +199,11 @@ export function EPKPage() {
                 {pressPhotos.map((photo) => (
                   <li key={photo.src}>
                     <figure className="overflow-hidden rounded-xl border border-white/10">
-                      <a href={photo.src} download={photo.downloadName}>
+                      <a href={assetUrl(photo.src)} download={photo.downloadName}>
                         <img
-                          src={photo.src}
+                          src={assetUrl(photo.src)}
                           alt={photo.alt}
-                          className="aspect-[4/3] w-full object-cover transition hover:scale-[1.02]"
+                          className="aspect-video w-full object-cover transition hover:scale-[1.02]"
                           loading="lazy"
                         />
                       </a>
