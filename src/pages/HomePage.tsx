@@ -46,7 +46,7 @@ export function HomePage() {
             <p className="hh-eyebrow">About</p>
             <h2 className="hh-section-heading mt-4">The band</h2>
             <p className="mt-6 text-lg font-light leading-relaxed text-hh-silver">{bio.short}</p>
-            {bio.long.slice(0, 2).map((paragraph) => (
+            {bio.home.map((paragraph) => (
               <p key={paragraph.slice(0, 40)} className="mt-4 text-sm leading-relaxed text-hh-muted">
                 {paragraph}
               </p>
