@@ -133,6 +133,7 @@ export const media = {
       alt: "Stylized Honor Hour promo shot with mirrored effects",
     },
   ] as { src: string; alt: string; featured?: boolean }[],
+  specialThanks: ["Mateo Rueda", "Weston Woodbury", "Ryan Brady"],
 } as const;
 
 export const eventTypes = [
@@ -153,10 +154,9 @@ export const bio = {
   ],
   long: [] as string[],
   lineup: [
-    { name: "TBD", role: "Vocals" },
-    { name: "TBD", role: "Guitar" },
-    { name: "TBD", role: "Bass" },
-    { name: "TBD", role: "Drums" },
+    { name: "Mason Wendell", role: "" },
+    { name: "Shane Kelson", role: "" },
+    { name: "Aaron Maughan", role: "" },
   ],
 } as const;
 

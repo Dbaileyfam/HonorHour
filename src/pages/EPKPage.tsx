@@ -94,7 +94,9 @@ export function EPKPage() {
                   className="flex items-baseline justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0"
                 >
                   <span className="font-medium text-white">{member.name}</span>
-                  <span className="text-sm text-hh-muted">{member.role}</span>
+                  {member.role ? (
+                    <span className="text-sm text-hh-muted">{member.role}</span>
+                  ) : null}
                 </li>
               ))}
             </ul>

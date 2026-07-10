@@ -260,6 +260,23 @@ export function MediaPage() {
           )}
         </div>
       </section>
+
+      {media.specialThanks.length > 0 ? (
+        <section className="border-t border-white/10 px-4 py-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="hh-section-heading">Special thanks</h2>
+            <p className="mt-4 text-lg leading-relaxed text-hh-silver">
+              {media.specialThanks.map((name, index) => (
+                <span key={name}>
+                  {index > 0 ? (index === media.specialThanks.length - 1 ? ", and " : ", ") : null}
+                  <span className="font-medium text-white">{name}</span>
+                </span>
+              ))}{" "}
+              have all contributed.
+            </p>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }
