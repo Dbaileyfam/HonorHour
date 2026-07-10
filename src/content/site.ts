@@ -19,6 +19,9 @@ export const site = {
     appleMusic: "https://music.apple.com/us/artist/honor-hour/1787742879",
     facebook: "https://www.facebook.com/search/top?q=honor%20hour",
   },
+  /** Compact Spotify player for EPK */
+  spotifyArtistEmbed:
+    "https://open.spotify.com/embed/artist/3DK78RnwDgR3FB717UM3nU?utm_source=generator&theme=0&si=0a79f0d530874999",
   /** Featured on home, EPK, and media hero */
   featuredVideoId: "bl2FLCFJoOA",
   booking: {

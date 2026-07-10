@@ -140,6 +140,17 @@ export function EPKPage() {
               <SocialLinks className="mt-6" />
             </div>
           </div>
+
+          <div className="mt-6 overflow-hidden rounded-xl border border-white/10">
+            <iframe
+              title={`${site.name} on Spotify`}
+              src={site.spotifyArtistEmbed}
+              className="h-[152px] w-full border-0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
