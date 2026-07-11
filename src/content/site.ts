@@ -154,9 +154,9 @@ export const bio = {
   ],
   long: [] as string[],
   lineup: [
-    { name: "Mason Wendell", role: "" },
-    { name: "Shane Kelson", role: "" },
-    { name: "Aaron Maughan", role: "" },
+    { name: "Mason Wendell", role: "Vocals & guitar" },
+    { name: "Shane Kelson", role: "Bass" },
+    { name: "Aaron Maughan", role: "Drums" },
   ],
 } as const;
 
