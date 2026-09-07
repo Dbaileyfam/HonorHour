@@ -5,6 +5,7 @@ import { MediaPage } from "@/pages/MediaPage";
 import { ShowsPage } from "@/pages/ShowsPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { EPKPage } from "@/pages/EPKPage";
+import { PostPage } from "@/pages/PostPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { routes } from "@/lib/routes";
 
@@ -21,6 +22,7 @@ export const router = createBrowserRouter(
         { path: "shows", element: <ShowsPage /> },
         { path: "contact", element: <ContactPage /> },
         { path: "epk", element: <EPKPage /> },
+        { path: "news/:slug", element: <PostPage /> },
         { path: "*", element: <NotFoundPage /> },
       ],
     },

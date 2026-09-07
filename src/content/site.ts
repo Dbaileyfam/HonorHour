@@ -147,11 +147,6 @@ export const eventTypes = [
 export const bio = {
   short:
     "Honor Hour is a Utah rock band built for volume, momentum, and rooms that want to move. Loud guitars, tight grooves, and sets that hit hard from the first downbeat.",
-  /** Fan-facing copy for the homepage only — EPK uses short bio alone */
-  home: [
-    "Honor Hour makes hard rock for people who still want a song to go somewhere.",
-    "Recorded loud at sessions like Whysound in Logan, with steady releases through 2025 — originals with sharp titles, unexpected covers, and zero interest in playing it safe.",
-  ],
   long: [] as string[],
   lineup: [
     { name: "Mason Wendell", role: "Vocals & guitar" },
@@ -175,6 +170,42 @@ export const shows = [] as {
   location: string;
   ticketUrl?: string;
 }[];
+
+/** Homepage news/blog — newest first. Add a post here when you have something to put out. */
+export type Post = {
+  slug: string;
+  date: string;
+  title: string;
+  excerpt: string;
+  body: string[];
+  videoId?: string;
+};
+
+export const posts: Post[] = [
+  {
+    slug: "dont-give-yourselves-to-brutes",
+    date: "2025-11-20",
+    title: "Don't Give Yourselves to Brutes",
+    excerpt:
+      "New original from Honor Hour — loud, pointed, and built to hit from the first downbeat.",
+    body: [
+      "Honor Hour's latest original is up now. Don't Give Yourselves to Brutes is the kind of track we write for rooms that want to move — heavy, tight, and not here to play it safe.",
+      "Mason Wendell on vocals and guitar, Shane Kelson on bass, Dan Fields on drums. Engineered, mixed, and mastered by Ryan Brady.",
+    ],
+    videoId: "bl2FLCFJoOA",
+  },
+  {
+    slug: "whysound-session-ep",
+    date: "2024-05-06",
+    title: "The Whysound Session EP",
+    excerpt:
+      "Live session recordings from WhySound in Logan — Eventide, A.I. for the Straight Guy, and Dried Out.",
+    body: [
+      "We recorded loud at WhySound in Logan. The Whysound Session EP is three tracks cut in the room: Eventide, A.I. for the Straight Guy, and Dried Out.",
+      "Watch the full session on the Media page, or find Honor Hour wherever you stream.",
+    ],
+  },
+];
 
 export const pressLogos = [
   {
