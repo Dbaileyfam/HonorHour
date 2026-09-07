@@ -75,7 +75,7 @@ export function EPKPage() {
       </section>
 
       <section id="bio" className="scroll-mt-36 px-4 py-16">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_280px]">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_28rem]">
           <div>
             <h2 className="hh-section-heading">About the band</h2>
             <p className="mt-4 text-lg leading-relaxed text-hh-silver">{bio.short}</p>
@@ -85,17 +85,17 @@ export function EPKPage() {
               </p>
             ))}
           </div>
-          <aside className="hh-card h-fit p-6">
+          <aside className="hh-card h-fit p-8">
             <h3 className="hh-eyebrow">Lineup</h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-5 space-y-4">
               {bio.lineup.map((member) => (
                 <li
                   key={member.role}
-                  className="flex items-baseline justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0"
+                  className="flex items-baseline justify-between gap-6 border-b border-white/5 pb-4 last:border-0 last:pb-0"
                 >
-                  <span className="font-medium text-white">{member.name}</span>
+                  <span className="whitespace-nowrap text-lg font-medium text-white">{member.name}</span>
                   {member.role ? (
-                    <span className="text-sm text-hh-muted">{member.role}</span>
+                    <span className="whitespace-nowrap text-sm text-hh-muted">{member.role}</span>
                   ) : null}
                 </li>
               ))}
