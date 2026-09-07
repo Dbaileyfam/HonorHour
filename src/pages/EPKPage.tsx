@@ -406,7 +406,18 @@ export function EPKPage() {
                 {site.booking.email}
               </a>
             </p>
-            <p className="mt-1 text-sm text-hh-muted">All booking inquiries</p>
+            <p className="mt-1 text-sm text-hh-muted">Email</p>
+            <p className="mt-4">
+              <a
+                href={site.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white transition hover:text-hh-red"
+              >
+                {site.instagramHandle}
+              </a>
+            </p>
+            <p className="mt-1 text-sm text-hh-muted">Instagram DMs — booking and questions</p>
             <p className="mt-4">
               <a
                 href={`tel:${site.booking.phone.replace(/\D/g, "")}`}

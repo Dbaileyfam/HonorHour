@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Instagram } from "lucide-react";
 import { eventTypes, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
@@ -13,7 +14,7 @@ export function ContactPage() {
       <PageHero
         eyebrow="Bookings & press"
         title="Contact us"
-        description="Festivals, venues, private events, and media inquiries — we'd love to hear from you."
+        description="Email or Instagram DMs for festivals, venues, private events, and media — we'd love to hear from you."
       />
 
       <section className="px-4 py-16">
@@ -33,9 +34,32 @@ export function ContactPage() {
                   {site.booking.email}
                 </a>
               </p>
-              <p className="mt-2 text-sm text-hh-muted">All booking inquiries</p>
+              <p className="mt-2 text-sm text-hh-muted">Email</p>
+              <p className="mt-5">
+                <a
+                  href={site.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white transition hover:text-hh-red"
+                >
+                  <Instagram className="h-4 w-4" aria-hidden />
+                  {site.instagramHandle}
+                </a>
+              </p>
+              <p className="mt-2 text-sm text-hh-muted">Instagram DMs — booking and questions</p>
             </address>
+            <a
+              href={site.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hh-btn-primary mt-8"
+            >
+              Message on Instagram
+            </a>
             <div className="mt-8 border-t border-white/10 pt-6">
+              <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted">
+                Also on
+              </p>
               <SocialLinks />
             </div>
           </div>
