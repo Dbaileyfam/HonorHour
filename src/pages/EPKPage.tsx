@@ -235,9 +235,6 @@ export function EPKPage() {
                           loading="lazy"
                         />
                       </a>
-                      <figcaption className="bg-hh-black/50 px-3 py-2 text-sm text-hh-muted">
-                        {photo.caption}
-                      </figcaption>
                     </figure>
                   </li>
                 ))}
