@@ -17,25 +17,17 @@ export function HomePage() {
 
   return (
     <>
-      <section className="flex min-h-[78vh] flex-col justify-center px-4 py-20 sm:px-6 sm:py-28">
-        <div className="mx-auto w-full max-w-6xl">
+      <section className="px-4 py-10 sm:px-6 sm:py-14">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
           <p className="hh-eyebrow">{site.hometown} · {site.genre}</p>
-          <h1 className="mt-6">
+          <h1 className="mt-4">
             <Logo className="block text-7xl text-white sm:text-8xl md:text-[9.5rem]" />
           </h1>
-          <p className="mt-6 max-w-md text-lg font-light leading-relaxed text-hh-silver sm:text-xl">
+          <p className="mt-4 max-w-md text-lg font-light leading-relaxed text-hh-silver sm:text-xl">
             {site.tagline}
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link to={routes.shows} className="hh-btn-primary">
-              Shows
-            </Link>
-            <Link to={routes.contact} className="hh-btn-ghost">
-              Book
-            </Link>
-          </div>
-          <div className="mt-12">
-            <SocialLinks size="md" />
+          <div className="mt-6">
+            <SocialLinks size="md" className="justify-center" />
           </div>
         </div>
       </section>
