@@ -156,7 +156,7 @@ export const eventTypes = [
 
 export const bio = {
   short:
-    "Honor Hour is a Utah rock band built for volume, momentum, and rooms that want to move. Loud guitars, tight grooves, and sets that hit hard from the first downbeat.",
+    "HNR HR (Honor Hour Music) is a musical project based out of SLC, UT. Mason Wendell, Shane Kelson, and Aaron Maughan incorporate all their musical tastes into one cohesive heavy rock experience where there are no rules as to what they create and how they perform.",
   long: [] as string[],
   lineup: [
     { name: "Mason Wendell", role: "Vocals & guitar" },
