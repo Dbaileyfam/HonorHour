@@ -3,12 +3,14 @@ import { Logo } from "@/components/Logo";
 import {
   bio,
   epkNav,
+  inputList,
   pressPhotos,
   pressLogos,
   pressQuotes,
   quickFacts,
   shows,
   site,
+  stagePlot,
 } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { assetUrl } from "@/lib/assets";
@@ -307,30 +309,82 @@ export function EPKPage() {
           <h2 className="hh-section-heading">Stage plot &amp; input list</h2>
           <p className="mt-2 text-hh-muted">Technical details for sound engineers and promoters.</p>
 
-          <div className="mt-8 space-y-4">
-            <details className="hh-card group p-6">
-              <summary className="cursor-pointer list-none font-semibold text-white marker:content-none">
-                <span className="flex items-center justify-between gap-4">
-                  Stage plot
-                  <span className="text-sm font-normal text-hh-muted group-open:hidden">Show details</span>
-                </span>
-              </summary>
-              <div className="mt-4 rounded-xl border border-dashed border-white/15 bg-hh-black/30 p-10 text-center text-sm text-hh-muted">
-                Add a stage plot image to <code className="text-hh-silver">public/assets/</code> and link it here.
-              </div>
-            </details>
-
-            <details className="hh-card group p-6">
-              <summary className="cursor-pointer list-none font-semibold text-white marker:content-none">
-                <span className="flex items-center justify-between gap-4">
-                  Input list
-                  <span className="text-sm font-normal text-hh-muted group-open:hidden">Show channels</span>
-                </span>
-              </summary>
-              <p className="mt-4 text-sm text-hh-muted">
-                Input list will be added when available from the band.
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="hh-card p-6">
+              <h3 className="text-lg font-semibold text-white">Stage plot</h3>
+              <p className="mt-1 text-sm text-hh-muted">
+                Audience at the front. Stage left and stage right are from the band.
               </p>
-            </details>
+              <div
+                className="mt-6 grid min-h-[22rem] grid-cols-3 grid-rows-[auto_1fr_1fr_auto] gap-3 border border-white/10 bg-hh-black p-4 sm:p-6"
+                role="img"
+                aria-label="Honor Hour stage plot. Drums center rear. Guitar and lead vocals stage left. Bass and backup vocals stage right."
+              >
+                <p className="col-span-3 text-center text-[11px] font-medium uppercase tracking-[0.28em] text-hh-muted">
+                  Rear
+                </p>
+                <div />
+                {stagePlot
+                  .filter((p) => p.area === "rear")
+                  .map((p) => (
+                    <div
+                      key={p.id}
+                      className="flex flex-col items-center justify-center self-center justify-self-center border border-white/20 px-4 py-5 text-center"
+                    >
+                      <p className="font-medium text-white">{p.label}</p>
+                      <p className="mt-1 text-xs uppercase tracking-[0.18em] text-hh-muted">{p.detail}</p>
+                    </div>
+                  ))}
+                <div />
+                {stagePlot
+                  .filter((p) => p.area === "right")
+                  .map((p) => (
+                    <div
+                      key={p.id}
+                      className="flex flex-col items-center justify-center self-end border border-white/20 px-4 py-5 text-center"
+                    >
+                      <p className="font-medium text-white">{p.label}</p>
+                      <p className="mt-1 text-xs uppercase tracking-[0.18em] text-hh-muted">{p.detail}</p>
+                    </div>
+                  ))}
+                <div />
+                {stagePlot
+                  .filter((p) => p.area === "left")
+                  .map((p) => (
+                    <div
+                      key={p.id}
+                      className="flex flex-col items-center justify-center self-end border border-white/20 px-4 py-5 text-center"
+                    >
+                      <p className="font-medium text-white">{p.label}</p>
+                      <p className="mt-1 text-xs uppercase tracking-[0.18em] text-hh-muted">{p.detail}</p>
+                    </div>
+                  ))}
+                <p className="text-center text-[11px] font-medium uppercase tracking-[0.18em] text-hh-muted">
+                  Stage right
+                </p>
+                <p className="border-t border-white/15 pt-3 text-center text-[11px] font-medium uppercase tracking-[0.28em] text-white">
+                  Audience
+                </p>
+                <p className="text-center text-[11px] font-medium uppercase tracking-[0.18em] text-hh-muted">
+                  Stage left
+                </p>
+              </div>
+            </div>
+
+            <div className="hh-card p-6">
+              <h3 className="text-lg font-semibold text-white">Input list</h3>
+              <p className="mt-1 text-sm text-hh-muted">11 channels.</p>
+              <ol className="mt-6 divide-y divide-white/10 border-y border-white/10">
+                {inputList.map((input) => (
+                  <li key={input.channel} className="flex items-baseline gap-4 py-2.5">
+                    <span className="w-10 shrink-0 text-[11px] font-medium uppercase tracking-[0.18em] text-hh-muted">
+                      Ch {input.channel}
+                    </span>
+                    <span className="text-white">{input.name}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </div>
       </section>

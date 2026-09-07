@@ -291,6 +291,27 @@ export const pressQuotes = [] as {
   url?: string;
 }[];
 
+/** Stage plot is drawn from the audience. Stage left / right are from the band. */
+export const stagePlot = [
+  { id: "drums", label: "Drums", detail: "Center / rear", area: "rear" },
+  { id: "bass", label: "Bass / backup vocals", detail: "Stage right", area: "right" },
+  { id: "guitar", label: "Guitar / lead vocals", detail: "Stage left", area: "left" },
+] as const;
+
+export const inputList = [
+  { channel: 1, name: "Kick Drum" },
+  { channel: 2, name: "Snare Drum" },
+  { channel: 3, name: "Hi-Hat" },
+  { channel: 4, name: "Rack Tom" },
+  { channel: 5, name: "Floor Tom" },
+  { channel: 6, name: "Drum Overhead Left" },
+  { channel: 7, name: "Drum Overhead Right" },
+  { channel: 8, name: "Bass Guitar" },
+  { channel: 9, name: "Electric Guitar" },
+  { channel: 10, name: "Lead Vocals — Guitarist" },
+  { channel: 11, name: "Backing Vocals — Bassist" },
+] as const;
+
 export const epkNav = [
   { id: "bio", label: "Bio" },
   { id: "music", label: "Music" },
