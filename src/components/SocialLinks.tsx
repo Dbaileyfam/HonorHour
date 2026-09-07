@@ -37,7 +37,7 @@ const labels: Record<SocialKey, string> = {
 
 type SocialLinksProps = {
   className?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   variant?: "default" | "accent";
 };
 
@@ -45,12 +45,14 @@ const sizeClasses = {
   sm: "h-9 w-9",
   md: "h-10 w-10",
   lg: "h-11 w-11",
+  xl: "h-16 w-16",
 };
 
 const iconSizes = {
   sm: "h-4 w-4",
   md: "h-4 w-4",
   lg: "h-5 w-5",
+  xl: "h-7 w-7",
 };
 
 export function SocialLinks({

@@ -342,7 +342,7 @@ export function EPKPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="hh-section-heading">Booking &amp; press contact</h2>
           <p className="mt-4 text-hh-silver">
-            Festivals, venues, private events, and media inquiries. Sets up to 1 hr 15 min.
+            Festivals, venues, private events, and media inquiries. 1 hr sets.
             Willing to open for strong opportunities. Travel: continental USA.
           </p>
           <address className="hh-card mt-8 not-italic">

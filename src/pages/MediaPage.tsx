@@ -246,7 +246,7 @@ export function MediaPage() {
               Clips, announcements, and behind-the-scenes.
             </p>
             <div className="mt-6 flex justify-center">
-              <SocialLinks variant="accent" size="lg" className="justify-center" />
+              <SocialLinks variant="accent" size="xl" className="justify-center gap-3" />
             </div>
           </div>
         </div>

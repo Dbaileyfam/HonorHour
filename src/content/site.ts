@@ -167,8 +167,8 @@ export const bio = {
 
 export const quickFacts = [
   { label: "Genre", value: site.genre },
-  { label: "Hometown", value: site.hometown },
-  { label: "Set length", value: "Up to 1 hr 15 min" },
+  { label: "Hometown", value: "SLC, Utah" },
+  { label: "Set length", value: "1 hr" },
   { label: "Travel", value: "Continental USA" },
   { label: "Opening", value: "Open to strong opportunities" },
 ] as const;
