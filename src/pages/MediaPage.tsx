@@ -90,6 +90,14 @@ function SingleRelease({
               {video.title}
             </a>
             {note ? <p className="mt-1 text-sm text-hh-muted">{note}</p> : null}
+            <a
+              href={youtubeWatchUrl(video.id)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted transition hover:text-hh-red"
+            >
+              Watch on YouTube →
+            </a>
           </div>
         </div>
       </div>
@@ -112,8 +120,25 @@ export function MediaPage() {
         <div className="mx-auto max-w-6xl">
           <h2 className="hh-section-heading">Featured</h2>
           <p className="mt-2 text-hh-muted">Latest original from @honorhourmusic.</p>
-          <div className="mx-auto mt-8 max-w-4xl">
-            <SingleRelease video={media.featured} cover={media.featured.cover} />
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="lg:col-span-2">
+              <SingleRelease video={media.featured} cover={media.featured.cover} />
+            </div>
+            {media.featured.more.map((video) => (
+              <figure key={video.id} className="hh-card overflow-hidden">
+                <VideoPlayer video={video} />
+                <figcaption className="px-4 py-3">
+                  <a
+                    href={youtubeWatchUrl(video.id)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-white transition hover:text-hh-red"
+                  >
+                    {video.title}
+                  </a>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -185,12 +210,18 @@ export function MediaPage() {
                     <h3 className="font-semibold text-white">{album.title}</h3>
                     <p className="mt-1 text-sm text-hh-muted">{album.description}</p>
                     <a
-                      href="https://www.youtube.com/@honorhourmusic/releases"
+                      href={
+                        "videoId" in album && album.videoId
+                          ? youtubeWatchUrl(album.videoId)
+                          : "https://www.youtube.com/@honorhourmusic/releases"
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-3 inline-block hh-accent-link text-sm"
                     >
-                      Stream on YouTube Music →
+                      {"videoId" in album && album.videoId
+                        ? "Watch on YouTube →"
+                        : "Stream on YouTube Music →"}
                     </a>
                   </figcaption>
                 </figure>
