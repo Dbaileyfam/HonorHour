@@ -7,7 +7,7 @@ import { SocialLinks } from "@/components/SocialLinks";
 import { formatPostDate, publishedPosts } from "@/utils/postFormat";
 
 const tiles = [
-  { to: routes.media, title: "Media", body: "Videos, streaming, and photos." },
+  { to: routes.media, title: "Media", body: "Original music, videos, and performance highlights." },
   { to: routes.shows, title: "Shows", body: "Upcoming dates and live sets." },
   { to: routes.epk, title: "EPK", body: "Bio, lineup, and press kit." },
   { to: routes.contact, title: "Contact", body: "Booking and media inquiries." },

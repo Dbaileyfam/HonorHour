@@ -105,7 +105,7 @@ export function MediaPage() {
       <PageHero
         eyebrow="Watch · Listen · Photos"
         title="Media"
-        description={`Original music and live sessions from ${site.name}.`}
+        description="Original music, videos, and performance highlights by HNR HR."
       />
 
       <section className="border-b border-white/10 px-4 py-16">
