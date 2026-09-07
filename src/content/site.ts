@@ -28,8 +28,6 @@ export const site = {
   booking: {
     name: "Honor Hour",
     email: "honorhourmusic@gmail.com",
-    /** Private — shown on EPK only, not the public Contact page */
-    phone: "385-221-5562",
   },
 } as const;
 

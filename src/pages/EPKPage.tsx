@@ -418,15 +418,6 @@ export function EPKPage() {
               </a>
             </p>
             <p className="mt-1 text-sm text-hh-muted">Instagram DMs — booking and questions</p>
-            <p className="mt-4">
-              <a
-                href={`tel:${site.booking.phone.replace(/\D/g, "")}`}
-                className="text-white transition hover:text-hh-red"
-              >
-                {site.booking.phone}
-              </a>
-            </p>
-            <p className="mt-1 text-sm text-hh-muted">EPK / direct booking line</p>
             <Link to={routes.contact} className="hh-btn-primary mt-6 inline-flex">
               Public contact page
             </Link>
