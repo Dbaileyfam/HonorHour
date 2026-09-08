@@ -4,6 +4,7 @@ import {
   bio,
   epkNav,
   inputList,
+  media,
   pressPhotos,
   pressLogos,
   pressQuotes,
@@ -145,16 +146,37 @@ export function EPKPage() {
             </div>
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-xl border border-white/10">
-            <iframe
-              title={`${site.name} on Spotify`}
-              src={site.spotifyArtistEmbed}
-              className="h-[152px] w-full border-0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
+          {media.featured.more.length > 0 ? (
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-white">Color &amp; Spite EP</h3>
+              <p className="mt-1 text-sm text-hh-muted">Color &amp; Spite and Kingdom.</p>
+              <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                {media.featured.more.map((video) => (
+                  <figure key={video.id} className="hh-card overflow-hidden">
+                    <div className="aspect-video bg-hh-charcoal">
+                      <iframe
+                        title={`${video.title} — ${site.name}`}
+                        src={`https://www.youtube.com/embed/${video.id}`}
+                        className="h-full w-full border-0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                    <figcaption className="px-4 py-3 font-medium text-white">{video.title}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          <iframe
+            title={`${site.name} on Spotify`}
+            src={site.spotifyArtistEmbed}
+            className="mt-6 h-[152px] w-full rounded-[12px] border-0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
         </div>
       </section>
 

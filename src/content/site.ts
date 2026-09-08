@@ -22,7 +22,7 @@ export const site = {
   instagramHandle: "@honorhourmusic",
   /** Compact Spotify player for EPK */
   spotifyArtistEmbed:
-    "https://open.spotify.com/embed/artist/3DK78RnwDgR3FB717UM3nU?utm_source=generator&theme=0&si=0a79f0d530874999",
+    "https://open.spotify.com/embed/artist/3DK78RnwDgR3FB717UM3nU?utm_source=generator&si=f289f95aef5442eb",
   /** Featured on home, EPK, and media hero */
   featuredVideoId: "bl2FLCFJoOA",
   booking: {
