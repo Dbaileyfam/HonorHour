@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/Logo";
 import { posts, site } from "@/content/site";
+import { assetUrl } from "@/lib/assets";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
 import { formatPostDate, publishedPosts } from "@/utils/postFormat";
+
+const patternSrc = assetUrl("assets/pattern-hooks.jpg");
 
 const tiles = [
   { to: routes.media, title: "Media", body: "Original music, videos, and performance highlights." },
@@ -18,12 +21,19 @@ export function HomePage() {
   const [featured, ...rest] = publishedPosts(posts);
 
   return (
-    <>
-      <section className="px-4 py-10 sm:px-6 sm:py-14">
+    <div className="relative">
+      <div className="hh-pattern-band" aria-hidden>
+        <div
+          className="hh-pattern-band-fill"
+          style={{ backgroundImage: `url("${patternSrc}")` }}
+        />
+      </div>
+
+      <section className="relative z-10 px-4 py-10 sm:px-6 sm:py-14">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
           <p className="hh-eyebrow">{site.hometown} · {site.genre}</p>
           <h1 className="mt-4">
-            <Logo className="block text-7xl text-white sm:text-8xl md:text-[9.5rem]" />
+            <Logo className="inline-block text-7xl text-white sm:text-8xl md:text-[9.5rem]" />
           </h1>
           <p className="mt-4 max-w-md text-lg font-light leading-relaxed text-hh-silver sm:text-xl">
             {site.tagline}
@@ -34,7 +44,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="news" className="scroll-mt-24 border-y border-white/10 px-4 py-16 sm:px-6 sm:py-20">
+      <section id="news" className="relative z-10 scroll-mt-24 border-y border-white/10 px-4 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <p className="hh-eyebrow">News</p>
           <h2 className="hh-section-heading mt-4">Latest</h2>
@@ -125,7 +135,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 py-20 sm:px-6 sm:py-24">
+      <section className="relative z-10 px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-6xl">
           <p className="hh-eyebrow">Navigate</p>
           <ul className="mt-8 divide-y divide-white/10 border-y border-white/10">
@@ -146,6 +156,6 @@ export function HomePage() {
           </ul>
         </div>
       </section>
-    </>
+    </div>
   );
 }
