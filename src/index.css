@@ -96,50 +96,57 @@
   }
 
   .hh-pattern-band-fill {
+    --hh-tile: 420px;
     position: absolute;
     left: -32%;
     top: 2.75rem;
     width: 164%;
     height: clamp(10rem, 32vw, 17rem);
-    background-repeat: repeat;
-    background-position: 20% 40%;
-    background-size: 420px;
+    overflow: hidden;
     opacity: 0.52;
     mix-blend-mode: screen;
     filter: contrast(1.45) brightness(1.28);
     transform: rotate(-21deg);
     transform-origin: center;
     -webkit-mask-image:
-      linear-gradient(90deg, transparent 0%, #000 12%, #000 82%, transparent 100%),
-      linear-gradient(#0000 0%, #000 18%, #000 82%, #0000 100%);
+      linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(#0000 0%, #000 26%, #000 74%, #0000 100%);
     mask-image:
-      linear-gradient(90deg, transparent 0%, #000 12%, #000 82%, transparent 100%),
-      linear-gradient(#0000 0%, #000 18%, #000 82%, #0000 100%);
+      linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(#0000 0%, #000 26%, #000 74%, #0000 100%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
   }
 
+  .hh-pattern-band-shift {
+    position: absolute;
+    top: calc(var(--hh-tile) * -1);
+    left: calc(var(--hh-tile) * -1);
+    width: calc(100% + var(--hh-tile) * 2);
+    height: calc(100% + var(--hh-tile) * 2);
+    background-repeat: repeat;
+    background-size: var(--hh-tile);
+  }
+
   @media (min-width: 768px) {
     .hh-pattern-band-fill {
+      --hh-tile: 560px;
       top: 3.25rem;
       height: clamp(13rem, 22vw, 20rem);
-      background-size: 560px;
       opacity: 0.48;
     }
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .hh-pattern-band-fill {
-      animation: hh-pattern-flow 80s linear infinite;
+    .hh-pattern-band-shift {
+      animation: hh-pattern-flow 72s linear infinite;
+      will-change: transform;
     }
   }
 
   @keyframes hh-pattern-flow {
-    from {
-      background-position: 20% 40%;
-    }
     to {
-      background-position: 80% 55%;
+      transform: translate3d(calc(var(--hh-tile) * -1), 0, 0);
     }
   }
 

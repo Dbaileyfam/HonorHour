@@ -23,10 +23,12 @@ export function HomePage() {
   return (
     <div className="relative">
       <div className="hh-pattern-band" aria-hidden>
-        <div
-          className="hh-pattern-band-fill"
-          style={{ backgroundImage: `url("${patternSrc}")` }}
-        />
+        <div className="hh-pattern-band-fill">
+          <div
+            className="hh-pattern-band-shift"
+            style={{ backgroundImage: `url("${patternSrc}")` }}
+          />
+        </div>
       </div>
 
       <section className="relative z-10 px-4 py-10 sm:px-6 sm:py-14">
