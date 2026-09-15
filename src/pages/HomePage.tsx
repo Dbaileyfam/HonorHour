@@ -33,11 +33,10 @@ export function HomePage() {
         </div>
 
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center">
-          <p className="hh-eyebrow">{site.hometown} · {site.genre}</p>
-          <h1 className="mt-4">
+          <h1>
             <Logo className="inline-block text-7xl text-white sm:text-8xl md:text-[9.5rem]" />
           </h1>
-          <p className="mt-4 max-w-md text-lg font-light leading-relaxed text-hh-silver sm:text-xl">
+          <p className="mt-4 max-w-md text-lg font-light leading-relaxed text-hh-red sm:text-xl">
             {site.tagline}
           </p>
           <div className="mt-6">
