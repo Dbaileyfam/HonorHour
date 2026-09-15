@@ -98,15 +98,15 @@
   .hh-pattern-band-fill {
     --hh-tile: 420px;
     position: absolute;
-    left: -32%;
-    top: 2.75rem;
-    width: 164%;
+    left: 50%;
+    top: 50%;
+    width: 170%;
     height: clamp(10rem, 32vw, 17rem);
     overflow: hidden;
     opacity: 0.52;
     mix-blend-mode: screen;
     filter: contrast(1.45) brightness(1.28);
-    transform: rotate(-21deg);
+    transform: translate(-50%, -50%) rotate(-21deg);
     transform-origin: center;
     -webkit-mask-image:
       linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
@@ -131,7 +131,6 @@
   @media (min-width: 768px) {
     .hh-pattern-band-fill {
       --hh-tile: 560px;
-      top: 3.25rem;
       height: clamp(13rem, 22vw, 20rem);
       opacity: 0.48;
     }

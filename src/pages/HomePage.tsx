@@ -22,17 +22,17 @@ export function HomePage() {
 
   return (
     <div className="relative">
-      <div className="hh-pattern-band" aria-hidden>
-        <div className="hh-pattern-band-fill">
-          <div
-            className="hh-pattern-band-shift"
-            style={{ backgroundImage: `url("${patternSrc}")` }}
-          />
+      <section className="relative z-10 overflow-hidden px-4 py-10 sm:px-6 sm:py-14">
+        <div className="hh-pattern-band" aria-hidden>
+          <div className="hh-pattern-band-fill">
+            <div
+              className="hh-pattern-band-shift"
+              style={{ backgroundImage: `url("${patternSrc}")` }}
+            />
+          </div>
         </div>
-      </div>
 
-      <section className="relative z-10 px-4 py-10 sm:px-6 sm:py-14">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center">
           <p className="hh-eyebrow">{site.hometown} · {site.genre}</p>
           <h1 className="mt-4">
             <Logo className="inline-block text-7xl text-white sm:text-8xl md:text-[9.5rem]" />
