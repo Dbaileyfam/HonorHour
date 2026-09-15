@@ -36,7 +36,7 @@ export function HomePage() {
           <h1>
             <Logo className="inline-block text-7xl text-white sm:text-8xl md:text-[9.5rem]" />
           </h1>
-          <p className="mt-4 max-w-md text-lg font-light leading-relaxed text-hh-red sm:text-xl">
+          <p className="hh-home-tagline mt-4">
             {site.tagline}
           </p>
           <div className="mt-6">
