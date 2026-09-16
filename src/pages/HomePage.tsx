@@ -21,7 +21,7 @@ export function HomePage() {
 
   return (
     <div className="relative">
-      <section className="relative z-10 overflow-hidden px-4 py-10 sm:px-6 sm:py-14">
+      <section className="relative z-10 overflow-hidden px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-14">
         <div className="hh-pattern-band" aria-hidden>
           <div className="hh-pattern-band-fill">
             <div
@@ -42,9 +42,9 @@ export function HomePage() {
               ))}
             </p>
           </div>
-          <div className="mt-6">
-            <SocialLinks size="md" variant="framed" className="justify-center" />
-          </div>
+        </div>
+        <div className="absolute inset-x-0 bottom-3 z-20 flex justify-center sm:bottom-4">
+          <SocialLinks size="md" variant="framed" className="justify-center" />
         </div>
       </section>
 
