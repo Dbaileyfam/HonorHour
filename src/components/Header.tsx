@@ -56,7 +56,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center border border-white/15 text-white transition hover:border-hh-red hover:text-hh-red md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center border border-hh-red text-white transition hover:bg-hh-red hover:text-white md:hidden"
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
