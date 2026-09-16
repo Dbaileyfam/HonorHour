@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
 import { Instagram } from "lucide-react";
 import { eventTypes, site } from "@/content/site";
-import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { PageHero } from "@/components/PageHero";
 import { SocialLinks } from "@/components/SocialLinks";
@@ -74,11 +72,7 @@ export function ContactPage() {
               ))}
             </ul>
             <p className="mt-8 text-sm text-hh-muted">
-              Promoters and press can find photos, tech details, and more in the{" "}
-              <Link to={routes.epk} className="hh-accent-link">
-                electronic press kit
-              </Link>
-              .
+              Promoters and press can email or DM for photos, tech details, and the press kit.
             </p>
           </div>
         </div>

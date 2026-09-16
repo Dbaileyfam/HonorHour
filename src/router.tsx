@@ -4,7 +4,7 @@ import { HomePage } from "@/pages/HomePage";
 import { MediaPage } from "@/pages/MediaPage";
 import { ShowsPage } from "@/pages/ShowsPage";
 import { ContactPage } from "@/pages/ContactPage";
-import { EPKPage } from "@/pages/EPKPage";
+import { EpkAccessPage } from "@/pages/EpkAccessPage";
 import { PostPage } from "@/pages/PostPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { routes } from "@/lib/routes";
@@ -21,7 +21,7 @@ export const router = createBrowserRouter(
         { path: "media", element: <MediaPage /> },
         { path: "shows", element: <ShowsPage /> },
         { path: "contact", element: <ContactPage /> },
-        { path: "epk", element: <EPKPage /> },
+        { path: "epk", element: <EpkAccessPage /> },
         { path: "news/:slug", element: <PostPage /> },
         { path: "*", element: <NotFoundPage /> },
       ],

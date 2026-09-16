@@ -35,7 +35,6 @@ export const navLinks = [
   { to: routes.home, label: "Home" },
   { to: routes.media, label: "Media" },
   { to: routes.shows, label: "Shows" },
-  { to: routes.epk, label: "EPK" },
   { to: routes.contact, label: "Contact" },
 ] as const;
 
