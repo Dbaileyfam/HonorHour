@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { Play } from "lucide-react";
 import { Logo } from "@/components/Logo";
-import { posts, site } from "@/content/site";
+import { media, posts, site } from "@/content/site";
 import { assetUrl } from "@/lib/assets";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
@@ -14,6 +15,19 @@ const tiles = [
   { to: routes.shows, title: "Shows", body: "Upcoming dates and live sets." },
   { to: routes.contact, title: "Contact", body: "Booking and media inquiries." },
 ] as const;
+
+function youtubeWatchUrl(id: string) {
+  return `https://www.youtube.com/watch?v=${id}`;
+}
+
+function youtubeThumb(id: string) {
+  return `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
+}
+
+function previewsFor(post: (typeof posts)[number]) {
+  if (post.slug === "whysound-session-ep") return media.whysoundSession.videos;
+  return [];
+}
 
 export function HomePage() {
   usePageTitle("Home");
@@ -108,30 +122,66 @@ export function HomePage() {
 
               {rest.length > 0 ? (
                 <ul className="divide-y divide-white/10 border border-white/10">
-                  {rest.map((post) => (
-                    <li key={post.slug}>
-                      <Link
-                        to={routes.post(post.slug)}
-                        className="group flex flex-col gap-2 px-5 py-6 transition hover:bg-white/[0.02] sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
-                      >
-                        <div>
-                          <time
-                            dateTime={post.date}
-                            className="text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted"
-                          >
-                            {formatPostDate(post.date)}
-                          </time>
-                          <h3 className="hh-display mt-2 text-2xl transition group-hover:text-hh-red sm:text-3xl">
-                            {post.title}
-                          </h3>
-                          <p className="mt-2 max-w-xl text-sm leading-relaxed text-hh-muted">
-                            {post.excerpt}
-                          </p>
-                        </div>
-                        <span className="text-hh-muted transition group-hover:text-hh-red">→</span>
-                      </Link>
-                    </li>
-                  ))}
+                  {rest.map((post) => {
+                    const previews = previewsFor(post);
+                    return (
+                      <li key={post.slug} className="px-5 py-6">
+                        <Link
+                          to={routes.post(post.slug)}
+                          className="group flex items-baseline justify-between gap-8"
+                        >
+                          <div>
+                            <time
+                              dateTime={post.date}
+                              className="text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted"
+                            >
+                              {formatPostDate(post.date)}
+                            </time>
+                            <h3 className="hh-display mt-2 text-2xl transition group-hover:text-hh-red sm:text-3xl">
+                              {post.title}
+                            </h3>
+                            <p className="mt-2 max-w-xl text-sm leading-relaxed text-hh-muted">
+                              {post.excerpt}
+                            </p>
+                          </div>
+                          <span className="text-hh-muted transition group-hover:text-hh-red">→</span>
+                        </Link>
+                        {previews.length > 0 ? (
+                          <ul className="mt-5 grid gap-3 sm:grid-cols-3">
+                            {previews.map((video) => (
+                              <li key={video.id}>
+                                <a
+                                  href={youtubeWatchUrl(video.id)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="group/preview block"
+                                >
+                                  <span className="relative block aspect-video overflow-hidden border border-white/10 bg-hh-charcoal">
+                                    <img
+                                      src={youtubeThumb(video.id)}
+                                      alt=""
+                                      loading="lazy"
+                                      decoding="async"
+                                      className="h-full w-full object-cover transition group-hover/preview:opacity-90"
+                                    />
+                                    <span className="absolute inset-0 flex items-center justify-center">
+                                      <Play
+                                        className="h-8 w-8 fill-white text-white opacity-80 drop-shadow transition group-hover/preview:opacity-100"
+                                        aria-hidden
+                                      />
+                                    </span>
+                                  </span>
+                                  <span className="mt-2 block text-sm font-medium text-hh-title transition group-hover/preview:text-hh-red">
+                                    {video.title}
+                                  </span>
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
+                      </li>
+                    );
+                  })}
                 </ul>
               ) : null}
             </div>
