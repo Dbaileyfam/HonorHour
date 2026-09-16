@@ -160,7 +160,7 @@
     width: 170%;
     height: clamp(10rem, 32vw, 17rem);
     overflow: hidden;
-    opacity: 0.75;
+    opacity: 0.65;
     mix-blend-mode: screen;
     filter: contrast(1.45) brightness(1.28);
     transform: translate(-50%, -50%) rotate(-21deg);
@@ -189,7 +189,7 @@
     .hh-pattern-band-fill {
       --hh-tile: 560px;
       height: clamp(13rem, 22vw, 20rem);
-      opacity: 0.75;
+      opacity: 0.65;
     }
   }
 
