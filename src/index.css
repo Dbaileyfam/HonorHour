@@ -10,9 +10,9 @@
   --color-hh-panel: #0d0d0d;
   --color-hh-red: #e10600;
   --color-hh-red-dark: #b00500;
-  --color-hh-title: rgb(255 255 255 / 0.75);
-  --color-hh-silver: #c8c8c8;
-  --color-hh-muted: #6b6b6b;
+  --color-hh-title: rgb(255 255 255 / 0.82);
+  --color-hh-silver: #d2d2d2;
+  --color-hh-muted: #8c8c8c;
   --color-hh-border: rgba(255, 255, 255, 0.12);
 }
 
