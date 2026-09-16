@@ -60,6 +60,7 @@
     font-family: "Anton", Impact, sans-serif;
     font-weight: 400;
     line-height: 0.9;
+    mix-blend-mode: screen;
   }
 
   .hh-logo-lockup {
@@ -73,7 +74,6 @@
     line-height: 0.9;
     font-kerning: none;
     font-variant-ligatures: none;
-    mix-blend-mode: screen;
   }
 
   .hh-logo-word {
@@ -94,10 +94,7 @@
     font-weight: 600;
     letter-spacing: 0.04em;
     line-height: 1;
-    color: var(--color-hh-red);
-    text-shadow:
-      0 1px 1px rgba(0, 0, 0, 0.85),
-      0 0 12px rgba(0, 0, 0, 0.55);
+    color: inherit;
   }
 
   .hh-hero-tagline span {
