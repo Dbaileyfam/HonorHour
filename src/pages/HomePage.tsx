@@ -35,7 +35,7 @@ export function HomePage() {
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center">
           <div className="hh-hero-lockup text-[3.75rem] sm:text-7xl md:text-[8.25rem]">
             <h1>
-              <Logo variant="lockup" className="text-white" />
+              <Logo variant="lockup" />
             </h1>
             <p className="hh-hero-tagline">
               {site.tagline.split(/\s+/).map((word, index) => (
