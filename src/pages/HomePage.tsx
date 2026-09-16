@@ -37,7 +37,7 @@ export function HomePage() {
             <h1>
               <Logo
                 variant="lockup"
-                className="text-[4.25rem] sm:text-8xl md:text-[9.25rem]"
+                className="text-[4.25rem] text-white sm:text-8xl md:text-[9.25rem]"
               />
             </h1>
             <p className="hh-hero-tagline">
