@@ -94,7 +94,7 @@
     font-weight: 600;
     letter-spacing: 0.04em;
     line-height: 1;
-    color: inherit;
+    color: rgb(255 255 255 / 0.95);
   }
 
   .hh-hero-tagline span {
@@ -160,7 +160,7 @@
     width: 170%;
     height: clamp(10rem, 32vw, 17rem);
     overflow: hidden;
-    opacity: 0.68;
+    opacity: 0.75;
     mix-blend-mode: screen;
     filter: contrast(1.45) brightness(1.28);
     transform: translate(-50%, -50%) rotate(-21deg);
@@ -189,7 +189,7 @@
     .hh-pattern-band-fill {
       --hh-tile: 560px;
       height: clamp(13rem, 22vw, 20rem);
-      opacity: 0.62;
+      opacity: 0.75;
     }
   }
 
