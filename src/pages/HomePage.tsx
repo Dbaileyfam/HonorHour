@@ -21,7 +21,7 @@ export function HomePage() {
 
   return (
     <div className="relative">
-      <section className="relative z-10 overflow-hidden px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-14">
+      <section className="relative z-10 overflow-hidden px-4 pb-28 pt-10 sm:px-6 sm:pb-32 sm:pt-14">
         <div className="hh-pattern-band" aria-hidden>
           <div className="hh-pattern-band-fill">
             <div
