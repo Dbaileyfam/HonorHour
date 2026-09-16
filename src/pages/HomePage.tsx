@@ -33,12 +33,19 @@ export function HomePage() {
         </div>
 
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center">
-          <h1>
-            <Logo className="inline-block text-7xl text-white sm:text-8xl md:text-[9.5rem]" />
-          </h1>
-          <p className="hh-home-tagline mt-4">
-            {site.tagline}
-          </p>
+          <div className="hh-hero-lockup">
+            <h1>
+              <Logo
+                variant="lockup"
+                className="text-[4.25rem] sm:text-8xl md:text-[9.25rem]"
+              />
+            </h1>
+            <p className="hh-hero-tagline">
+              {site.tagline.split(/\s+/).map((word, index) => (
+                <span key={`${word}-${index}`}>{word}</span>
+              ))}
+            </p>
+          </div>
           <div className="mt-6">
             <SocialLinks size="md" className="justify-center" />
           </div>
