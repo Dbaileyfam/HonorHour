@@ -57,10 +57,7 @@
     font-family: "Anton", Impact, sans-serif;
     font-weight: 400;
     line-height: 0.9;
-    text-shadow:
-      0 1px 1px rgba(0, 0, 0, 0.95),
-      0 2px 10px rgba(0, 0, 0, 0.85),
-      0 0 22px rgba(0, 0, 0, 0.7);
+    mix-blend-mode: screen;
   }
 
   .hh-logo-lockup {
@@ -156,7 +153,7 @@
     width: 170%;
     height: clamp(10rem, 32vw, 17rem);
     overflow: hidden;
-    opacity: 0.52;
+    opacity: 0.68;
     mix-blend-mode: screen;
     filter: contrast(1.45) brightness(1.28);
     transform: translate(-50%, -50%) rotate(-21deg);
@@ -185,7 +182,7 @@
     .hh-pattern-band-fill {
       --hh-tile: 560px;
       height: clamp(13rem, 22vw, 20rem);
-      opacity: 0.48;
+      opacity: 0.62;
     }
   }
 
