@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Oswald:wght@500;600&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -52,8 +52,11 @@
     display: grid;
     width: max-content;
     max-width: 100%;
-    row-gap: 0.35rem;
+    row-gap: 0.05em;
     color: #fff;
+    font-family: "Anton", Impact, sans-serif;
+    font-weight: 400;
+    line-height: 0.9;
     text-shadow:
       0 1px 1px rgba(0, 0, 0, 0.95),
       0 2px 10px rgba(0, 0, 0, 0.85),
@@ -64,10 +67,11 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 0.38em;
-    font-family: var(--font-display);
-    letter-spacing: 0.14em;
-    line-height: 0.82;
+    gap: 0.48em;
+    font-family: inherit;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    line-height: 0.9;
     font-kerning: none;
     font-variant-ligatures: none;
   }
@@ -76,16 +80,17 @@
     display: block;
     flex: 0 0 auto;
     /* letter-spacing adds trailing space after the last glyph */
-    margin-inline-end: -0.14em;
+    margin-inline-end: -0.12em;
   }
 
   .hh-hero-tagline {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 0.28em;
+    gap: 0.22em;
     margin: 0;
-    font-size: clamp(1.05rem, 3.2vw, 1.85rem);
+    font-family: "Oswald", sans-serif;
+    font-size: 0.32em;
     font-weight: 500;
     letter-spacing: 0.04em;
     line-height: 1;
