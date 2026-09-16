@@ -45,7 +45,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-hh-black/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
         <Link to={routes.home} className="group min-w-0">
-          <Logo className="block truncate text-xl text-white transition group-hover:text-hh-red sm:text-2xl" />
+          <Logo className="block truncate text-xl transition group-hover:text-hh-red sm:text-2xl" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main">

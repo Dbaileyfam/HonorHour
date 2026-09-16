@@ -26,7 +26,7 @@ export function ShowsPage() {
                 <li key={`${show.date}-${show.venue}`} className="hh-card flex gap-5 p-5">
                   <time
                     dateTime={show.date}
-                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center border border-white/15 text-white"
+                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center border border-white/15 text-hh-title"
                   >
                     <span className="text-xs font-bold uppercase">
                       {show.dateLabel.split(" ")[0]}
@@ -39,7 +39,7 @@ export function ShowsPage() {
                     <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted">
                       {formatShowDate(show.date)}
                     </p>
-                    <h2 className="mt-1 text-lg font-medium text-white">{show.venue}</h2>
+                    <h2 className="mt-1 text-lg font-medium text-hh-title">{show.venue}</h2>
                     <p className="mt-1 flex items-center gap-2 text-sm text-hh-muted">
                       <MapPin className="h-4 w-4 shrink-0" aria-hidden />
                       {show.location}

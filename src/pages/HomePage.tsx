@@ -89,7 +89,7 @@ export function HomePage() {
                     <time dateTime={featured.date} className="hh-eyebrow">
                       {formatPostDate(featured.date)}
                     </time>
-                    <h3 className="hh-display mt-3 text-3xl text-white sm:text-4xl">
+                    <h3 className="hh-display mt-3 text-3xl sm:text-4xl">
                       <Link to={routes.post(featured.slug)} className="transition hover:text-hh-red">
                         {featured.title}
                       </Link>
@@ -122,7 +122,7 @@ export function HomePage() {
                           >
                             {formatPostDate(post.date)}
                           </time>
-                          <h3 className="hh-display mt-2 text-2xl text-white transition group-hover:text-hh-red sm:text-3xl">
+                          <h3 className="hh-display mt-2 text-2xl transition group-hover:text-hh-red sm:text-3xl">
                             {post.title}
                           </h3>
                           <p className="mt-2 max-w-xl text-sm leading-relaxed text-hh-muted">
@@ -150,7 +150,7 @@ export function HomePage() {
                   to={tile.to}
                   className="group flex items-baseline justify-between gap-6 border-l-2 border-transparent py-6 pl-4 transition hover:border-hh-red sm:py-8"
                 >
-                  <span className="hh-display text-3xl text-white transition group-hover:text-hh-red sm:text-4xl">
+                  <span className="hh-display text-3xl transition group-hover:text-hh-red sm:text-4xl">
                     {tile.title}
                   </span>
                   <span className="hidden text-sm text-hh-muted transition group-hover:text-hh-red sm:block">{tile.body}</span>

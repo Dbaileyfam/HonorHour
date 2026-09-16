@@ -18,7 +18,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <Logo className="text-2xl text-white" />
+            <Logo className="text-2xl" />
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-hh-muted">{site.tagline}</p>
           </div>
           <div className="flex flex-col gap-5 sm:items-end">

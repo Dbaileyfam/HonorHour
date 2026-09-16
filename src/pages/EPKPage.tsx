@@ -32,7 +32,7 @@ export function EPKPage() {
         <div className="mx-auto max-w-6xl">
           <p className="hh-eyebrow">Electronic Press Kit</p>
           <h1 className="mt-4">
-            <Logo className="text-5xl text-white sm:text-7xl" />
+            <Logo className="text-5xl sm:text-7xl" />
           </h1>
           <p className="mt-5 max-w-xl text-lg font-light text-hh-silver">{site.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -140,7 +140,7 @@ export function EPKPage() {
             </div>
 
             <div className="hh-card flex flex-col justify-center p-6">
-              <h3 className="text-lg font-semibold text-white">Listen &amp; follow</h3>
+              <h3 className="text-lg font-semibold text-hh-title">Listen &amp; follow</h3>
               <p className="mt-2 text-sm text-hh-muted">Find Honor Hour on your platform of choice.</p>
               <SocialLinks className="mt-6" />
             </div>
@@ -148,7 +148,7 @@ export function EPKPage() {
 
           {media.featured.more.length > 0 ? (
             <div className="mt-8">
-              <h3 className="text-lg font-semibold text-white">Color &amp; Spite EP</h3>
+              <h3 className="text-lg font-semibold text-hh-title">Color &amp; Spite EP</h3>
               <p className="mt-1 text-sm text-hh-muted">Color &amp; Spite and Kingdom.</p>
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 {media.featured.more.map((video) => (
@@ -162,7 +162,7 @@ export function EPKPage() {
                         allowFullScreen
                       />
                     </div>
-                    <figcaption className="px-4 py-3 font-medium text-white">{video.title}</figcaption>
+                    <figcaption className="px-4 py-3 font-medium text-hh-title">{video.title}</figcaption>
                   </figure>
                 ))}
               </div>
@@ -204,7 +204,7 @@ export function EPKPage() {
           ) : null}
 
           <div className="hh-card mt-8 p-6">
-            <h3 className="text-lg font-semibold text-white">Press kit assets</h3>
+            <h3 className="text-lg font-semibold text-hh-title">Press kit assets</h3>
             <p className="mt-2 text-sm text-hh-muted">
               High-res photos and logos for promoters and media. Click to download.
             </p>
@@ -285,7 +285,7 @@ export function EPKPage() {
                 <li key={`${show.date}-${show.venue}`} className="hh-card flex gap-5 p-5">
                   <time
                     dateTime={show.date}
-                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center border border-white/15 text-white"
+                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center border border-white/15 text-hh-title"
                   >
                     <span className="text-xs font-bold uppercase">{show.dateLabel.split(" ")[0]}</span>
                     <span className="hh-display text-2xl leading-none">
@@ -293,7 +293,7 @@ export function EPKPage() {
                     </span>
                   </time>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">{show.venue}</h3>
+                    <h3 className="text-lg font-semibold text-hh-title">{show.venue}</h3>
                     <p className="text-sm text-hh-muted">{show.location}</p>
                     {show.ticketUrl ? (
                       <a
@@ -333,7 +333,7 @@ export function EPKPage() {
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             <div className="hh-card p-6">
-              <h3 className="text-lg font-semibold text-white">Stage plot</h3>
+              <h3 className="text-lg font-semibold text-hh-title">Stage plot</h3>
               <p className="mt-1 text-sm text-hh-muted">
                 Audience at the front. Stage left and stage right are from the band.
               </p>
@@ -394,7 +394,7 @@ export function EPKPage() {
             </div>
 
             <div className="hh-card p-6">
-              <h3 className="text-lg font-semibold text-white">Input list</h3>
+              <h3 className="text-lg font-semibold text-hh-title">Input list</h3>
               <p className="mt-1 text-sm text-hh-muted">11 channels.</p>
               <ol className="mt-6 divide-y divide-white/10 border-y border-white/10">
                 {inputList.map((input) => (

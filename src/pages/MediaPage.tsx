@@ -151,7 +151,7 @@ export function MediaPage() {
                 src={media.whysoundSession.cover}
                 alt={`${media.whysoundSession.title} cover art`}
               />
-              <figcaption className="px-4 py-3 text-center text-sm font-medium text-white">
+              <figcaption className="px-4 py-3 text-center text-sm font-medium text-hh-title">
                 {media.whysoundSession.title}
               </figcaption>
             </figure>
@@ -207,7 +207,7 @@ export function MediaPage() {
                 <figure key={album.title} className="hh-card overflow-hidden">
                   <CoverArt src={album.cover} alt={`${album.title} cover art`} />
                   <figcaption className="px-4 py-4">
-                    <h3 className="font-semibold text-white">{album.title}</h3>
+                    <h3 className="font-semibold text-hh-title">{album.title}</h3>
                     <p className="mt-1 text-sm text-hh-muted">{album.description}</p>
                     <a
                       href={

@@ -10,6 +10,7 @@
   --color-hh-panel: #0d0d0d;
   --color-hh-red: #e10600;
   --color-hh-red-dark: #b00500;
+  --color-hh-title: rgb(255 255 255 / 0.75);
   --color-hh-silver: #c8c8c8;
   --color-hh-muted: #6b6b6b;
   --color-hh-border: rgba(255, 255, 255, 0.12);
@@ -38,12 +39,14 @@
     font-family: var(--font-display);
     letter-spacing: 0.06em;
     line-height: 0.92;
+    color: var(--color-hh-title);
   }
 
   .hh-logo {
     font-family: var(--font-display);
     letter-spacing: 0.18em;
     line-height: 0.92;
+    color: var(--color-hh-title);
     /* letter-spacing adds trailing space after the last glyph */
     margin-inline-end: -0.18em;
   }
@@ -105,7 +108,7 @@
     font-family: var(--font-display);
     letter-spacing: 0.08em;
     line-height: 0.92;
-    @apply text-4xl text-white sm:text-5xl;
+    @apply text-4xl text-hh-title sm:text-5xl;
   }
 
   .hh-eyebrow {

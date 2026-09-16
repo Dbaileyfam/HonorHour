@@ -19,7 +19,7 @@ export function PostPage() {
           <p className="hh-eyebrow">
             <time dateTime={post.date}>{formatPostDate(post.date)}</time>
           </p>
-          <h1 className="hh-display mt-4 text-5xl text-white sm:text-7xl">{post.title}</h1>
+          <h1 className="hh-display mt-4 text-5xl sm:text-7xl">{post.title}</h1>
         </div>
       </section>
 
