@@ -38,7 +38,7 @@ const labels: Record<SocialKey, string> = {
 type SocialLinksProps = {
   className?: string;
   size?: "sm" | "md" | "lg" | "xl";
-  variant?: "default" | "accent";
+  variant?: "default" | "accent" | "framed";
 };
 
 const sizeClasses = {
@@ -61,6 +61,7 @@ export function SocialLinks({
   variant = "default",
 }: SocialLinksProps) {
   const entries = Object.entries(site.social) as [SocialKey, string][];
+  const framed = variant === "framed";
   const accent = variant === "accent";
 
   return (
@@ -75,9 +76,11 @@ export function SocialLinks({
               rel="noopener noreferrer"
               aria-label={`Honor Hour on ${labels[key]}`}
               className={`inline-flex items-center justify-center border transition ${sizeClasses[size]} ${
-                accent
-                  ? "border-white/20 text-white hover:border-hh-red hover:bg-hh-red hover:text-white focus-visible:border-hh-red focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
-                  : "border-white/15 text-hh-muted hover:border-hh-red hover:bg-hh-red hover:text-white focus-visible:border-hh-red focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
+                framed
+                  ? "border-hh-red text-hh-muted hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
+                  : accent
+                    ? "border-white/20 text-white hover:border-hh-red hover:bg-hh-red hover:text-white focus-visible:border-hh-red focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
+                    : "border-white/15 text-hh-muted hover:border-hh-red hover:bg-hh-red hover:text-white focus-visible:border-hh-red focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
               }`}
             >
               <Icon className={iconSizes[size]} aria-hidden />

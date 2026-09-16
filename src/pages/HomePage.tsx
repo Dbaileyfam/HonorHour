@@ -43,7 +43,7 @@ export function HomePage() {
             </p>
           </div>
           <div className="mt-6">
-            <SocialLinks size="md" className="justify-center" />
+            <SocialLinks size="md" variant="framed" className="justify-center" />
           </div>
         </div>
       </section>
