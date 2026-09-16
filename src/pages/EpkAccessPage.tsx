@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState, type ComponentType } from "react";
+import { useEffect, useState, type ComponentType, type FormEvent } from "react";
 import { Logo } from "@/components/Logo";
 import { isEpkUnlocked, unlockEpk } from "@/lib/epkGate";
 import { usePageTitle } from "@/lib/usePageTitle";
