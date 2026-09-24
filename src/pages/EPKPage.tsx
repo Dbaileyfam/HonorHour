@@ -8,7 +8,6 @@ import {
   pressPhotos,
   pressLogos,
   pressQuotes,
-  quickFacts,
   shows,
   site,
   stagePlot,
@@ -63,19 +62,6 @@ export function EPKPage() {
           ))}
         </div>
       </nav>
-
-      <section className="border-b border-white/10 px-4 py-10" aria-label="Quick facts">
-        <div className="mx-auto max-w-6xl">
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {quickFacts.map((fact) => (
-              <li key={fact.label} className="hh-card p-5 text-center">
-                <p className="hh-eyebrow">{fact.label}</p>
-                <p className="mt-2 text-base font-light text-white sm:text-lg">{fact.value}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
 
       <section id="bio" className="scroll-mt-36 px-4 py-16">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_28rem]">
@@ -410,8 +396,7 @@ export function EPKPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="hh-section-heading">Booking &amp; press contact</h2>
           <p className="mt-4 text-hh-silver">
-            Festivals, venues, private events, and media inquiries. 1 hr sets.
-            Willing to open for strong opportunities. Travel: continental USA.
+            Festivals, venues, private events, and media inquiries.
           </p>
           <address className="hh-card mt-8 not-italic">
             <p className="text-lg font-medium text-white">{site.booking.name}</p>
