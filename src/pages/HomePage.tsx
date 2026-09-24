@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/Logo";
-import { posts, site } from "@/content/site";
+import { bio, posts, site } from "@/content/site";
 import { assetUrl } from "@/lib/assets";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
@@ -21,7 +21,7 @@ export function HomePage() {
 
   return (
     <div className="relative">
-      <section className="relative z-10 overflow-hidden px-4 pb-28 pt-10 sm:px-6 sm:pb-32 sm:pt-14">
+      <section className="relative z-10 overflow-hidden px-4 pb-32 pt-10 sm:px-6 sm:pb-36 sm:pt-14">
         <div className="hh-pattern-band" aria-hidden>
           <div className="hh-pattern-band-fill">
             <div
@@ -42,6 +42,9 @@ export function HomePage() {
               ))}
             </p>
           </div>
+          <p className="mt-8 max-w-xl text-base font-light leading-relaxed text-hh-silver sm:mt-10 sm:text-lg">
+            {bio.homepage}
+          </p>
         </div>
         <div className="absolute inset-x-0 bottom-3 z-20 flex justify-center sm:bottom-4">
           <SocialLinks size="md" variant="framed" className="justify-center" />
@@ -93,9 +96,11 @@ export function HomePage() {
                         {featured.title}
                       </Link>
                     </h3>
-                    <p className="mt-4 text-base font-light leading-relaxed text-hh-silver">
-                      {featured.excerpt}
-                    </p>
+                    {featured.excerpt ? (
+                      <p className="mt-4 text-base font-light leading-relaxed text-hh-silver">
+                        {featured.excerpt}
+                      </p>
+                    ) : null}
                     <Link
                       to={routes.post(featured.slug)}
                       className="mt-6 inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
@@ -124,9 +129,11 @@ export function HomePage() {
                           <h3 className="hh-display mt-2 text-2xl transition group-hover:text-hh-red sm:text-3xl">
                             {post.title}
                           </h3>
-                          <p className="mt-2 max-w-xl text-sm leading-relaxed text-hh-muted">
-                            {post.excerpt}
-                          </p>
+                          {post.excerpt ? (
+                            <p className="mt-2 max-w-xl text-sm leading-relaxed text-hh-muted">
+                              {post.excerpt}
+                            </p>
+                          ) : null}
                         </div>
                         <span className="text-hh-muted transition group-hover:text-hh-red">→</span>
                       </Link>

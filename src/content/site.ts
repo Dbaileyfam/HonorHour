@@ -45,7 +45,7 @@ export const media = {
     title: "Don't Give Yourselves to Brutes",
     cover: "assets/media/dont-give-yourselves-to-brutes.png",
     more: [
-      { id: "Ic1gCUNMFro", title: "Color & Spite" },
+      { id: "Ic1gCUNMFro", title: "Color & Spite", cover: "assets/media/color-and-spite-ep.jpg" },
       { id: "2dnHWW84gCI", title: "Kingdom" },
     ],
   },
@@ -55,6 +55,7 @@ export const media = {
     cover: "assets/media/whysound-session-ep.png",
     videos: [
       { id: "ishFEGzvPAc", title: "Eventide" },
+      { id: "wwc1HHC1pjk", title: "Bad at Love (Halsey Cover)" },
       { id: "ShqdFcZ3ZGI", title: "A.I. for the Straight Guy" },
       { id: "zdETzNCDe_o", title: "Dried Out" },
     ],
@@ -86,7 +87,7 @@ export const media = {
     },
     {
       title: "Color & Spite EP",
-      cover: "assets/media/color-and-spite-ep.png",
+      cover: "assets/media/color-and-spite-ep.jpg",
       description: "Honor Hour — Color & Spite EP.",
     },
   ],
@@ -153,6 +154,8 @@ export const eventTypes = [
 ] as const;
 
 export const bio = {
+  homepage:
+    "HNR HR (Honor Hour Music) is a musical project based out of SLC, UT. Mason Wendell, Shane Kelson, and Aaron Maughan incorporate all their musical tastes into one cohesive heavy rock experience.",
   short:
     "HNR HR (Honor Hour Music) is a musical project based out of SLC, UT. Mason Wendell, Shane Kelson, and Aaron Maughan incorporate all their musical tastes into one cohesive heavy rock experience where there are no rules as to what they create and how they perform.",
   long: [] as string[],
@@ -194,12 +197,8 @@ export const posts: Post[] = [
     slug: "dont-give-yourselves-to-brutes",
     date: "2025-11-20",
     title: "Don't Give Yourselves to Brutes",
-    excerpt:
-      "New original from Honor Hour — loud, pointed, and built to hit from the first downbeat.",
-    body: [
-      "Honor Hour's latest original is up now. Don't Give Yourselves to Brutes is the kind of track we write for rooms that want to move — heavy, tight, and not here to play it safe.",
-      "Mason Wendell on vocals and guitar, Shane Kelson on bass, Dan Fields on drums. Engineered, mixed, and mastered by Ryan Brady.",
-    ],
+    excerpt: "",
+    body: [],
     videoId: "bl2FLCFJoOA",
   },
   {
@@ -313,8 +312,7 @@ export const inputList = [
 export const epkNav = [
   { id: "bio", label: "Bio" },
   { id: "music", label: "Music" },
-  { id: "press", label: "Press" },
-  { id: "shows", label: "Shows" },
-  { id: "tech", label: "Tech" },
+  { id: "press", label: "Press and Assets" },
+  { id: "show-needs", label: "Show Needs" },
   { id: "contact", label: "Book" },
 ] as const;

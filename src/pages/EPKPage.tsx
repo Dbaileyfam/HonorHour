@@ -50,13 +50,13 @@ export function EPKPage() {
         className="sticky top-[73px] z-40 border-b border-white/10 bg-hh-black/95 backdrop-blur-md"
         aria-label="EPK sections"
       >
-        <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 py-3">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-1 px-3 py-2 sm:justify-start sm:gap-2 sm:px-4 sm:py-3">
           {epkNav.map((item) => (
             <button
               key={item.id}
               type="button"
               onClick={() => scrollToSection(item.id)}
-              className="shrink-0 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted transition hover:text-hh-red"
+              className="whitespace-nowrap px-0.5 py-2 text-center text-[9px] font-medium uppercase tracking-[0.06em] text-hh-muted transition hover:text-hh-red sm:px-2 sm:text-[11px] sm:tracking-[0.14em] md:tracking-[0.18em]"
             >
               {item.label}
             </button>
@@ -182,7 +182,7 @@ export function EPKPage() {
 
       <section id="press" className="scroll-mt-36 px-4 py-16">
         <div className="mx-auto max-w-6xl">
-          <h2 className="hh-section-heading">Press</h2>
+          <h2 className="hh-section-heading">Press and Assets</h2>
 
           {pressQuotes.length > 0 ? (
             <div className="mt-8 space-y-6">
@@ -276,9 +276,11 @@ export function EPKPage() {
         </div>
       </section>
 
-      <section id="shows" className="scroll-mt-36 border-y border-white/10 px-4 py-16">
+      <section id="show-needs" className="scroll-mt-36 border-y border-white/10 px-4 py-16">
         <div className="mx-auto max-w-6xl">
-          <h2 className="hh-section-heading">Upcoming shows</h2>
+          <h2 className="hh-section-heading">Show Needs</h2>
+          <p className="mt-2 text-hh-muted">Dates, stage plot, and input list for promoters and sound.</p>
+
           {shows.length > 0 ? (
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {shows.map((show) => (
@@ -323,13 +325,6 @@ export function EPKPage() {
               for announcements.
             </p>
           )}
-        </div>
-      </section>
-
-      <section id="tech" className="scroll-mt-36 px-4 py-16">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="hh-section-heading">Stage plot &amp; input list</h2>
-          <p className="mt-2 text-hh-muted">Technical details for sound engineers and promoters.</p>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             <div className="hh-card p-6">
@@ -411,7 +406,7 @@ export function EPKPage() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-36 border-t border-white/10 px-4 py-16">
+      <section id="contact" className="scroll-mt-36 px-4 py-16">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="hh-section-heading">Booking &amp; press contact</h2>
           <p className="mt-4 text-hh-silver">
