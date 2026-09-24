@@ -62,6 +62,11 @@ export const media = {
   },
   singles: [
     {
+      id: "bl2FLCFJoOA",
+      title: "Don't Give Yourselves to Brutes",
+      cover: "assets/media/dont-give-yourselves-to-brutes.png",
+    },
+    {
       id: "W8Nmv_HNCsg",
       title: "Six Percent",
       cover: "assets/media/six-percent.png",
