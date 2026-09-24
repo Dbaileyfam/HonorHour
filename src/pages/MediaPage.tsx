@@ -149,43 +149,6 @@ export function MediaPage() {
 
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-8 lg:grid-cols-[minmax(200px,280px)_1fr] lg:items-start">
-            <figure className="hh-card mx-auto w-full max-w-xs overflow-hidden lg:max-w-none">
-              <CoverArt
-                src={media.whysoundSession.cover}
-                alt={`${media.whysoundSession.title} cover art`}
-              />
-              <figcaption className="px-4 py-3 text-center text-sm font-medium text-hh-title">
-                {media.whysoundSession.title}
-              </figcaption>
-            </figure>
-            <div>
-              <h2 className="hh-section-heading">{media.whysoundSession.title}</h2>
-              <p className="mt-2 text-hh-muted">{media.whysoundSession.description}</p>
-              <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                {media.whysoundSession.videos.map((video) => (
-                  <figure key={video.id} className="hh-card overflow-hidden">
-                    <VideoPlayer video={video} />
-                    <figcaption className="px-4 py-3">
-                      <a
-                        href={youtubeWatchUrl(video.id)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-medium text-white transition hover:text-hh-red"
-                      >
-                        {video.title}
-                      </a>
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-white/10 px-4 py-16">
-        <div className="mx-auto max-w-6xl">
           <h2 className="hh-section-heading">Singles</h2>
           <p className="mt-2 text-hh-muted">More from the band.</p>
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
@@ -234,6 +197,43 @@ export function MediaPage() {
           </div>
         </section>
       ) : null}
+
+      <section className="border-b border-white/10 px-4 py-16">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-8 lg:grid-cols-[minmax(200px,280px)_1fr] lg:items-start">
+            <figure className="hh-card mx-auto w-full max-w-xs overflow-hidden lg:max-w-none">
+              <CoverArt
+                src={media.whysoundSession.cover}
+                alt={`${media.whysoundSession.title} cover art`}
+              />
+              <figcaption className="px-4 py-3 text-center text-sm font-medium text-hh-title">
+                {media.whysoundSession.title}
+              </figcaption>
+            </figure>
+            <div>
+              <h2 className="hh-section-heading">{media.whysoundSession.title}</h2>
+              <p className="mt-2 text-hh-muted">{media.whysoundSession.description}</p>
+              <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {media.whysoundSession.videos.map((video) => (
+                  <figure key={video.id} className="hh-card overflow-hidden">
+                    <VideoPlayer video={video} />
+                    <figcaption className="px-4 py-3">
+                      <a
+                        href={youtubeWatchUrl(video.id)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-white transition hover:text-hh-red"
+                      >
+                        {video.title}
+                      </a>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-6xl">

@@ -80,12 +80,6 @@ export const media = {
   ],
   albums: [
     {
-      title: "Don't Give Yourselves to Brutes",
-      cover: "assets/media/dont-give-yourselves-to-brutes.png",
-      description: "Latest original from Honor Hour.",
-      videoId: "bl2FLCFJoOA",
-    },
-    {
       title: "Color & Spite EP",
       cover: "assets/media/color-and-spite-ep.jpg",
       description: "Honor Hour — Color & Spite EP.",
