@@ -133,34 +133,6 @@ export function MediaPage() {
         </div>
       </section>
 
-      {media.albums.length > 0 ? (
-        <section className="border-b border-white/10 px-4 py-16">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="hh-section-heading">Albums</h2>
-            <p className="mt-2 text-hh-muted">EPs and full releases.</p>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {media.albums.map((album) => (
-                <figure key={album.title} className="hh-card overflow-hidden">
-                  <CoverArt src={album.cover} alt={`${album.title} cover art`} />
-                  <figcaption className="px-4 py-4">
-                    <h3 className="font-semibold text-hh-title">{album.title}</h3>
-                    <p className="mt-1 text-sm text-hh-muted">{album.description}</p>
-                    <a
-                      href="https://www.youtube.com/@honorhourmusic/releases"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-block hh-accent-link text-sm"
-                    >
-                      Stream on YouTube Music →
-                    </a>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-[minmax(200px,280px)_1fr] lg:items-start">
