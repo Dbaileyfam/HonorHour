@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/Logo";
-import { bio, posts, site } from "@/content/site";
+import { posts, site } from "@/content/site";
 import { assetUrl } from "@/lib/assets";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
@@ -42,9 +42,6 @@ export function HomePage() {
               ))}
             </p>
           </div>
-          <p className="mt-8 max-w-xl text-base font-light leading-relaxed text-hh-silver sm:mt-10 sm:text-lg">
-            {bio.homepage}
-          </p>
         </div>
         <div className="absolute inset-x-0 bottom-3 z-20 flex justify-center sm:bottom-4">
           <SocialLinks size="md" variant="framed" className="justify-center" />
