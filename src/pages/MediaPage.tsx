@@ -177,18 +177,12 @@ export function MediaPage() {
                     <h3 className="font-semibold text-hh-title">{album.title}</h3>
                     <p className="mt-1 text-sm text-hh-muted">{album.description}</p>
                     <a
-                      href={
-                        "videoId" in album && album.videoId
-                          ? youtubeWatchUrl(album.videoId)
-                          : "https://www.youtube.com/@honorhourmusic/releases"
-                      }
+                      href="https://www.youtube.com/@honorhourmusic/releases"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-3 inline-block hh-accent-link text-sm"
                     >
-                      {"videoId" in album && album.videoId
-                        ? "Watch on YouTube →"
-                        : "Stream on YouTube Music →"}
+                      Stream on YouTube Music →
                     </a>
                   </figcaption>
                 </figure>
