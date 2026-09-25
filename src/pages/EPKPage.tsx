@@ -143,7 +143,7 @@ export function EPKPage() {
           {media.featured.more.length > 0 ? (
             <div className="mt-8">
               <h3 className="text-lg font-semibold text-hh-title">Color &amp; Spite EP</h3>
-              <p className="mt-1 text-sm text-hh-muted">Color &amp; Spite, Kingdom, and The Hand That Feeds.</p>
+              <p className="mt-1 text-sm text-hh-muted">Color &amp; Spite and Kingdom.</p>
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 {media.featured.more.map((video) => (
                   <figure key={video.id} className="hh-card overflow-hidden">
