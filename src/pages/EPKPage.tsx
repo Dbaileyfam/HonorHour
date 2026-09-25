@@ -35,7 +35,11 @@ export function EPKPage() {
           </h1>
           <p className="mt-5 max-w-xl text-lg font-light text-hh-silver">{site.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <button type="button" className="hh-btn-primary" onClick={() => scrollToSection("contact")}>
+            <button
+              type="button"
+              className="inline-flex items-center justify-center gap-2 border border-hh-red/55 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
+              onClick={() => scrollToSection("contact")}
+            >
               Book the band
             </button>
             <button type="button" className="hh-btn-ghost" onClick={() => scrollToSection("press")}>
@@ -420,7 +424,10 @@ export function EPKPage() {
               </a>
             </p>
             <p className="mt-1 text-sm text-hh-muted">Instagram DMs — booking and questions</p>
-            <Link to={routes.contact} className="hh-btn-primary mt-6 inline-flex">
+            <Link
+              to={routes.contact}
+              className="mt-6 inline-flex items-center justify-center gap-2 border border-hh-red/55 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
+            >
               Public contact page
             </Link>
           </address>
