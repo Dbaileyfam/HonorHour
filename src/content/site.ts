@@ -238,6 +238,8 @@ export const posts: Post[] = [
       { id: "rohKV3u58RI", title: "72 thru 74" },
       { id: "mAhCLJZIuzc", title: "Don't Give Yourselves to Brutes" },
       { id: "M3HxGIJ22OE", title: "Six Percent" },
+      { id: "wK0qeq3BbqI", title: "Dried Out" },
+      { id: "9AYYiQrqiMg", title: "A.I. for the Straight Guy" },
     ],
   },
 ];
