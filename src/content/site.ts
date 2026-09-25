@@ -47,6 +47,7 @@ export const media = {
     more: [
       { id: "Ic1gCUNMFro", title: "Color & Spite", cover: "assets/media/color-and-spite-ep.jpg" },
       { id: "2dnHWW84gCI", title: "Kingdom" },
+      { id: "JYIXMah6EQ0", title: "The Hand That Feeds" },
     ],
   },
   whysoundSession: {

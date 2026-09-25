@@ -147,7 +147,7 @@ export function MediaPage() {
             </figure>
             <div>
               <h2 className="hh-section-heading">The Color &amp; Spite EP</h2>
-              <p className="mt-2 text-hh-muted">Color &amp; Spite and Kingdom.</p>
+              <p className="mt-2 text-hh-muted">Color &amp; Spite, Kingdom, and The Hand That Feeds.</p>
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
                 {media.featured.more.map((video) => (
                   <figure key={video.id} className="hh-card overflow-hidden">
