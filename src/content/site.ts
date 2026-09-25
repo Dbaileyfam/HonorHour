@@ -147,7 +147,7 @@ export const media = {
       alt: "Stylized Honor Hour promo shot with mirrored effects",
     },
   ] as { src: string; alt: string; featured?: boolean }[],
-  specialThanks: ["Mateo Rueda", "Weston Woodbury", "Ryan Brady"],
+  specialThanks: ["Mateo Rueda", "Weston Woodbury", "Ryan Brady", "Desiree Bailey"],
 } as const;
 
 export const bio = {
