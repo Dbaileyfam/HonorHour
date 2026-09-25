@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/Logo";
 import { posts, site } from "@/content/site";
+import type { Post } from "@/content/site";
 import { assetUrl } from "@/lib/assets";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
@@ -17,7 +18,7 @@ const tiles = [
 
 export function HomePage() {
   usePageTitle("Home");
-  const [featured, ...rest] = publishedPosts(posts);
+  const latest = publishedPosts(posts);
 
   return (
     <div className="relative">
@@ -53,7 +54,7 @@ export function HomePage() {
           <p className="hh-eyebrow">News</p>
           <h2 className="hh-section-heading mt-4">Latest</h2>
 
-          {!featured ? (
+          {latest.length === 0 ? (
             <div className="hh-card mt-10 p-10 text-center">
               <p className="text-lg font-light text-hh-silver">More soon.</p>
               <p className="mt-2 text-sm text-hh-muted">
@@ -70,130 +71,10 @@ export function HomePage() {
               </p>
             </div>
           ) : (
-            <div className="mt-10 space-y-4">
-              <article className="hh-card overflow-hidden">
-                <p className="px-6 py-6 text-base font-light leading-relaxed text-hh-silver sm:px-8">
-                  In the Spring of 2026, HNR HR worked with director Weston Woodbury and cam op Ryan Brady to produce a new series of videos for many songs released so far. These videos are the result
-                </p>
-                {featured.videos && featured.videos.length > 0 ? (
-                  <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">
-                    {featured.videos.map((video) => (
-                      <figure key={video.id} className="bg-hh-charcoal">
-                        <div className="aspect-video">
-                          <iframe
-                            title={`${video.title} — ${site.name}`}
-                            src={`https://www.youtube.com/embed/${video.id}?rel=0`}
-                            className="h-full w-full border-0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            allowFullScreen
-                          />
-                        </div>
-                        <figcaption className="px-4 py-3">
-                          <a
-                            href={`https://www.youtube.com/watch?v=${video.id}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-white transition hover:text-hh-red"
-                          >
-                            {video.title}
-                          </a>
-                        </figcaption>
-                      </figure>
-                    ))}
-                  </div>
-                ) : null}
-                <div className="border-t border-white/10 p-6 sm:p-8">
-                  <time dateTime={featured.date} className="hh-eyebrow">
-                    {formatPostDate(featured.date)}
-                  </time>
-                  <h3 className="hh-display mt-3 text-3xl sm:text-4xl">
-                    <Link to={routes.post(featured.slug)} className="transition hover:text-hh-red">
-                      {featured.title}
-                    </Link>
-                  </h3>
-                  {featured.excerpt ? (
-                    <p className="mt-4 text-base font-light leading-relaxed text-hh-silver">
-                      {featured.excerpt}
-                    </p>
-                  ) : null}
-                  {featured.links && featured.links.length > 0 ? (
-                    <div className="mt-6 flex flex-col gap-3">
-                      {featured.links.map((link) => (
-                        <a
-                          key={link.url}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
-                        >
-                          {link.label} →
-                        </a>
-                      ))}
-                    </div>
-                  ) : (
-                    <Link
-                      to={routes.post(featured.slug)}
-                      className="mt-6 inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
-                    >
-                      Read →
-                    </Link>
-                  )}
-                </div>
-                {featured.links?.some((link) => link.embedUrl) ? (
-                  <div className="border-t border-white/10">
-                    <p className="px-6 py-6 text-base font-light leading-relaxed text-hh-silver sm:px-8">
-                      HNR HR’s newest album is The Color & Spite EP, out now on streaming services
-                    </p>
-                    <div className="flex flex-col gap-px">
-                    {featured.links.map((link) =>
-                      link.embedUrl ? (
-                        <iframe
-                          key={link.url}
-                          title={`${featured.title} on ${link.label}`}
-                          src={link.embedUrl}
-                          style={{ height: link.embedHeight ?? 352 }}
-                          className="w-full border-0"
-                          allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-                          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                        />
-                      ) : null,
-                    )}
-                    </div>
-                  </div>
-                ) : null}
-              </article>
-
-              {rest.length > 0 ? (
-                <ul className="divide-y divide-white/10 border border-white/10">
-                  {rest.map((post) => (
-                    <li key={post.slug}>
-                      <Link
-                        to={routes.post(post.slug)}
-                        className="group flex flex-col gap-2 px-5 py-6 transition hover:bg-white/[0.02] sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
-                      >
-                        <div>
-                          <time
-                            dateTime={post.date}
-                            className="text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted"
-                          >
-                            {formatPostDate(post.date)}
-                          </time>
-                          <h3 className="hh-display mt-2 text-2xl transition group-hover:text-hh-red sm:text-3xl">
-                            {post.title}
-                          </h3>
-                          {post.excerpt ? (
-                            <p className="mt-2 max-w-xl text-sm leading-relaxed text-hh-muted">
-                              {post.excerpt}
-                            </p>
-                          ) : null}
-                        </div>
-                        <span className="text-hh-muted transition group-hover:text-hh-red">→</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
+            <div className="mt-10 space-y-8">
+              {latest.map((post) => (
+                <PostCard key={post.slug} post={post} />
+              ))}
             </div>
           )}
         </div>
@@ -221,5 +102,87 @@ export function HomePage() {
         </div>
       </section>
     </div>
+  );
+}
+
+function PostCard({ post }: { post: Post }) {
+  return (
+    <article className="hh-card overflow-hidden">
+      <div className="p-6 sm:p-8">
+        <time dateTime={post.date} className="hh-eyebrow">
+          {formatPostDate(post.date)}
+        </time>
+        <h3 className="hh-display mt-3 text-3xl sm:text-4xl">
+          <Link to={routes.post(post.slug)} className="transition hover:text-hh-red">
+            {post.title}
+          </Link>
+        </h3>
+        {post.body.map((paragraph) => (
+          <p key={paragraph.slice(0, 40)} className="mt-4 text-base font-light leading-relaxed text-hh-silver">
+            {paragraph}
+          </p>
+        ))}
+        {post.links && post.links.length > 0 ? (
+          <div className="mt-6 flex flex-col gap-3">
+            {post.links.map((link) => (
+              <a
+                key={link.url}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
+              >
+                {link.label} →
+              </a>
+            ))}
+          </div>
+        ) : null}
+      </div>
+      {post.links?.some((link) => link.embedUrl) ? (
+        <div className="flex flex-col gap-px border-t border-white/10">
+          {post.links.map((link) =>
+            link.embedUrl ? (
+              <iframe
+                key={link.url}
+                title={`${post.title} on ${link.label}`}
+                src={link.embedUrl}
+                style={{ height: link.embedHeight ?? 352 }}
+                className="w-full border-0"
+                allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+              />
+            ) : null,
+          )}
+        </div>
+      ) : null}
+      {post.videos && post.videos.length > 0 ? (
+        <div className="grid gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+          {post.videos.map((video) => (
+            <figure key={video.id} className="bg-hh-charcoal">
+              <div className="aspect-video">
+                <iframe
+                  title={`${video.title} — ${site.name}`}
+                  src={`https://www.youtube.com/embed/${video.id}?rel=0`}
+                  className="h-full w-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              <figcaption className="px-4 py-3">
+                <a
+                  href={`https://www.youtube.com/watch?v=${video.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-white transition hover:text-hh-red"
+                >
+                  {video.title}
+                </a>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : null}
+    </article>
   );
 }

@@ -204,7 +204,7 @@ export const posts: Post[] = [
     date: "2026-09-25",
     title: "The Color & Spite EP",
     excerpt: "",
-    body: [],
+    body: ["HNR HR’s newest album is The Color & Spite EP, out now on streaming services"],
     links: [
       {
         url: "https://music.apple.com/us/album/the-color-spite-ep-ep/6808918832",
@@ -219,15 +219,33 @@ export const posts: Post[] = [
         embedHeight: 352,
       },
     ],
+  },
+  {
+    slug: "the-color-and-spite-ep-videos",
+    date: "2026-09-25",
+    title: "The Color & Spite EP",
+    excerpt: "",
+    body: [],
+    videos: [
+      { id: "2dnHWW84gCI", title: "Kingdom" },
+      { id: "Ic1gCUNMFro", title: "Color & Spite" },
+      { id: "JYIXMah6EQ0", title: "The Hand That Feeds" },
+    ],
+  },
+  {
+    slug: "spring-video-sessions",
+    date: "2026-09-25",
+    title: "Spring video sessions",
+    excerpt: "",
+    body: [
+      "In the Spring of 2026, HNR HR worked with director Weston Woodbury and cam op Ryan Brady to produce a new series of videos for many songs released so far. These videos are the result",
+    ],
     videos: [
       { id: "LLMUf89k4F0", title: "The Hand That Feeds" },
       { id: "RAoIaiDuFuE", title: "Kaleidoscope" },
       { id: "rohKV3u58RI", title: "72 thru 74" },
       { id: "mAhCLJZIuzc", title: "Don't Give Yourselves to Brutes" },
       { id: "M3HxGIJ22OE", title: "Six Percent" },
-      { id: "2dnHWW84gCI", title: "Kingdom" },
-      { id: "Ic1gCUNMFro", title: "Color & Spite" },
-      { id: "JYIXMah6EQ0", title: "The Hand That Feeds" },
     ],
   },
 ];

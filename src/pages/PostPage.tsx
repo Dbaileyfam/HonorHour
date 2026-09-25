@@ -76,6 +76,35 @@ export function PostPage() {
             </div>
           ) : null}
 
+          {post.videos && post.videos.length > 0 ? (
+            <div className="mt-10 grid gap-6">
+              {post.videos.map((video) => (
+                <figure key={video.id} className="hh-card overflow-hidden">
+                  <div className="aspect-video">
+                    <iframe
+                      title={`${video.title} — ${site.name}`}
+                      src={`https://www.youtube.com/embed/${video.id}?rel=0`}
+                      className="h-full w-full border-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  </div>
+                  <figcaption className="px-4 py-3">
+                    <a
+                      href={`https://www.youtube.com/watch?v=${video.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-white transition hover:text-hh-red"
+                    >
+                      {video.title}
+                    </a>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          ) : null}
+
           <div className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-8">
             <Link
               to={routes.news}

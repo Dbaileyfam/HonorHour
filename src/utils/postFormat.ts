@@ -10,7 +10,10 @@ export function formatPostDate(iso: string) {
 }
 
 export function publishedPosts(items: readonly Post[]) {
-  return [...items].sort((a, b) => (a.date < b.date ? 1 : -1));
+  return [...items].sort((a, b) => {
+    if (a.date === b.date) return 0;
+    return a.date < b.date ? 1 : -1;
+  });
 }
 
 export function getPostBySlug(items: readonly Post[], slug: string | undefined) {
