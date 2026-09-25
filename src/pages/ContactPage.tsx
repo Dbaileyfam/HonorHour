@@ -77,9 +77,6 @@ export function ContactPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-sm text-hh-muted">
-              Promoters and press can email or DM for photos, tech details, and the press kit.
-            </p>
           </div>
         </div>
       </section>
