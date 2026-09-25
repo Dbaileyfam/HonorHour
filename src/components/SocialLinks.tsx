@@ -74,7 +74,7 @@ export function SocialLinks({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Honor Hour on ${labels[key]}`}
-              className={`inline-flex items-center justify-center border border-hh-red transition ${sizeClasses[size]} ${
+              className={`inline-flex items-center justify-center border border-hh-red/55 transition ${sizeClasses[size]} ${
                 accent ? "text-white" : "text-hh-muted"
               } hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark`}
             >
