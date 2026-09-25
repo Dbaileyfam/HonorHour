@@ -150,14 +150,6 @@ export const media = {
   specialThanks: ["Mateo Rueda", "Weston Woodbury", "Ryan Brady"],
 } as const;
 
-export const eventTypes = [
-  "Clubs & live venues",
-  "Festivals",
-  "Private events",
-  "Corporate & brand activations",
-  "Opening slots for the right bills",
-] as const;
-
 export const bio = {
   homepage:
     "HNR HR (Honor Hour Music) is a musical project based out of SLC, UT. Mason Wendell, Shane Kelson, and Aaron Maughan incorporate all their musical tastes into one cohesive heavy rock experience.",

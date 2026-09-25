@@ -1,6 +1,6 @@
 import { Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
-import { eventTypes, site } from "@/content/site";
+import { site } from "@/content/site";
 import { lockEpk } from "@/lib/epkGate";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
@@ -15,7 +15,7 @@ export function ContactPage() {
       <PageHero eyebrow="Bookings & press" title="Contact & EPK" />
 
       <section className="px-4 py-16">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
+        <div className="mx-auto max-w-2xl">
           <div className="hh-card p-8">
             <h2 className="text-lg font-medium text-hh-title">Booking &amp; press</h2>
             <p className="mt-2 text-sm text-hh-muted">
@@ -66,17 +66,6 @@ export function ContactPage() {
               </p>
               <SocialLinks />
             </div>
-          </div>
-
-          <div>
-            <h2 className="hh-section-heading">Perfect for</h2>
-            <ul className="mt-6 space-y-3">
-              {eventTypes.map((type) => (
-                <li key={type} className="text-hh-muted">
-                  · {type}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
