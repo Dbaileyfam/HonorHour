@@ -42,7 +42,11 @@ export function EPKPage() {
             >
               Book the band
             </button>
-            <button type="button" className="hh-btn-ghost" onClick={() => scrollToSection("press")}>
+            <button
+              type="button"
+              className="inline-flex items-center justify-center gap-2 border border-hh-red/55 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
+              onClick={() => scrollToSection("press")}
+            >
               Press photos
             </button>
           </div>
