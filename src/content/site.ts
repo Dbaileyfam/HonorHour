@@ -189,6 +189,7 @@ export type Post = {
   excerpt: string;
   body: string[];
   videoId?: string;
+  videos?: { id: string; title: string }[];
   links?: ListenLink[];
 };
 
@@ -212,6 +213,11 @@ export const posts: Post[] = [
         embedUrl: "https://open.spotify.com/embed/album/4ZQHoUBAeua0Ba2F3HDmPe",
         embedHeight: 352,
       },
+    ],
+    videos: [
+      { id: "2dnHWW84gCI", title: "Kingdom" },
+      { id: "Ic1gCUNMFro", title: "Color & Spite" },
+      { id: "JYIXMah6EQ0", title: "The Hand That Feeds" },
     ],
   },
 ];

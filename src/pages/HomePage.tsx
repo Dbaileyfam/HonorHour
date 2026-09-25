@@ -144,6 +144,34 @@ export function HomePage() {
                     </div>
                   </div>
                 ) : null}
+                {featured.videos && featured.videos.length > 0 ? (
+                  <div className="grid gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+                    {featured.videos.map((video) => (
+                      <figure key={video.id} className="bg-hh-charcoal">
+                        <div className="aspect-video">
+                          <iframe
+                            title={`${video.title} — ${site.name}`}
+                            src={`https://www.youtube.com/embed/${video.id}?rel=0`}
+                            className="h-full w-full border-0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                          />
+                        </div>
+                        <figcaption className="px-4 py-3">
+                          <a
+                            href={`https://www.youtube.com/watch?v=${video.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium text-white transition hover:text-hh-red"
+                          >
+                            {video.title}
+                          </a>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                ) : null}
               </article>
 
               {rest.length > 0 ? (
