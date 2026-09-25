@@ -13,7 +13,7 @@ const patternSrc = assetUrl("assets/pattern-hooks.jpg");
 const tiles = [
   { to: routes.media, title: "Media", body: "Original music, videos, and performance highlights." },
   { to: routes.shows, title: "Shows", body: "Upcoming dates and live sets." },
-  { to: routes.contact, title: "Contact", body: "Booking and media inquiries." },
+  { to: routes.contact, title: "Contact & EPK", body: "Booking, press, and the EPK." },
 ] as const;
 
 export function HomePage() {

@@ -35,7 +35,7 @@ export const navLinks = [
   { to: routes.home, label: "Home" },
   { to: routes.media, label: "Media" },
   { to: routes.shows, label: "Shows" },
-  { to: routes.contact, label: "Contact" },
+  { to: routes.contact, label: "Contact & EPK" },
 ] as const;
 
 /** Curated Honor Hour releases on YouTube — add videos and cover art as they release */

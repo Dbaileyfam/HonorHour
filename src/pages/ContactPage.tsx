@@ -1,19 +1,20 @@
 import { Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import { eventTypes, site } from "@/content/site";
+import { lockEpk } from "@/lib/epkGate";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { PageHero } from "@/components/PageHero";
 import { SocialLinks } from "@/components/SocialLinks";
 
 export function ContactPage() {
-  usePageTitle("Contact");
+  usePageTitle("Contact & EPK");
 
   return (
     <>
       <PageHero
         eyebrow="Bookings & press"
-        title="Contact us"
+        title="Contact & EPK"
         description="Email or Instagram DMs for festivals, venues, private events, and media — we'd love to hear from you."
       />
 
@@ -56,7 +57,7 @@ export function ContactPage() {
             >
               Message on Instagram
             </a>
-            <Link to={routes.epk} className="hh-btn-primary mt-3">
+            <Link to={routes.epk} className="hh-btn-primary mt-3" onClick={lockEpk}>
               View the EPK
             </Link>
             <div className="mt-8 border-t border-white/10 pt-6">

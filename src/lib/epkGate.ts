@@ -4,6 +4,14 @@ const EPK_PASSWORD_SHA256 =
 
 const STORAGE_KEY = "hh-epk-unlocked";
 
+export function lockEpk() {
+  try {
+    sessionStorage.removeItem(STORAGE_KEY);
+  } catch {
+    /* private browsing */
+  }
+}
+
 export function isEpkUnlocked() {
   try {
     return sessionStorage.getItem(STORAGE_KEY) === "1";
