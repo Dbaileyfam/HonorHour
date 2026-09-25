@@ -33,7 +33,7 @@ jobs:
       - name: Install and build
         run: |
           npm ci
-          npm run build:pages
+          npm run build
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
