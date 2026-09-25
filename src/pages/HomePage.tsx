@@ -123,7 +123,11 @@ export function HomePage() {
                   </div>
                 </div>
                 {featured.links?.some((link) => link.embedUrl) ? (
-                  <div className="flex flex-col gap-px border-t border-white/10">
+                  <div className="border-t border-white/10">
+                    <p className="px-6 py-6 text-base font-light leading-relaxed text-hh-silver sm:px-8">
+                      HNR HR’s newest album is The Color & Spite EP, out now on streaming services
+                    </p>
+                    <div className="flex flex-col gap-px">
                     {featured.links.map((link) =>
                       link.embedUrl ? (
                         <iframe
@@ -137,6 +141,7 @@ export function HomePage() {
                         />
                       ) : null,
                     )}
+                    </div>
                   </div>
                 ) : null}
               </article>
