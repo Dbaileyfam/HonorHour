@@ -223,7 +223,7 @@ export const posts: Post[] = [
   {
     slug: "the-color-and-spite-ep-videos",
     date: "2026-09-25",
-    title: "The Color & Spite EP",
+    title: "Music videos for The Color & Spite EP",
     excerpt: "",
     body: [],
     videos: [
