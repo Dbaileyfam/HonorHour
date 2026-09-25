@@ -17,7 +17,7 @@ const tiles = [
 ] as const;
 
 export function HomePage() {
-  usePageTitle("Home");
+  usePageTitle(`${site.wordmark} | Official Site`, { absolute: true });
   const latest = publishedPosts(posts);
 
   return (
