@@ -25,6 +25,13 @@ export function ContactPage() {
             <p className="mt-2 text-sm text-hh-muted">
               For festivals, clubs, private events, and media inquiries.
             </p>
+            <Link
+              to={routes.epk}
+              className="mt-6 inline-flex items-center justify-center gap-2 border border-hh-red/55 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
+              onClick={lockEpk}
+            >
+              View the EPK
+            </Link>
             <address className="mt-6 not-italic">
               <p className="text-lg font-medium text-white">{site.booking.name}</p>
               <p className="mt-3">
@@ -53,13 +60,10 @@ export function ContactPage() {
               href={site.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="hh-btn-primary mt-8"
+              className="mt-8 inline-flex items-center justify-center gap-2 border border-hh-red/55 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
             >
               Message on Instagram
             </a>
-            <Link to={routes.epk} className="hh-btn-primary mt-3" onClick={lockEpk}>
-              View the EPK
-            </Link>
             <div className="mt-8 border-t border-white/10 pt-6">
               <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted">
                 Also on
