@@ -1,5 +1,7 @@
 import { Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 import { eventTypes, site } from "@/content/site";
+import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { PageHero } from "@/components/PageHero";
 import { SocialLinks } from "@/components/SocialLinks";
@@ -54,6 +56,9 @@ export function ContactPage() {
             >
               Message on Instagram
             </a>
+            <Link to={routes.epk} className="hh-btn-primary mt-3">
+              View the EPK
+            </Link>
             <div className="mt-8 border-t border-white/10 pt-6">
               <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted">
                 Also on
