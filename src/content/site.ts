@@ -63,11 +63,6 @@ export const media = {
   },
   singles: [
     {
-      id: "LLMUf89k4F0",
-      title: "The Hand That Feeds",
-      cover: "assets/media/color-and-spite-ep.jpg",
-    },
-    {
       id: "RAoIaiDuFuE",
       title: "Kaleidoscope",
       cover: "assets/media/kaleidoscope.png",
