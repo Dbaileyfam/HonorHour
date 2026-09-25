@@ -23,7 +23,7 @@ export function ContactPage() {
               className="mt-6 inline-flex items-center justify-center gap-2 border border-hh-red/55 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
               onClick={lockEpk}
             >
-              View the EPK
+              HNR HR EPK
             </Link>
             <address className="mt-6 not-italic">
               <p className="text-lg font-medium text-white">{site.booking.name}</p>
