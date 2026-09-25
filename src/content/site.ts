@@ -202,7 +202,7 @@ export const posts: Post[] = [
       {
         url: "https://music.apple.com/us/album/the-color-spite-ep-ep/6808918832",
         label: "Listen on Apple Music",
-        embedUrl: "https://embed.music.apple.com/us/album/the-color-spite-ep-ep/6808918832",
+        embedUrl: "https://embed.music.apple.com/us/album/the-color-spite-ep-ep/6808918832?theme=dark",
         embedHeight: 450,
       },
       {
