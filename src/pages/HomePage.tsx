@@ -72,6 +72,9 @@ export function HomePage() {
           ) : (
             <div className="mt-10 space-y-4">
               <article className="hh-card overflow-hidden">
+                <p className="px-6 py-6 text-base font-light leading-relaxed text-hh-silver sm:px-8">
+                  In the Spring of 2026, HNR HR worked with director Weston Woodbury and cam op Ryan Brady to produce a new series of videos for many songs released so far. These videos are the result
+                </p>
                 {featured.videos && featured.videos.length > 0 ? (
                   <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">
                     {featured.videos.map((video) => (
