@@ -18,9 +18,6 @@ export function ContactPage() {
         <div className="mx-auto max-w-2xl">
           <div className="hh-card p-8">
             <h2 className="text-lg font-medium text-hh-title">Booking &amp; press</h2>
-            <p className="mt-2 text-sm text-hh-muted">
-              For festivals, clubs, private events, and media inquiries.
-            </p>
             <Link
               to={routes.epk}
               className="mt-6 inline-flex items-center justify-center gap-2 border border-hh-red/55 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark"
