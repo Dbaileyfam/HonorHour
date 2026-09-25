@@ -122,28 +122,6 @@ export function HomePage() {
                     )}
                   </div>
                 </div>
-                {featured.links?.some((link) => link.embedUrl) ? (
-                  <div className="border-t border-white/10">
-                    <p className="px-6 py-6 text-base font-light leading-relaxed text-hh-silver sm:px-8">
-                      HNR HR’s newest album is The Color & Spite EP, out now on streaming services
-                    </p>
-                    <div className="flex flex-col gap-px">
-                    {featured.links.map((link) =>
-                      link.embedUrl ? (
-                        <iframe
-                          key={link.url}
-                          title={`${featured.title} on ${link.label}`}
-                          src={link.embedUrl}
-                          style={{ height: link.embedHeight ?? 352 }}
-                          className="w-full border-0"
-                          allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-                          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                        />
-                      ) : null,
-                    )}
-                    </div>
-                  </div>
-                ) : null}
                 {featured.videos && featured.videos.length > 0 ? (
                   <div className="grid gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
                     {featured.videos.map((video) => (
@@ -170,6 +148,28 @@ export function HomePage() {
                         </figcaption>
                       </figure>
                     ))}
+                  </div>
+                ) : null}
+                {featured.links?.some((link) => link.embedUrl) ? (
+                  <div className="border-t border-white/10">
+                    <p className="px-6 py-6 text-base font-light leading-relaxed text-hh-silver sm:px-8">
+                      HNR HR’s newest album is The Color & Spite EP, out now on streaming services
+                    </p>
+                    <div className="flex flex-col gap-px">
+                    {featured.links.map((link) =>
+                      link.embedUrl ? (
+                        <iframe
+                          key={link.url}
+                          title={`${featured.title} on ${link.label}`}
+                          src={link.embedUrl}
+                          style={{ height: link.embedHeight ?? 352 }}
+                          className="w-full border-0"
+                          allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                        />
+                      ) : null,
+                    )}
+                    </div>
                   </div>
                 ) : null}
               </article>

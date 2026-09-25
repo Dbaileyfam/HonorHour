@@ -63,25 +63,30 @@ export const media = {
   },
   singles: [
     {
-      id: "bl2FLCFJoOA",
-      title: "Don't Give Yourselves to Brutes",
-      cover: "assets/media/dont-give-yourselves-to-brutes.png",
+      id: "LLMUf89k4F0",
+      title: "The Hand That Feeds",
+      cover: "assets/media/color-and-spite-ep.jpg",
     },
     {
-      id: "W8Nmv_HNCsg",
-      title: "Six Percent",
-      cover: "assets/media/six-percent.png",
+      id: "RAoIaiDuFuE",
+      title: "Kaleidoscope",
+      cover: "assets/media/kaleidoscope.png",
+      note: "Tiësto + Jónsi cover",
     },
     {
-      id: "Z0WJRONlIww",
+      id: "rohKV3u58RI",
       title: "72 thru 74",
       cover: "assets/media/72-thru-74.png",
     },
     {
-      id: "yBs641G9Wxk",
-      title: "Kaleidoscope",
-      cover: "assets/media/kaleidoscope.png",
-      note: "Tiësto + Jónsi cover",
+      id: "mAhCLJZIuzc",
+      title: "Don't Give Yourselves to Brutes",
+      cover: "assets/media/dont-give-yourselves-to-brutes.png",
+    },
+    {
+      id: "M3HxGIJ22OE",
+      title: "Six Percent",
+      cover: "assets/media/six-percent.png",
     },
   ],
   albums: [
@@ -215,6 +220,11 @@ export const posts: Post[] = [
       },
     ],
     videos: [
+      { id: "LLMUf89k4F0", title: "The Hand That Feeds" },
+      { id: "RAoIaiDuFuE", title: "Kaleidoscope" },
+      { id: "rohKV3u58RI", title: "72 thru 74" },
+      { id: "mAhCLJZIuzc", title: "Don't Give Yourselves to Brutes" },
+      { id: "M3HxGIJ22OE", title: "Six Percent" },
       { id: "2dnHWW84gCI", title: "Kingdom" },
       { id: "Ic1gCUNMFro", title: "Color & Spite" },
       { id: "JYIXMah6EQ0", title: "The Hand That Feeds" },
