@@ -72,7 +72,7 @@ export function HomePage() {
           ) : (
             <div className="mt-10 space-y-4">
               <article className="hh-card overflow-hidden">
-                <div className={`grid ${featured.videoId ? "lg:grid-cols-2" : ""}`}>
+                <div className={featured.videoId ? "grid lg:grid-cols-2" : ""}>
                   {featured.videoId ? (
                     <div className="aspect-video bg-hh-charcoal">
                       <iframe
@@ -98,14 +98,47 @@ export function HomePage() {
                         {featured.excerpt}
                       </p>
                     ) : null}
-                    <Link
-                      to={routes.post(featured.slug)}
-                      className="mt-6 inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
-                    >
-                      Read →
-                    </Link>
+                    {featured.links && featured.links.length > 0 ? (
+                      <div className="mt-6 flex flex-col gap-3">
+                        {featured.links.map((link) => (
+                          <a
+                            key={link.url}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
+                          >
+                            {link.label} →
+                          </a>
+                        ))}
+                      </div>
+                    ) : (
+                      <Link
+                        to={routes.post(featured.slug)}
+                        className="mt-6 inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
+                      >
+                        Read →
+                      </Link>
+                    )}
                   </div>
                 </div>
+                {featured.links?.some((link) => link.embedUrl) ? (
+                  <div className="flex flex-col gap-px border-t border-white/10">
+                    {featured.links.map((link) =>
+                      link.embedUrl ? (
+                        <iframe
+                          key={link.url}
+                          title={`${featured.title} on ${link.label}`}
+                          src={link.embedUrl}
+                          style={{ height: link.embedHeight ?? 352 }}
+                          className="w-full border-0"
+                          allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                        />
+                      ) : null,
+                    )}
+                  </div>
+                ) : null}
               </article>
 
               {rest.length > 0 ? (

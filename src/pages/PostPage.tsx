@@ -45,6 +45,37 @@ export function PostPage() {
             </div>
           ) : null}
 
+          {post.links?.map((link) =>
+            link.embedUrl ? (
+              <div key={link.url} className="hh-card mt-10 overflow-hidden">
+                <iframe
+                  title={`${post.title} on ${link.label}`}
+                  src={link.embedUrl}
+                  style={{ height: link.embedHeight ?? 352 }}
+                  className="w-full border-0"
+                  allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                  sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                />
+              </div>
+            ) : null,
+          )}
+
+          {post.links && post.links.length > 0 ? (
+            <div className="mt-8 flex flex-col gap-3">
+              {post.links.map((link) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
+                >
+                  {link.label} →
+                </a>
+              ))}
+            </div>
+          ) : null}
+
           <div className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-8">
             <Link
               to={routes.news}

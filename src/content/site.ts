@@ -174,6 +174,13 @@ export const shows = [] as {
 }[];
 
 /** Homepage news/blog — newest first. Add a post here when you have something to put out. */
+export type ListenLink = {
+  url: string;
+  label: string;
+  embedUrl?: string;
+  embedHeight?: number;
+};
+
 export type Post = {
   slug: string;
   date: string;
@@ -181,26 +188,29 @@ export type Post = {
   excerpt: string;
   body: string[];
   videoId?: string;
+  links?: ListenLink[];
 };
 
 export const posts: Post[] = [
   {
-    slug: "dont-give-yourselves-to-brutes",
-    date: "2025-11-20",
-    title: "Don't Give Yourselves to Brutes",
+    slug: "the-color-and-spite-ep",
+    date: "2026-09-25",
+    title: "The Color & Spite EP",
     excerpt: "",
     body: [],
-    videoId: "bl2FLCFJoOA",
-  },
-  {
-    slug: "whysound-session-ep",
-    date: "2024-05-06",
-    title: "The Whysound Session EP",
-    excerpt:
-      "Live session recordings from WhySound in Logan — Eventide, A.I. for the Straight Guy, and Dried Out.",
-    body: [
-      "We recorded loud at WhySound in Logan. The Whysound Session EP is three tracks cut in the room: Eventide, A.I. for the Straight Guy, and Dried Out.",
-      "Watch the full session on the Media page, or find Honor Hour wherever you stream.",
+    links: [
+      {
+        url: "https://music.apple.com/us/album/the-color-spite-ep-ep/6808918832",
+        label: "Listen on Apple Music",
+        embedUrl: "https://embed.music.apple.com/us/album/the-color-spite-ep-ep/6808918832",
+        embedHeight: 450,
+      },
+      {
+        url: "https://open.spotify.com/album/4ZQHoUBAeua0Ba2F3HDmPe",
+        label: "Listen on Spotify",
+        embedUrl: "https://open.spotify.com/embed/album/4ZQHoUBAeua0Ba2F3HDmPe",
+        embedHeight: 352,
+      },
     ],
   },
 ];
