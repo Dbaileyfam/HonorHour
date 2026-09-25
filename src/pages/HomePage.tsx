@@ -72,58 +72,8 @@ export function HomePage() {
           ) : (
             <div className="mt-10 space-y-4">
               <article className="hh-card overflow-hidden">
-                <div className={featured.videoId ? "grid lg:grid-cols-2" : ""}>
-                  {featured.videoId ? (
-                    <div className="aspect-video bg-hh-charcoal">
-                      <iframe
-                        title={`${featured.title} — ${site.name}`}
-                        src={`https://www.youtube.com/embed/${featured.videoId}`}
-                        className="h-full w-full border-0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    </div>
-                  ) : null}
-                  <div className="flex flex-col justify-center p-6 sm:p-8">
-                    <time dateTime={featured.date} className="hh-eyebrow">
-                      {formatPostDate(featured.date)}
-                    </time>
-                    <h3 className="hh-display mt-3 text-3xl sm:text-4xl">
-                      <Link to={routes.post(featured.slug)} className="transition hover:text-hh-red">
-                        {featured.title}
-                      </Link>
-                    </h3>
-                    {featured.excerpt ? (
-                      <p className="mt-4 text-base font-light leading-relaxed text-hh-silver">
-                        {featured.excerpt}
-                      </p>
-                    ) : null}
-                    {featured.links && featured.links.length > 0 ? (
-                      <div className="mt-6 flex flex-col gap-3">
-                        {featured.links.map((link) => (
-                          <a
-                            key={link.url}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
-                          >
-                            {link.label} →
-                          </a>
-                        ))}
-                      </div>
-                    ) : (
-                      <Link
-                        to={routes.post(featured.slug)}
-                        className="mt-6 inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
-                      >
-                        Read →
-                      </Link>
-                    )}
-                  </div>
-                </div>
                 {featured.videos && featured.videos.length > 0 ? (
-                  <div className="grid gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">
                     {featured.videos.map((video) => (
                       <figure key={video.id} className="bg-hh-charcoal">
                         <div className="aspect-video">
@@ -150,6 +100,43 @@ export function HomePage() {
                     ))}
                   </div>
                 ) : null}
+                <div className="border-t border-white/10 p-6 sm:p-8">
+                  <time dateTime={featured.date} className="hh-eyebrow">
+                    {formatPostDate(featured.date)}
+                  </time>
+                  <h3 className="hh-display mt-3 text-3xl sm:text-4xl">
+                    <Link to={routes.post(featured.slug)} className="transition hover:text-hh-red">
+                      {featured.title}
+                    </Link>
+                  </h3>
+                  {featured.excerpt ? (
+                    <p className="mt-4 text-base font-light leading-relaxed text-hh-silver">
+                      {featured.excerpt}
+                    </p>
+                  ) : null}
+                  {featured.links && featured.links.length > 0 ? (
+                    <div className="mt-6 flex flex-col gap-3">
+                      {featured.links.map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
+                        >
+                          {link.label} →
+                        </a>
+                      ))}
+                    </div>
+                  ) : (
+                    <Link
+                      to={routes.post(featured.slug)}
+                      className="mt-6 inline-block text-[11px] font-medium uppercase tracking-[0.28em] text-white transition hover:text-hh-red"
+                    >
+                      Read →
+                    </Link>
+                  )}
+                </div>
                 {featured.links?.some((link) => link.embedUrl) ? (
                   <div className="border-t border-white/10">
                     <p className="px-6 py-6 text-base font-light leading-relaxed text-hh-silver sm:px-8">
