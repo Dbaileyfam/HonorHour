@@ -12,11 +12,7 @@ export function ContactPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Bookings & press"
-        title="Contact & EPK"
-        description="Email or Instagram DMs for festivals, venues, private events, and media — we'd love to hear from you."
-      />
+      <PageHero eyebrow="Bookings & press" title="Contact & EPK" />
 
       <section className="px-4 py-16">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
