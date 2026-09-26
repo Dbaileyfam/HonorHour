@@ -233,8 +233,8 @@ export function MediaPage() {
             <p className="mt-3 text-sm text-hh-muted">
               Clips, announcements, and behind-the-scenes.
             </p>
-            <div className="mt-6 flex justify-center">
-              <SocialLinks variant="accent" size="xl" className="justify-center gap-3" />
+            <div className="mt-6">
+              <SocialLinks variant="accent" size="xl" nowrap />
             </div>
           </div>
         </div>

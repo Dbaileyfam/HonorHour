@@ -39,6 +39,8 @@ type SocialLinksProps = {
   className?: string;
   size?: "sm" | "md" | "lg" | "xl";
   variant?: "default" | "accent" | "framed";
+  /** Keep every icon on one line. Icons shrink to fit narrow screens and stop at the chosen size. */
+  nowrap?: boolean;
 };
 
 const sizeClasses = {
@@ -55,30 +57,46 @@ const iconSizes = {
   xl: "h-7 w-7",
 };
 
+const maxWidth = {
+  sm: "max-w-9",
+  md: "max-w-10",
+  lg: "max-w-11",
+  xl: "max-w-16",
+};
+
 export function SocialLinks({
   className = "",
   size = "md",
   variant = "default",
+  nowrap = false,
 }: SocialLinksProps) {
   const entries = Object.entries(site.social) as [SocialKey, string][];
   const accent = variant === "accent";
 
   return (
-    <ul className={`flex flex-wrap items-center gap-2 ${className}`}>
+    <ul
+      className={
+        nowrap
+          ? `flex w-full flex-nowrap items-center justify-center gap-3 ${className}`
+          : `flex flex-wrap items-center gap-2 ${className}`
+      }
+    >
       {entries.map(([key, href]) => {
         const Icon = icons[key];
         return (
-          <li key={key}>
+          <li key={key} className={nowrap ? `aspect-square min-w-0 flex-1 basis-0 ${maxWidth[size]}` : undefined}>
             <a
               href={href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Honor Hour on ${labels[key]}`}
-              className={`inline-flex items-center justify-center border border-hh-red/55 transition ${sizeClasses[size]} ${
+              className={`inline-flex items-center justify-center border border-hh-red/55 transition ${
+                nowrap ? "h-full w-full" : sizeClasses[size]
+              } ${
                 accent ? "text-white" : "text-hh-muted"
               } hover:bg-hh-red hover:text-white focus-visible:bg-hh-red focus-visible:text-white active:bg-hh-red-dark`}
             >
-              <Icon className={iconSizes[size]} aria-hidden />
+              <Icon className={nowrap ? "h-[44%] w-[44%]" : iconSizes[size]} aria-hidden />
             </a>
           </li>
         );
