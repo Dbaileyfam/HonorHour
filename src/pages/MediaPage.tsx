@@ -122,7 +122,7 @@ export function MediaPage() {
   return (
     <>
       <PageHero
-        eyebrow="Watch · Listen · Photos"
+        eyebrow="Videos · Music · Photos"
         title="Media"
         description="Original music, videos, and performance highlights by HNR HR."
       />
