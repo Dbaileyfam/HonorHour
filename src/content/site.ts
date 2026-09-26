@@ -63,25 +63,37 @@ export const media = {
   },
   singles: [
     {
-      id: "RAoIaiDuFuE",
       title: "Kaleidoscope",
       cover: "assets/media/kaleidoscope.png",
       note: "Tiësto + Jónsi cover",
+      videos: [
+        { id: "yBs641G9Wxk", label: "Music video" },
+        { id: "RAoIaiDuFuE", label: "Spring session" },
+      ],
     },
     {
-      id: "rohKV3u58RI",
       title: "72 thru 74",
       cover: "assets/media/72-thru-74.png",
+      videos: [
+        { id: "Z0WJRONlIww", label: "Music video" },
+        { id: "rohKV3u58RI", label: "Spring session" },
+      ],
     },
     {
-      id: "mAhCLJZIuzc",
       title: "Don't Give Yourselves to Brutes",
       cover: "assets/media/dont-give-yourselves-to-brutes.png",
+      videos: [
+        { id: "bl2FLCFJoOA", label: "Music video" },
+        { id: "mAhCLJZIuzc", label: "Spring session" },
+      ],
     },
     {
-      id: "M3HxGIJ22OE",
       title: "Six Percent",
       cover: "assets/media/six-percent.png",
+      videos: [
+        { id: "W8Nmv_HNCsg", label: "Music video" },
+        { id: "M3HxGIJ22OE", label: "Spring session" },
+      ],
     },
   ],
   albums: [

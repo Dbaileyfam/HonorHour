@@ -66,38 +66,49 @@ function SpotifyEmbed() {
 }
 
 function SingleRelease({
-  video,
+  title,
   cover,
   note,
+  videos,
 }: {
-  video: Video;
+  title: string;
   cover: string;
   note?: string;
+  videos: { id: string; label: string }[];
 }) {
   return (
     <article className="hh-card overflow-hidden">
-      <div className="grid sm:grid-cols-[minmax(160px,220px)_1fr]">
-        <CoverArt src={cover} alt={`${video.title} cover art`} />
-        <div className="flex min-w-0 flex-col">
-          <VideoPlayer video={video} />
-          <div className="border-t border-white/10 px-4 py-3">
-            <a
-              href={youtubeWatchUrl(video.id)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-white transition hover:text-hh-red"
-            >
-              {video.title}
-            </a>
+      <div className="grid lg:grid-cols-[minmax(180px,240px)_1fr]">
+        <CoverArt
+          src={cover}
+          alt={`${title} cover art`}
+          className="border-b border-white/10 lg:h-full lg:border-b-0 lg:border-r"
+        />
+        <div className="min-w-0">
+          <div className="border-b border-white/10 px-4 py-3">
+            <h3 className="font-medium text-white">{title}</h3>
             {note ? <p className="mt-1 text-sm text-hh-muted">{note}</p> : null}
-            <a
-              href={youtubeWatchUrl(video.id)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-block text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted transition hover:text-hh-red"
-            >
-              Watch on YouTube →
-            </a>
+          </div>
+          <div className="grid sm:grid-cols-2">
+            {videos.map((video) => (
+              <figure
+                key={video.id}
+                className="border-b border-white/10 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
+              >
+                <VideoPlayer video={{ id: video.id, title: `${title} — ${video.label}` }} />
+                <figcaption className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-4 py-3">
+                  <span className="text-sm text-hh-muted">{video.label}</span>
+                  <a
+                    href={youtubeWatchUrl(video.id)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted transition hover:text-hh-red"
+                  >
+                    Watch on YouTube →
+                  </a>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </div>
@@ -120,13 +131,14 @@ export function MediaPage() {
         <div className="mx-auto max-w-6xl">
           <h2 className="hh-section-heading">Singles</h2>
           <p className="mt-2 text-hh-muted">More from the band.</p>
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          <div className="mt-8 grid gap-8">
             {media.singles.map((single) => (
               <SingleRelease
-                key={single.id}
-                video={{ id: single.id, title: single.title }}
+                key={single.title}
+                title={single.title}
                 cover={single.cover}
                 note={"note" in single ? single.note : undefined}
+                videos={[...single.videos]}
               />
             ))}
           </div>
