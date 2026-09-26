@@ -235,6 +235,7 @@ export const posts: Post[] = [
       { id: "M3HxGIJ22OE", title: "Six Percent" },
       { id: "wK0qeq3BbqI", title: "Dried Out" },
       { id: "9AYYiQrqiMg", title: "A.I. for the Straight Guy" },
+      { id: "_p7h67TE18I", title: "Eventide" },
     ],
   },
 ];
