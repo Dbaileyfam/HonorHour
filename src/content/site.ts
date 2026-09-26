@@ -149,7 +149,7 @@ export const bio = {
   homepage:
     "HNR HR (Honor Hour Music) is a musical project based out of SLC, UT. Mason Wendell, Shane Kelson, and Aaron Maughan incorporate all their musical tastes into one cohesive heavy rock experience.",
   short:
-    "HNR HR (Honor Hour Music) is a musical project based out of SLC, UT. Mason Wendell, Shane Kelson, and Aaron Maughan incorporate all their musical tastes into one cohesive heavy rock experience where there are no rules as to what they create and how they perform.",
+    "HNR HR (Honor Hour Music) is a musical project based out of SLC, UT. Mason Wendell, Shane Kelson, and Aaron Maughan incorporate all their musical tastes into one cohesive heavy rock experience.",
   long: [] as string[],
   lineup: [
     { name: "Mason Wendell", role: "Vocals & guitar" },
