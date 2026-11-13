@@ -44,6 +44,9 @@ export function ShowsPage() {
                       <MapPin className="h-4 w-4 shrink-0" aria-hidden />
                       {show.location}
                     </p>
+                    {show.time ? (
+                      <p className="mt-1 text-sm text-hh-muted">{show.time}</p>
+                    ) : null}
                     {show.ticketUrl ? (
                       <a
                         href={show.ticketUrl}

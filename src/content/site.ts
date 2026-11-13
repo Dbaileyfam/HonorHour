@@ -170,11 +170,20 @@ export const bio = {
   ],
 } as const;
 
-export const shows = [] as {
+export const shows = [
+  {
+    date: "2027-02-05",
+    dateLabel: "Feb 5,",
+    venue: "WhySound",
+    location: "Logan, UT",
+    time: "Time TBA",
+  },
+] as {
   date: string;
   dateLabel: string;
   venue: string;
   location: string;
+  time?: string;
   ticketUrl?: string;
 }[];
 

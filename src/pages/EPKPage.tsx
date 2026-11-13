@@ -291,6 +291,9 @@ export function EPKPage() {
                   <div>
                     <h3 className="text-lg font-semibold text-hh-title">{show.venue}</h3>
                     <p className="text-sm text-hh-muted">{show.location}</p>
+                    {show.time ? (
+                      <p className="text-sm text-hh-muted">{show.time}</p>
+                    ) : null}
                     {show.ticketUrl ? (
                       <a
                         href={show.ticketUrl}
