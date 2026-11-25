@@ -170,22 +170,37 @@ export const bio = {
   ],
 } as const;
 
-export const shows = [
-  {
-    date: "2027-02-05",
-    dateLabel: "Feb 5,",
-    venue: "WhySound",
-    location: "Logan, UT",
-    time: "Time TBA",
-  },
-] as {
+export type ShowBand = {
+  name: string;
+  instagram?: string;
+};
+
+export type Show = {
   date: string;
   dateLabel: string;
   venue: string;
   location: string;
   time?: string;
   ticketUrl?: string;
-}[];
+  address?: string;
+  bands?: ShowBand[];
+};
+
+export const shows: Show[] = [
+  {
+    date: "2027-02-05",
+    dateLabel: "Feb 5,",
+    venue: "WhySound",
+    location: "Logan, UT",
+    address: "30 Federal Ave, Logan, UT 84321",
+    time: "Time TBA",
+    bands: [
+      { name: "Honor Hour", instagram: "https://www.instagram.com/honorhourmusic/" },
+      { name: "Abysmal Embrace", instagram: "https://www.instagram.com/abysmalembrace/" },
+      { name: "A Perfect Storm", instagram: "https://www.instagram.com/perfectstorm.band/" },
+    ],
+  },
+];
 
 /** Homepage news/blog — newest first. Add a post here when you have something to put out. */
 export type ListenLink = {

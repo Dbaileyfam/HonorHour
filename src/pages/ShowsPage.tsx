@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { shows, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
-import { formatShowDate, upcomingShows } from "@/utils/showFormat";
+import { upcomingShows } from "@/utils/showFormat";
 import { PageHero } from "@/components/PageHero";
+import { ShowCard } from "@/components/ShowCard";
 
 export function ShowsPage() {
   usePageTitle("Shows");
@@ -23,42 +24,7 @@ export function ShowsPage() {
           {upcoming.length > 0 ? (
             <ul className="grid gap-4 sm:grid-cols-2">
               {upcoming.map((show) => (
-                <li key={`${show.date}-${show.venue}`} className="hh-card flex gap-5 p-5">
-                  <time
-                    dateTime={show.date}
-                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center border border-white/15 text-hh-title"
-                  >
-                    <span className="text-xs font-bold uppercase">
-                      {show.dateLabel.split(" ")[0]}
-                    </span>
-                    <span className="hh-display text-2xl leading-none">
-                      {show.dateLabel.split(" ")[1]?.replace(",", "")}
-                    </span>
-                  </time>
-                  <div>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-hh-muted">
-                      {formatShowDate(show.date)}
-                    </p>
-                    <h2 className="mt-1 text-lg font-medium text-hh-title">{show.venue}</h2>
-                    <p className="mt-1 flex items-center gap-2 text-sm text-hh-muted">
-                      <MapPin className="h-4 w-4 shrink-0" aria-hidden />
-                      {show.location}
-                    </p>
-                    {show.time ? (
-                      <p className="mt-1 text-sm text-hh-muted">{show.time}</p>
-                    ) : null}
-                    {show.ticketUrl ? (
-                      <a
-                        href={show.ticketUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 inline-block text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:text-hh-red"
-                      >
-                        Tickets →
-                      </a>
-                    ) : null}
-                  </div>
-                </li>
+                <ShowCard key={`${show.date}-${show.venue}`} show={show} />
               ))}
             </ul>
           ) : (

@@ -16,6 +16,7 @@ import { routes } from "@/lib/routes";
 import { assetUrl } from "@/lib/assets";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
+import { ShowCard } from "@/components/ShowCard";
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
@@ -278,34 +279,7 @@ export function EPKPage() {
           {shows.length > 0 ? (
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {shows.map((show) => (
-                <li key={`${show.date}-${show.venue}`} className="hh-card flex gap-5 p-5">
-                  <time
-                    dateTime={show.date}
-                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center border border-white/15 text-hh-title"
-                  >
-                    <span className="text-xs font-bold uppercase">{show.dateLabel.split(" ")[0]}</span>
-                    <span className="hh-display text-2xl leading-none">
-                      {show.dateLabel.split(" ")[1]?.replace(",", "")}
-                    </span>
-                  </time>
-                  <div>
-                    <h3 className="text-lg font-semibold text-hh-title">{show.venue}</h3>
-                    <p className="text-sm text-hh-muted">{show.location}</p>
-                    {show.time ? (
-                      <p className="text-sm text-hh-muted">{show.time}</p>
-                    ) : null}
-                    {show.ticketUrl ? (
-                      <a
-                        href={show.ticketUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 inline-block hh-accent-link text-sm"
-                      >
-                        Tickets →
-                      </a>
-                    ) : null}
-                  </div>
-                </li>
+                <ShowCard key={`${show.date}-${show.venue}`} show={show} heading="h3" />
               ))}
             </ul>
           ) : (
